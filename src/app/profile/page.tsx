@@ -55,7 +55,7 @@ function ProfilePageContent() {
           <Separator />
           
           <Tabs defaultValue={isHost ? "host-dashboard" : "bookings"} className="mt-8">
-            <TabsList className="grid w-full grid-cols-2">
+            <TabsList className="grid w-full grid-cols-2 gap-x-2">
               <TabsTrigger value="bookings" disabled={isHost}>{t.myBookings}</TabsTrigger>
               <TabsTrigger value="host-dashboard" disabled={!isHost}>{t.hostDashboard}</TabsTrigger>
             </TabsList>
