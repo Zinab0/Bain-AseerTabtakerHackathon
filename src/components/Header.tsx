@@ -4,12 +4,15 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
-import { Menu, Mountain, Globe, User } from 'lucide-react';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu';
+import { Menu, Mountain, Globe, User, LogOut } from 'lucide-react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from './ui/dropdown-menu';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useAuth } from '@/contexts/AuthContext';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
 export default function Header() {
   const { language, setLanguage, translations } = useLanguage();
+  const { user, logout } = useAuth();
   
   const navLinks = [
     { href: "/experiences", label: translations.header.experiences },
@@ -45,21 +48,43 @@ export default function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-           <Button asChild variant="ghost" size="icon">
-            <Link href="/profile">
-              <User className="h-5 w-5" />
-              <span className="sr-only">Profile</span>
-            </Link>
-          </Button>
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                  <Avatar className="h-8 w-8">
+                     <AvatarImage src={user.avatar} alt={user.name} data-ai-hint={user.aiHint} />
+                     <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                 <DropdownMenuItem asChild>
+                    <Link href="/profile">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>{translations.header.profile}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={logout}>
+                   <LogOut className="mr-2 h-4 w-4" />
+                   <span>{translations.header.logout}</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <>
+              <div className="hidden sm:flex items-center space-x-2 rtl:space-x-reverse">
+                <Button asChild variant="ghost">
+                  <Link href="/login">{translations.header.login}</Link>
+                </Button>
+                <Button asChild>
+                  <Link href="/signup">{translations.header.signUp}</Link>
+                </Button>
+              </div>
+            </>
+          )}
 
-          <div className="hidden sm:flex items-center space-x-2 rtl:space-x-reverse">
-            <Button asChild variant="ghost">
-              <Link href="/login">{translations.header.login}</Link>
-            </Button>
-            <Button asChild>
-               <Link href="/signup">{translations.header.signUp}</Link>
-            </Button>
-          </div>
 
           <Sheet>
             <SheetTrigger asChild>
@@ -82,12 +107,20 @@ export default function Header() {
                  <Link href="/profile" className="flex w-full items-center py-2 text-lg font-semibold">
                     {translations.header.profile}
                   </Link>
-                 <Link href="/login" className="flex w-full items-center py-2 text-lg font-semibold">
-                    {translations.header.login}
-                  </Link>
-                 <Button asChild className="w-full mt-4">
-                  <Link href="/signup">{translations.header.signUp}</Link>
-                </Button>
+                {user ? (
+                   <Button onClick={logout} className="w-full mt-4">
+                      {translations.header.logout}
+                    </Button>
+                ) : (
+                  <>
+                    <Link href="/login" className="flex w-full items-center py-2 text-lg font-semibold">
+                        {translations.header.login}
+                    </Link>
+                    <Button asChild className="w-full mt-4">
+                      <Link href="/signup">{translations.header.signUp}</Link>
+                    </Button>
+                  </>
+                )}
               </div>
             </SheetContent>
           </Sheet>

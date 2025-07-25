@@ -8,6 +8,7 @@ const translations = {
       profile: 'Profile',
       login: 'Login',
       signUp: 'Sign Up',
+      logout: 'Log Out',
     },
     home: {
       title: "Live Asir, Not Just Visit It",
@@ -98,6 +99,10 @@ const translations = {
         myBookings: 'My Bookings',
         hostDashboard: 'Host Dashboard',
         yourUpcomingAdventures: 'Your Upcoming Adventures',
+        pleaseLogin: {
+            title: 'Please Log In',
+            subtitle: 'You need to be logged in to view your profile.',
+        },
         noBookings: {
             title: 'You have no upcoming bookings.',
             subtitle: 'Time to find your next adventure!',
@@ -306,6 +311,7 @@ const translations = {
       profile: 'الملف الشخصي',
       login: 'تسجيل الدخول',
       signUp: 'إنشاء حساب',
+      logout: 'تسجيل الخروج',
     },
     home: {
       title: 'عِش عسير، لا تزُرها فقط',
@@ -396,6 +402,10 @@ const translations = {
         myBookings: 'حجوزاتي',
         hostDashboard: 'لوحة تحكم المضيف',
         yourUpcomingAdventures: 'مغامراتك القادمة',
+        pleaseLogin: {
+            title: 'الرجاء تسجيل الدخول',
+            subtitle: 'يجب عليك تسجيل الدخول لعرض ملفك الشخصي.',
+        },
         noBookings: {
             title: 'ليس لديك حجوزات قادمة.',
             subtitle: 'حان الوقت للعثور على مغامرتك القادمة!',
@@ -599,6 +609,3 @@ const translations = {
 };
 
 export default translations;
-
-    
-    

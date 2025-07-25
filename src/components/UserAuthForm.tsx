@@ -24,9 +24,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useAuth } from "@/contexts/AuthContext";
+import { users } from "@/lib/data";
 
 
 export default function UserAuthForm({
@@ -39,7 +41,9 @@ export default function UserAuthForm({
 }) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { language, setLanguage, translations } = useLanguage();
+  const { login } = useAuth();
 
   const t = translations.authForm;
 
@@ -61,7 +65,7 @@ export default function UserAuthForm({
     role: z.enum(["tourist", "host"]), // Add role to login for simulation
   });
 
-  const formSchema = mode === "signup" ? signupSchema : loginSchema.extend({ role: z.enum(["tourist", "host"]).optional() });
+  const formSchema = mode === "signup" ? signupSchema : loginSchema;
   type FormValues = z.infer<typeof formSchema>;
 
   const form = useForm<FormValues>({
@@ -70,7 +74,7 @@ export default function UserAuthForm({
       name: "",
       email: "",
       password: "",
-      role: "tourist",
+      role: searchParams.get('role') === 'host' ? 'host' : "tourist",
       language: language,
     },
   });
@@ -81,17 +85,40 @@ export default function UserAuthForm({
 
   async function onSubmit(data: FormValues) {
     setIsLoading(true);
-    console.log(data);
     
     if (mode === 'signup' && 'language' in data) {
       setLanguage(data.language as 'en' | 'ar');
     }
 
-    // Simulate API call
+    // Simulate API call and user creation/lookup
     setTimeout(() => {
       setIsLoading(false);
-      const role = 'role' in data ? data.role : 'tourist';
-      router.push(`/profile?role=${role}`);
+      const isHost = data.role === 'host';
+      
+      // For this prototype, we'll just pick a user from the static data
+      // based on the selected role. A real app would have a proper user database.
+      let loggedInUser;
+      if (mode === 'login') {
+        loggedInUser = isHost ? users.find(u => u.isHost) : users.find(u => !u.isHost);
+      } else { // signup
+        // Let's pretend we create a new user and add it to our list
+        loggedInUser = {
+          id: `user-${Date.now()}`,
+          name: data.name,
+          avatar: 'https://placehold.co/100x100.png',
+          aiHint: 'new user',
+          isHost: isHost,
+        };
+      }
+      
+      if (loggedInUser) {
+        login(loggedInUser);
+        router.push('/profile');
+      } else {
+        // Handle case where no suitable user is found (for login)
+        console.error("Could not find a user to log in.");
+      }
+
     }, 1500);
   }
 

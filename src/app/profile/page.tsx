@@ -1,7 +1,6 @@
 
 "use client"
 
-import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -10,26 +9,44 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Separator } from "@/components/ui/separator";
 import { users, experiences } from "@/lib/data";
 import ExperienceCard from "@/components/ExperienceCard";
-import { Edit, Mail, PlusCircle, Settings } from "lucide-react";
+import { Edit, Mail, PlusCircle } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 function ProfilePageContent() {
   const { language, translations } = useLanguage();
+  const { user } = useAuth();
   const dir = language === 'ar' ? 'rtl' : 'ltr';
   const t = translations.profilePage;
 
-  const searchParams = useSearchParams();
-  // In a real app, role would come from a user session. Here we simulate it with a URL parameter.
-  // Example: /profile?role=host
-  const role = searchParams.get('role');
-  const isHost = role === 'host';
-  const user = isHost ? users[0] : users[2];
-  const userT = translations.users[user.id as keyof typeof translations.users];
+  // In a real app, role would come from a user session.
+  const isHost = user?.isHost ?? false;
+  // Default to a tourist if no user is logged in, or find the user
+  const currentUser = user ? users.find(u => u.id === user.id) ?? users[2] : users[2];
+  const userT = translations.users[currentUser.id as keyof typeof translations.users];
 
   const bookedExperiences = [experiences[0], experiences[2]];
-  const hostedExperiences = experiences.filter(exp => exp.host.id === user.id);
+  const hostedExperiences = experiences.filter(exp => exp.host.id === currentUser.id);
+
+  if (!user) {
+     return (
+       <div className="container mx-auto px-4 py-8 md:py-12 text-center" dir={dir}>
+        <Card className="max-w-md mx-auto">
+          <CardHeader>
+            <CardTitle>{t.pleaseLogin.title}</CardTitle>
+            <CardDescription>{t.pleaseLogin.subtitle}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild>
+              <Link href="/login">{translations.header.login}</Link>
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+     )
+  }
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12" dir={dir}>
@@ -37,14 +54,14 @@ function ProfilePageContent() {
         <CardContent className="p-6 md:p-8">
           <div className="flex flex-col sm:flex-row items-center gap-6 mb-8">
             <Avatar className="h-28 w-28 border-4 border-primary">
-              <AvatarImage src={user.avatar} alt={userT.name} data-ai-hint={user.aiHint} />
+              <AvatarImage src={currentUser.avatar} alt={userT.name} data-ai-hint={currentUser.aiHint} />
               <AvatarFallback>{userT.name.charAt(0)}</AvatarFallback>
             </Avatar>
             <div className="text-center sm:text-left">
               <h1 className="text-3xl font-headline font-bold">{userT.name}</h1>
               <p className="text-muted-foreground">{isHost ? t.host : t.tourist}</p>
               <div className="flex gap-4 mt-2 justify-center sm:justify-start">
-                  <div className="flex items-center text-muted-foreground"><Mail className="w-4 h-4 mr-2"/> {user.name.toLowerCase().replace(' ', '.')}@email.com</div>
+                  <div className="flex items-center text-muted-foreground"><Mail className="w-4 h-4 mr-2"/> {currentUser.name.toLowerCase().replace(' ', '.')}@email.com</div>
               </div>
             </div>
             <div className="sm:ml-auto">
@@ -106,7 +123,7 @@ function ProfilePageContent() {
                     <h2 className="text-2xl font-headline font-bold mb-2">{t.notAHost.title}</h2>
                     <p className="text-muted-foreground mb-4">{t.notAHost.subtitle}</p>
                      <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-                       <Link href="/signup">{t.notAHost.button}</Link>
+                       <Link href="/signup?role=host">{t.notAHost.button}</Link>
                      </Button>
                   </div>
               )}
