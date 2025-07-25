@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
-import { Menu, Mountain } from 'lucide-react';
+import { Menu, Mountain, Globe } from 'lucide-react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu';
 
 export default function Header() {
   const navLinks = [
@@ -25,11 +26,23 @@ export default function Header() {
           ))}
         </nav>
         <div className="flex flex-1 items-center justify-end space-x-2">
+           <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Globe className="h-5 w-5" />
+                <span className="sr-only">Toggle language</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>English</DropdownMenuItem>
+              <DropdownMenuItem>العربية</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Button asChild variant="ghost">
-            <Link href="/profile">Profile</Link>
+            <Link href="/login">Login</Link>
           </Button>
-          <Button asChild className="hidden sm:inline-flex bg-accent text-accent-foreground hover:bg-accent/90">
-             <Link href="#">Become a Host</Link>
+          <Button asChild>
+             <Link href="/signup">Sign Up</Link>
           </Button>
           <Sheet>
             <SheetTrigger asChild>
@@ -49,8 +62,8 @@ export default function Header() {
                     {link.label}
                   </Link>
                 ))}
-                <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90 mt-4">
-                  <Link href="#">Become a Host</Link>
+                 <Button asChild className="w-full mt-4">
+                  <Link href="/signup">Become a Host</Link>
                 </Button>
               </div>
             </SheetContent>
