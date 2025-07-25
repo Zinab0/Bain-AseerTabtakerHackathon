@@ -1,4 +1,5 @@
-import type { User, Experience, Conversation } from './types';
+
+import type { User, Experience, Conversation, ReviewData } from './types';
 
 export const users: User[] = [
   { id: 'user-1', name: 'Ali Mohammed', avatar: 'https://placehold.co/100x100', aiHint: "man portrait", isHost: true },
@@ -7,6 +8,13 @@ export const users: User[] = [
   { id: 'user-4', name: 'Noura Khalid', avatar: 'https://placehold.co/100x100', aiHint: "host portrait", isHost: true },
   { id: 'user-5', name: 'Ibrahim Hassan', avatar: 'https://placehold.co/100x100', aiHint: "artisan portrait", isHost: true },
   { id: 'user-6', name: 'Layla Faisal', avatar: 'https://placehold.co/100x100', aiHint: "chef portrait", isHost: true },
+];
+
+const reviews: ReviewData[] = [
+    { id: 'rev-1-1', user: users[2], rating: 5, comment: "Amazing experience! Fatima is a wonderful host and teacher.", date: '2023-10-15' },
+    { id: 'rev-1-2', user: { id: 'user-7', name: 'Jane Smith', avatar: 'https://placehold.co/100x100', aiHint: 'tourist portrait', isHost: false }, rating: 5, comment: "A must-do in Abha. The food was incredible.", date: '2023-10-12' },
+    { id: 'rev-2-1', user: users[2], rating: 5, comment: "Ibrahim is so talented and patient. A very meditative and rewarding workshop.", date: '2023-09-20' },
+    { id: 'rev-3-1', user: users[2], rating: 5, comment: "The views were absolutely spectacular. Ali is very knowledgeable about the area.", date: '2023-10-05' },
 ];
 
 export const experiences: Experience[] = [
@@ -27,10 +35,7 @@ export const experiences: Experience[] = [
     category: 'Food',
     whatYoullDo: ['Learn about local spices and ingredients', 'Prepare a 3-course Asiri meal', 'Enjoy the meal with the host family'],
     whatIsIncluded: ['All ingredients', 'Recipe book', 'Refreshments'],
-    reviews: [
-      { id: 'rev-1-1', user: users[2], rating: 5, comment: "Amazing experience! Fatima is a wonderful host and teacher.", date: '2023-10-15' },
-      { id: 'rev-1-2', user: { id: 'user-7', name: 'Jane Smith', avatar: 'https://placehold.co/100x100', aiHint: 'tourist portrait', isHost: false }, rating: 5, comment: "A must-do in Abha. The food was incredible.", date: '2023-10-12' },
-    ]
+    reviews: [reviews[0], reviews[1]]
   },
   {
     id: 'exp-2',
@@ -49,9 +54,7 @@ export const experiences: Experience[] = [
     category: 'Culture',
     whatYoullDo: ['Learn about the history and symbolism of Al-Qatt Al-Asiri', 'Practice drawing the traditional patterns', 'Paint your own decorative piece to take home'],
     whatIsIncluded: ['All art supplies', 'Wooden panel', 'Protective apron'],
-     reviews: [
-      { id: 'rev-2-1', user: users[2], rating: 5, comment: "Ibrahim is so talented and patient. A very meditative and rewarding workshop.", date: '2023-09-20' },
-    ]
+     reviews: [reviews[2]]
   },
   {
     id: 'exp-3',
@@ -70,9 +73,7 @@ export const experiences: Experience[] = [
     category: 'Adventure',
     whatYoullDo: ['Hike through scenic mountain trails', 'Visit a traditional Asiri village', 'Learn about local plants and wildlife'],
     whatIsIncluded: ['Professional guide', 'Transportation', 'Snacks and water', 'Park entry fees'],
-     reviews: [
-      { id: 'rev-3-1', user: users[2], rating: 5, comment: "The views were absolutely spectacular. Ali is very knowledgeable about the area.", date: '2023-10-05' },
-    ]
+     reviews: [reviews[3]]
   },
   {
     id: 'exp-4',

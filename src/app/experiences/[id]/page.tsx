@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import { experiences } from "@/lib/data";
 import { notFound } from "next/navigation";
@@ -6,8 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
 import Map from "@/components/Map";
 
 export default function ExperienceDetailPage({ params }: { params: { id: string } }) {

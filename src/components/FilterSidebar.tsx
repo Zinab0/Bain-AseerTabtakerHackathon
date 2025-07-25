@@ -1,3 +1,4 @@
+
 "use client"
 import React from "react"
 import { Button } from "@/components/ui/button"
@@ -11,7 +12,7 @@ export default function FilterSidebar() {
   const [date, setDate] = React.useState<Date | undefined>()
   const [price, setPrice] = React.useState([150])
 
-  const categories = ["Food", "Culture", "Adventure", "Nature", "History"];
+  const categories = ["Food", "Culture", "Adventure", "History", "Nature"];
 
   return (
     <aside className="w-full md:w-80 lg:w-96 md:sticky top-20 self-start">

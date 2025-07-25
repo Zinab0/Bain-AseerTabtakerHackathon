@@ -1,4 +1,5 @@
-import { Card, CardContent } from "@/components/ui/card";
+
+import { Card } from "@/components/ui/card";
 import { MapPin } from "lucide-react";
 
 export default function Map({ location }: { location: string }) {
