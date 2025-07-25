@@ -138,12 +138,11 @@ export const conversations: Conversation[] = [
   {
     id: 'conv-1',
     participant: users[1],
-    lastMessage: "Thank you! I'm looking forward to it.",
-    lastMessageTimestamp: '10:42 AM',
+    lastMessage: "We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient...",
+    lastMessageTimestamp: '9:17 AM',
     messages: [
-      { id: 'msg-1-1', sender: 'participant', text: 'Hello! I have a question about the Areeqah making class. Is it suitable for beginners?', timestamp: '9:15 AM' },
-      { id: 'msg-1-2', sender: 'user', text: 'Hi there! Absolutely, it is designed for all skill levels. I will guide you through every step.', timestamp: '9:17 AM' },
-      { id: 'msg-1-3', sender: 'participant', text: "That's wonderful! Thank you! I'm looking forward to it.", timestamp: '10:42 AM' },
+      { id: 'msg-1-1', sender: 'user', text: "Hi! I'm really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy.", timestamp: '9:15 AM' },
+      { id: 'msg-1-2', sender: 'participant', text: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you.", timestamp: '9:17 AM' },
     ],
   },
   {

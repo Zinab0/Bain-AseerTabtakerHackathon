@@ -275,11 +275,10 @@ const translations = {
     },
     conversations: {
         'conv-1': {
-            lastMessage: "Thank you! I'm looking forward to it.",
+            lastMessage: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you.",
             messages: [
-                { id: 'msg-1-1', text: 'Hello! I have a question about the Areeqah making class. Is it suitable for beginners?' },
-                { id: 'msg-1-2', text: 'Hi there! Absolutely, it is designed for all skill levels. I will guide you through every step.' },
-                { id: 'msg-1-3', text: "That's wonderful! Thank you! I'm looking forward to it." },
+                { id: 'msg-1-1', text: "Hi! I'm really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy." },
+                { id: 'msg-1-2', text: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you." },
             ],
         },
         'conv-2': {
@@ -505,9 +504,9 @@ const translations = {
     },
     experiences: {
         'exp-1': {
-            name: 'Taste of Asir: Areeqah Making',
-            description: 'Learn to make the famous Areeqah (عريكة), a cornerstone of Asiri cuisine.',
-            longDescription: 'Join Fatima in her family home for an immersive cooking experience focused on Areeqah. You will learn the secrets of making this delicious and hearty dish, from preparing the dough to the artful presentation with dates and honey. This hands-on class ends with a communal meal where you can enjoy the Areeqah you prepared.',
+            name: 'تذوق طعم عسير: صنع العريكة',
+            description: 'تعلم كيفية صنع العريكة الشهيرة، وهي حجر الزاوية في المطبخ العسيري.',
+            longDescription: 'انضم إلى فاطمة في منزل عائلتها لتجربة طهي غامرة تركز على العريكة. ستتعلم أسرار صنع هذا الطبق اللذيذ والشهي، من تحضير العجين إلى طريقة التقديم الفنية مع التمر والعسل. ينتهي هذا الدرس العملي بوجبة جماعية حيث يمكنك الاستمتاع بالعريكة التي أعددتها.',
             location: 'أبها، عسير',
             category: 'طعام',
             whatYoullDo: ['تعرف على الأهمية الثقافية للعريكة', 'تحضير العريكة من الصفر بمكونات محلية طازجة', 'استمتع بالوجبة مع العائلة المضيفة'],
@@ -518,9 +517,9 @@ const translations = {
             ]
         },
         'exp-2': {
-            name: 'Attend a Traditional Asiri Wedding',
-            description: 'Experience the vibrant celebration of a traditional Asiri wedding with a local family.',
-            longDescription: 'Be an honored guest at a real Asiri wedding. Hosted by Noura and her family, you will be respectfully guided through the ceremonies, music, and dances. This is a unique opportunity to witness the rich cultural traditions of the region in a genuine and festive atmosphere. Please note that attire and conduct guidelines will be provided to ensure respect for the occasion.',
+            name: 'حضور حفل زفاف عسيري تقليدي',
+            description: 'جرب الاحتفال النابض بالحياة لحفل زفاف عسيري تقليدي مع عائلة محلية.',
+            longDescription: 'كن ضيفًا مكرمًا في حفل زفاف عسيري حقيقي. باستضافة نورة وعائلتها، سيتم إرشادك بكل احترام خلال الاحتفالات والموسيقى والرقصات. هذه فرصة فريدة لمشاهدة التقاليد الثقافية الغنية للمنطقة في جو حقيقي واحتفالي. يرجى ملاحظة أنه سيتم توفير إرشادات خاصة بالملابس والسلوك لضمان احترام المناسبة.',
             location: 'خميس مشيط',
             category: 'ثقافة',
             whatYoullDo: ['حضور حفل زفاف كضيف', 'مشاهدة عروض الموسيقى والرقص التقليدية', 'المشاركة في وليمة الزفاف'],
@@ -542,9 +541,9 @@ const translations = {
             ]
         },
         'exp-4': {
-            name: 'Wear Traditional Asiri Clothes & Photoshoot',
-            description: 'Dress in beautiful traditional Asiri attire for a unique cultural photoshoot.',
-            longDescription: 'Join Layla for a unique cultural immersion. You will get to choose from a selection of authentic, handcrafted Asiri garments for both men and women. After being dressed in the traditional style, including the famous flower crowns (Mekhlab), you will have a photoshoot in a scenic location to capture the memory.',
+            name: 'ارتداء الملابس العسيرية التقليدية وجلسة تصوير',
+            description: 'ارتدِ الملابس العسيرية التقليدية الجميلة لجلسة تصوير ثقافية فريدة.',
+            longDescription: 'انضم إلى ليلى في تجربة ثقافية فريدة. ستتمكن من الاختيار من بين مجموعة من الملابس العسيرية الأصيلة المصنوعة يدويًا للرجال والنساء. بعد ارتداء الزي التقليدي، بما في ذلك أكاليل الزهور الشهيرة (المخلب)، ستحصل على جلسة تصوير في موقع خلاب لالتقاط الذكرى.',
             location: 'أبها، عسير',
             category: 'ثقافة',
             whatYoullDo: ['التعرف على العناصر المختلفة للملابس العسيرية', 'ارتداء زي تقليدي كامل', 'الحصول على جلسة تصوير احترافية في مكان جميل'],
@@ -552,9 +551,9 @@ const translations = {
             reviews: []
         },
         'exp-5': {
-            name: "A Journey Through Rijal Almaa's History",
-            description: 'A guided tour of the historic stone village of Rijal Almaa.',
-            longDescription: "Walk through the corridors of time with a historian guide in the stunning village of Rijal Almaa. You will explore the unique architecture of the stone fortresses, visit the local museum, and hear stories of the village's rich history as a regional trade center. This tour provides deep insights into the heritage of the Asir region.",
+            name: 'رحلة عبر تاريخ رجال ألمع',
+            description: 'جولة إرشادية في قرية رجال ألمع الحجرية التاريخية.',
+            longDescription: 'تجول في ممرات الزمن مع مرشد مؤرخ في قرية رجال ألمع المذهلة. ستستكشف العمارة الفريدة للحصون الحجرية، وتزور المتحف المحلي، وتسمع قصصًا عن تاريخ القرية الغني كمركز تجاري إقليمي. توفر هذه الجولة رؤى عميقة في تراث منطقة عسير.',
             location: 'رجال ألمع',
             category: 'تاريخ',
             whatYoullDo: ['استكشاف الأزقة والمباني القديمة', 'زيارة متحف رجال ألمع', 'التعرف على تاريخ وثقافة القرية'],
@@ -562,9 +561,9 @@ const translations = {
             reviews: []
         },
         'exp-6': {
-            name: 'Al-Qatt Al-Asiri Art Workshop',
-            description: 'Discover the ancient art of Al-Qatt Al-Asiri with a master artisan.',
-            longDescription: 'Under the guidance of Ibrahim, a master of the UNESCO-recognized Al-Qatt Al-Asiri art form, you will create your own masterpiece. This workshop covers the history of the art, the meaning behind the geometric patterns, and the techniques used to create these vibrant murals. You will leave with your own decorated wooden panel.',
+            name: 'ورشة عمل فن القط العسيري',
+            description: 'اكتشف فن القط العسيري القديم مع فنان حرفي.',
+            longDescription: 'بتوجيه من إبراهيم، وهو فنان محترف في فن القط العسيري المعترف به من قبل اليونسكو، ستبتكر تحفتك الفنية الخاصة. تغطي هذه الورشة تاريخ الفن، والمعنى الكامن وراء الأنماط الهندسية، والتقنيات المستخدمة لإنشاء هذه الجداريات النابضة بالحياة. ستغادر ومعك لوحتك الخشبية المزينة.',
             location: 'رجال ألمع',
             category: 'حرف يدوية',
             whatYoullDo: ['التعرف على تاريخ ورمزية القط العسيري', 'التدرب على رسم الأنماط التقليدية', 'رسم قطعتك الزخرفية الخاصة لأخذها إلى المنزل'],
@@ -574,11 +573,10 @@ const translations = {
     },
     conversations: {
         'conv-1': {
-            lastMessage: "شكراً لك! أنا أتطلع لذلك.",
+            lastMessage: 'أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا...',
             messages: [
-                { id: 'msg-1-1', text: 'مرحباً! لدي سؤال حول درس صنع العريكة. هل هو مناسب للمبتدئين؟' },
-                { id: 'msg-1-2', text: 'أهلاً بك! بالتأكيد، إنه مصمم لجميع مستويات المهارة. سأرشدك في كل خطوة.' },
-                { id: 'msg-1-3', text: 'هذا رائع! شكراً لك! أنا أتطلع لذلك.' },
+                { id: 'msg-1-1', text: 'مرحبًا! حبيت تجربة صنع العريكة، بس عندي سؤال: هل تحتوي على مكسرات؟ لأن عندي حساسية منها.' },
+                { id: 'msg-1-2', text: 'أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأجهزها لك بدون مكسرات.' },
             ],
         },
         'conv-2': {
