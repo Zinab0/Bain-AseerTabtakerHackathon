@@ -20,18 +20,18 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container flex h-16 items-center">
-        <Link href="/" className="flex items-center space-x-2 rtl:ml-6 ltr:mr-6">
+        <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse ltr:mr-6 rtl:ml-6">
           <Mountain className="h-6 w-6 text-primary" />
           <span className="font-bold font-headline text-lg tracking-wider">Asir Connect</span>
         </Link>
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           {navLinks.map(link => (
             <Link key={link.href} href={link.href} className="transition-colors hover:text-primary">
               {link.label}
             </Link>
           ))}
         </nav>
-        <div className="flex flex-1 items-center justify-end space-x-2">
+        <div className="flex flex-1 items-center justify-end space-x-2 rtl:space-x-reverse">
            <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -52,7 +52,7 @@ export default function Header() {
             </Link>
           </Button>
 
-          <div className="hidden sm:flex items-center space-x-2">
+          <div className="hidden sm:flex items-center space-x-2 rtl:space-x-reverse">
             <Button asChild variant="ghost">
               <Link href="/login">{translations.header.login}</Link>
             </Button>
@@ -70,7 +70,7 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side={language === 'ar' ? 'left' : 'right'}>
               <div className="grid gap-4 py-6">
-                <Link href="/" className="flex items-center space-x-2 mb-4">
+                <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse mb-4">
                   <Mountain className="h-6 w-6 text-primary" />
                   <span className="font-bold font-headline text-lg">Asir Connect</span>
                 </Link>
