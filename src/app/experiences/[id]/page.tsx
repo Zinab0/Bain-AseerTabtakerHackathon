@@ -1,4 +1,6 @@
 
+"use client"
+
 import Image from "next/image";
 import { experiences } from "@/lib/data";
 import { notFound } from "next/navigation";
@@ -8,27 +10,38 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import Map from "@/components/Map";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ExperienceDetailPage({ params }: { params: { id: string } }) {
+  const { language, translations } = useLanguage();
+  const dir = language === 'ar' ? 'rtl' : 'ltr';
+
   const experience = experiences.find(exp => exp.id === params.id);
+  const t = translations.experienceDetails;
+  const expT = translations.experiences[params.id as keyof typeof translations.experiences];
+
 
   if (!experience) {
     notFound();
   }
 
+  const hostT = translations.users[experience.host.id as keyof typeof translations.users];
+  const reviewsT = expT.reviews as unknown as {id: string, user: string, rating: number, comment: string, date: string}[];
+
+
   return (
-    <div className="container mx-auto px-4 py-8 md:py-12">
+    <div className="container mx-auto px-4 py-8 md:py-12" dir={dir}>
       <div className="mb-8">
-        <h1 className="text-4xl md:text-5xl font-headline font-bold">{experience.name}</h1>
+        <h1 className="text-4xl md:text-5xl font-headline font-bold">{expT.name}</h1>
         <div className="flex items-center gap-4 mt-2 text-muted-foreground">
           <div className="flex items-center">
             <Star className="w-5 h-5 text-amber-400 fill-current mr-1" />
             <span className="font-bold text-foreground">{experience.rating.toFixed(1)}</span>
-            <span className="ml-1.5">({experience.reviewsCount} reviews)</span>
+            <span className="ml-1.5">({experience.reviewsCount} {t.reviews})</span>
           </div>
           <div className="flex items-center">
             <MapPin className="w-5 h-5 mr-1.5" />
-            <span>{experience.location}</span>
+            <span>{expT.location}</span>
           </div>
         </div>
       </div>
@@ -37,25 +50,25 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
         <div className="lg:col-span-3">
           <div className="grid grid-cols-2 grid-rows-2 gap-2 h-[500px] mb-8">
               <div className="col-span-2 row-span-2">
-                 <Image src={experience.images[0]} alt={`Main view of ${experience.name}`} width={800} height={600} className="w-full h-full object-cover rounded-lg shadow-md" data-ai-hint="experience landscape" />
+                 <Image src={experience.images[0]} alt={`Main view of ${expT.name}`} width={800} height={600} className="w-full h-full object-cover rounded-lg shadow-md" data-ai-hint="experience landscape" />
               </div>
           </div>
 
           <Separator className="my-8" />
           
           <div className="prose prose-lg max-w-none font-body">
-              <h2 className="font-headline text-3xl">About this experience</h2>
-              <p>{experience.longDescription}</p>
+              <h2 className="font-headline text-3xl">{t.about}</h2>
+              <p>{expT.longDescription}</p>
 
-              <h3 className="font-headline text-2xl mt-8">What you'll do</h3>
+              <h3 className="font-headline text-2xl mt-8">{t.whatYoullDo}</h3>
               <ul className="list-disc pl-5 space-y-2">
-                {experience.whatYoullDo.map(item => <li key={item}>{item}</li>)}
+                {expT.whatYoullDo.map((item, index) => <li key={index}>{item}</li>)}
               </ul>
 
-              <h3 className="font-headline text-2xl mt-8">What's included</h3>
+              <h3 className="font-headline text-2xl mt-8">{t.whatIsIncluded}</h3>
               <div className="grid grid-cols-2 gap-4">
-                {experience.whatIsIncluded.map(item => (
-                    <div key={item} className="flex items-center gap-2">
+                {expT.whatIsIncluded.map((item, index) => (
+                    <div key={index} className="flex items-center gap-2">
                         <CheckCircle className="w-5 h-5 text-green-600" />
                         <span>{item}</span>
                     </div>
@@ -66,17 +79,17 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
            <Separator className="my-8" />
 
            <div id="host">
-             <h2 className="font-headline text-3xl mb-4">Meet your host, {experience.host.name}</h2>
+             <h2 className="font-headline text-3xl mb-4">{t.meetYourHost}, {hostT.name}</h2>
              <Card className="bg-muted/50">
                 <CardContent className="p-6 flex flex-col sm:flex-row items-center gap-6">
                     <Avatar className="h-24 w-24">
-                        <AvatarImage src={experience.host.avatar} alt={experience.host.name} data-ai-hint={experience.host.aiHint} />
-                        <AvatarFallback>{experience.host.name.charAt(0)}</AvatarFallback>
+                        <AvatarImage src={experience.host.avatar} alt={hostT.name} data-ai-hint={experience.host.aiHint} />
+                        <AvatarFallback>{hostT.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <div>
-                        <p className="text-muted-foreground">"I'm passionate about sharing the rich culture and natural beauty of my home, Asir, with visitors from around the world. I look forward to welcoming you!"</p>
+                        <p className="text-muted-foreground">{t.hostQuote}</p>
                         <Button variant="outline" className="mt-4">
-                            <MessageSquare className="w-4 h-4 mr-2" /> Contact Host
+                            <MessageSquare className="w-4 h-4 mr-2" /> {t.contactHost}
                         </Button>
                     </div>
                 </CardContent>
@@ -86,26 +99,29 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
            <Separator className="my-8" />
 
            <div id="map">
-              <h2 className="font-headline text-3xl mb-4">Where you'll be</h2>
-              <Map location={experience.location} />
+              <h2 className="font-headline text-3xl mb-4">{t.whereYoullBe}</h2>
+              <Map location={expT.location} />
             </div>
 
            <Separator className="my-8" />
 
            <div id="reviews">
-                <h2 className="font-headline text-3xl mb-4">Reviews</h2>
+                <h2 className="font-headline text-3xl mb-4">{t.reviews}</h2>
                 <div className="space-y-6">
-                    {experience.reviews.map(review => (
+                    {reviewsT.map((review, index) => {
+                      const reviewUser = users.find(u => u.id === review.user)!
+                      const reviewUserT = translations.users[review.user as keyof typeof translations.users];
+                      return (
                         <Card key={review.id}>
                             <CardContent className="p-6">
                                 <div className="flex items-start gap-4">
                                     <Avatar>
-                                        <AvatarImage src={review.user.avatar} alt={review.user.name} data-ai-hint={review.user.aiHint} />
-                                        <AvatarFallback>{review.user.name.charAt(0)}</AvatarFallback>
+                                        <AvatarImage src={reviewUser.avatar} alt={reviewUserT.name} data-ai-hint={reviewUser.aiHint} />
+                                        <AvatarFallback>{reviewUserT.name.charAt(0)}</AvatarFallback>
                                     </Avatar>
                                     <div>
                                         <div className="flex items-center gap-2 mb-1">
-                                            <p className="font-semibold">{review.user.name}</p>
+                                            <p className="font-semibold">{reviewUserT.name}</p>
                                             <div className="flex items-center">
                                                 {[...Array(5)].map((_, i) => (
                                                     <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'text-amber-400 fill-current' : 'text-muted-foreground'}`} />
@@ -118,8 +134,8 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
                                 </div>
                             </CardContent>
                         </Card>
-                    ))}
-                    {experience.reviews.length === 0 && <p className="text-muted-foreground">No reviews yet for this experience.</p>}
+                    )})}
+                    {reviewsT.length === 0 && <p className="text-muted-foreground">{t.noReviews}</p>}
                 </div>
             </div>
 
@@ -127,25 +143,25 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
         <div className="lg:col-span-2">
             <Card className="sticky top-24 shadow-xl">
                 <CardHeader>
-                    <CardTitle className="font-headline text-2xl">Book Your Spot</CardTitle>
+                    <CardTitle className="font-headline text-2xl">{t.bookYourSpot}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="text-3xl font-bold">
-                        ${experience.price} <span className="text-base font-normal text-muted-foreground">/ person</span>
+                        ${experience.price} <span className="text-base font-normal text-muted-foreground">/ {t.person}</span>
                     </div>
                     <Separator />
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-1">
-                           <p className="font-semibold">Guests</p>
-                           <p className="text-muted-foreground flex items-center gap-2"><Users className="w-4 h-4"/> 1 guest</p>
+                           <p className="font-semibold">{t.guests}</p>
+                           <p className="text-muted-foreground flex items-center gap-2"><Users className="w-4 h-4"/> 1 {t.guest}</p>
                         </div>
                          <div className="space-y-1">
-                           <p className="font-semibold">Date</p>
-                           <p className="text-muted-foreground flex items-center gap-2"><Calendar className="w-4 h-4"/> Select a date</p>
+                           <p className="font-semibold">{t.date}</p>
+                           <p className="text-muted-foreground flex items-center gap-2"><Calendar className="w-4 h-4"/> {t.selectDate}</p>
                         </div>
                     </div>
-                    <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-6">Book Now</Button>
-                    <p className="text-xs text-center text-muted-foreground">You won't be charged yet</p>
+                    <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-6">{t.bookNow}</Button>
+                    <p className="text-xs text-center text-muted-foreground">{t.notChargedYet}</p>
                 </CardContent>
             </Card>
         </div>

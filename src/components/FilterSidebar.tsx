@@ -7,33 +7,36 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { Calendar } from "@/components/ui/calendar"
 import { Slider } from "@/components/ui/slider"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function FilterSidebar() {
+  const { language, translations } = useLanguage();
+  const t = translations.filterSidebar;
   const [date, setDate] = React.useState<Date | undefined>()
   const [price, setPrice] = React.useState([150])
 
-  const categories = ["Food", "Culture", "Adventure", "History", "Nature"];
+  const categories = Object.keys(t.categories);
 
   return (
     <aside className="w-full md:w-80 lg:w-96 md:sticky top-20 self-start">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="font-headline text-2xl">Filter By</CardTitle>
+          <CardTitle className="font-headline text-2xl">{t.title}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-8">
           <div>
-            <h4 className="font-body font-semibold mb-4 text-lg">Category</h4>
+            <h4 className="font-body font-semibold mb-4 text-lg">{t.category}</h4>
             <div className="space-y-3">
-              {categories.map(category => (
-                <div key={category} className="flex items-center space-x-3">
-                  <Checkbox id={category} className="h-5 w-5" />
-                  <Label htmlFor={category} className="text-base">{category}</Label>
+              {categories.map(categoryKey => (
+                <div key={categoryKey} className="flex items-center space-x-3">
+                  <Checkbox id={categoryKey} className="h-5 w-5" />
+                  <Label htmlFor={categoryKey} className="text-base">{t.categories[categoryKey as keyof typeof t.categories]}</Label>
                 </div>
               ))}
             </div>
           </div>
           <div>
-            <h4 className="font-body font-semibold mb-4 text-lg">Max Price</h4>
+            <h4 className="font-body font-semibold mb-4 text-lg">{t.maxPrice}</h4>
             <div className="p-2">
                 <Slider
                     defaultValue={price}
@@ -49,7 +52,7 @@ export default function FilterSidebar() {
             </div>
           </div>
           <div>
-            <h4 className="font-body font-semibold mb-4 text-lg">Availability</h4>
+            <h4 className="font-body font-semibold mb-4 text-lg">{t.availability}</h4>
             <div className="flex justify-center">
               <Calendar
                 mode="single"
@@ -59,7 +62,7 @@ export default function FilterSidebar() {
               />
             </div>
           </div>
-          <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-6">Apply Filters</Button>
+          <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-6">{t.applyFilters}</Button>
         </CardContent>
       </Card>
     </aside>

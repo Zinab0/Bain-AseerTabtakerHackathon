@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState } from 'react';
@@ -14,6 +15,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Wand2, Frown } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const formSchema = z.object({
   interests: z.string().min(10, 'Please describe your interests in a bit more detail (e.g., "love hiking, history, and trying new food").'),
@@ -23,6 +25,8 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function RecommendationClient() {
+  const { language, translations } = useLanguage();
+  const t = translations.recommendationsPage;
   const [recommendations, setRecommendations] = useState<RecommendExperiencesOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -45,11 +49,11 @@ export default function RecommendationClient() {
       if (result.recommendations && result.recommendations.length > 0) {
         setRecommendations(result);
       } else {
-        setError('No recommendations found for your criteria. Please try being more descriptive.');
+        setError(t.results.noResults);
       }
     } catch (e) {
       console.error(e);
-      setError('An unexpected error occurred. Please try again later.');
+      setError(t.results.error);
     } finally {
       setIsLoading(false);
     }
@@ -59,8 +63,8 @@ export default function RecommendationClient() {
     <div className="space-y-12">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="font-headline text-2xl">Your Preferences</CardTitle>
-          <CardDescription>Fill out the form below to get started.</CardDescription>
+          <CardTitle className="font-headline text-2xl">{t.form.title}</CardTitle>
+          <CardDescription>{t.form.subtitle}</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -70,10 +74,10 @@ export default function RecommendationClient() {
                 name="interests"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-lg">Your Interests</FormLabel>
+                    <FormLabel className="text-lg">{t.form.interests.label}</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="e.g., I'm passionate about history, love hiking in nature, and enjoy authentic culinary experiences..."
+                        placeholder={t.form.interests.placeholder}
                         className="min-h-[120px]"
                         {...field}
                       />
@@ -87,19 +91,19 @@ export default function RecommendationClient() {
                 name="travelDates"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-lg">Travel Dates</FormLabel>
+                    <FormLabel className="text-lg">{t.form.dates.label}</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., December 1st to December 10th, 2024" {...field} />
+                      <Input placeholder={t.form.dates.placeholder} {...field} />
                     </FormControl>
                      <FormDescription>
-                      Provide your planned dates of travel in any format.
+                      {t.form.dates.description}
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
               <Button type="submit" disabled={isLoading} className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-6">
-                {isLoading ? 'Thinking...' : 'Find My Experiences'}
+                {isLoading ? t.form.loadingButton : t.form.submitButton}
                 <Wand2 className="ml-2 h-5 w-5" />
               </Button>
             </form>
@@ -107,17 +111,17 @@ export default function RecommendationClient() {
         </CardContent>
       </Card>
 
-      {isLoading && <LoadingSkeleton />}
-      {error && <ErrorAlert message={error} />}
-      {recommendations && <ResultsDisplay recommendations={recommendations} />}
+      {isLoading && <LoadingSkeleton t={t.results.loading} />}
+      {error && <ErrorAlert title={t.results.errorTitle} message={error} />}
+      {recommendations && <ResultsDisplay recommendations={recommendations} t={t.results} />}
     </div>
   );
 }
 
-function LoadingSkeleton() {
+function LoadingSkeleton({ t }: {t: any}) {
   return (
     <div>
-      <h2 className="text-3xl font-headline font-bold mb-6 text-center">Generating your personalized recommendations...</h2>
+      <h2 className="text-3xl font-headline font-bold mb-6 text-center">{t.title}</h2>
       <div className="space-y-4">
         {[...Array(3)].map((_, i) => (
           <Card key={i}>
@@ -136,30 +140,30 @@ function LoadingSkeleton() {
   );
 }
 
-function ErrorAlert({ message }: { message: string }) {
+function ErrorAlert({ title, message }: { title: string, message: string }) {
   return (
     <Alert variant="destructive">
       <Frown className="h-4 w-4" />
-      <AlertTitle>Something went wrong</AlertTitle>
+      <AlertTitle>{title}</AlertTitle>
       <AlertDescription>{message}</AlertDescription>
     </Alert>
   );
 }
 
-function ResultsDisplay({ recommendations }: { recommendations: RecommendExperiencesOutput }) {
+function ResultsDisplay({ recommendations, t }: { recommendations: RecommendExperiencesOutput, t: any }) {
   return (
     <div>
-       <h2 className="text-3xl font-headline font-bold mb-6 text-center">Here are your recommendations!</h2>
+       <h2 className="text-3xl font-headline font-bold mb-6 text-center">{t.successTitle}</h2>
        <div className="space-y-4">
         {recommendations.recommendations.map((rec, index) => (
           <Card key={index} className="bg-background/80">
             <CardHeader>
               <CardTitle className="font-headline text-xl text-primary">{rec.experienceName}</CardTitle>
-              <CardDescription>Hosted by {rec.hostName}</CardDescription>
+              <CardDescription>{t.hostedBy} {rec.hostName}</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="mb-2">{rec.description}</p>
-              <p className="text-sm font-semibold text-muted-foreground">Availability: <span className="font-normal">{rec.availability}</span></p>
+              <p className="text-sm font-semibold text-muted-foreground">{t.availability}: <span className="font-normal">{rec.availability}</span></p>
             </CardContent>
           </Card>
         ))}

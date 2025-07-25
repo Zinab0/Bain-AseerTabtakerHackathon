@@ -1,4 +1,6 @@
 
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
@@ -6,29 +8,34 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import type { Experience } from "@/lib/types";
 import { ArrowRight, MapPin, Star } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ExperienceCard({ experience }: { experience: Experience }) {
+  const { language, translations } = useLanguage();
+  const expT = translations.experiences[experience.id as keyof typeof translations.experiences];
+  const t = translations.experienceCard;
+
   return (
     <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col group border-2 border-transparent hover:border-primary">
       <CardHeader className="p-0 relative">
         <Link href={`/experiences/${experience.id}`} className="block overflow-hidden">
           <Image
             src={experience.image}
-            alt={experience.name}
+            alt={expT.name}
             width={400}
             height={250}
             className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
             data-ai-hint={experience.aiHint}
           />
         </Link>
-         <Badge className="absolute top-3 right-3 bg-accent text-accent-foreground">{experience.category}</Badge>
+         <Badge className="absolute top-3 right-3 bg-accent text-accent-foreground">{expT.category}</Badge>
       </CardHeader>
       <CardContent className="p-4 flex-grow">
-        <h3 className="text-lg font-headline font-bold text-card-foreground">{experience.name}</h3>
-        <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{experience.description}</p>
+        <h3 className="text-lg font-headline font-bold text-card-foreground">{expT.name}</h3>
+        <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{expT.description}</p>
         <div className="flex items-center text-sm text-muted-foreground mt-3">
           <MapPin className="w-4 h-4 mr-1.5 flex-shrink-0" />
-          <span>{experience.location}</span>
+          <span>{expT.location}</span>
         </div>
       </CardContent>
       <CardFooter className="p-4 flex justify-between items-center bg-muted/50">
@@ -39,7 +46,7 @@ export default function ExperienceCard({ experience }: { experience: Experience 
         </div>
         <Link href={`/experiences/${experience.id}`}>
           <Button variant="ghost" size="sm" className="text-primary hover:text-primary">
-            Details <ArrowRight className="ml-1.5 h-4 w-4" />
+            {t.details} <ArrowRight className="ml-1.5 h-4 w-4" />
           </Button>
         </Link>
       </CardFooter>

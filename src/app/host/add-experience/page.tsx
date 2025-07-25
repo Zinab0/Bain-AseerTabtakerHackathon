@@ -26,6 +26,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Upload, MapPin, DollarSign, PlusCircle } from "lucide-react"
 import Map from "@/components/Map"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 const experienceSchema = z.object({
   title: z.string().min(5, "Title must be at least 5 characters long."),
@@ -37,6 +38,10 @@ const experienceSchema = z.object({
 })
 
 export default function AddExperiencePage() {
+  const { language, translations } = useLanguage();
+  const dir = language === 'ar' ? 'rtl' : 'ltr';
+  const t = translations.addExperiencePage;
+
   const form = useForm<z.infer<typeof experienceSchema>>({
     resolver: zodResolver(experienceSchema),
     defaultValues: {
@@ -54,11 +59,11 @@ export default function AddExperiencePage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 md:py-12">
+    <div className="container mx-auto px-4 py-8 md:py-12" dir={dir}>
       <Card className="max-w-4xl mx-auto">
         <CardHeader>
-          <CardTitle className="font-headline text-3xl">Create a New Experience</CardTitle>
-          <CardDescription>Fill in the details below to offer a new experience to tourists.</CardDescription>
+          <CardTitle className="font-headline text-3xl">{t.title}</CardTitle>
+          <CardDescription>{t.subtitle}</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -68,9 +73,9 @@ export default function AddExperiencePage() {
                 name="title"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-lg">Experience Title</FormLabel>
+                    <FormLabel className="text-lg">{t.form.experienceTitle.label}</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., Traditional Asiri Cooking Class" {...field} />
+                      <Input placeholder={t.form.experienceTitle.placeholder} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -82,10 +87,10 @@ export default function AddExperiencePage() {
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-lg">Detailed Description</FormLabel>
+                    <FormLabel className="text-lg">{t.form.description.label}</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Describe what makes your experience unique. Talk about the activities, the culture, and what guests will learn."
+                        placeholder={t.form.description.placeholder}
                         className="min-h-[150px]"
                         {...field}
                       />
@@ -101,11 +106,11 @@ export default function AddExperiencePage() {
                   name="price"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-lg">Price per Person</FormLabel>
+                      <FormLabel className="text-lg">{t.form.price.label}</FormLabel>
                       <div className="relative">
                         <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                         <FormControl>
-                          <Input type="number" placeholder="75" className="pl-10" {...field} />
+                          <Input type="number" placeholder={t.form.price.placeholder} className="pl-10" {...field} />
                         </FormControl>
                       </div>
                       <FormMessage />
@@ -117,19 +122,19 @@ export default function AddExperiencePage() {
                   name="category"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-lg">Category</FormLabel>
+                      <FormLabel className="text-lg">{t.form.category.label}</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select a category" />
+                            <SelectValue placeholder={t.form.category.placeholder} />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="food">Traditional Food (e.g., Areeqah)</SelectItem>
-                          <SelectItem value="culture">Cultural Events (e.g., Wedding)</SelectItem>
-                          <SelectItem value="history">History & Art</SelectItem>
-                          <SelectItem value="adventure">Mountain Tours & Hiking</SelectItem>
-                          <SelectItem value="crafts">Traditional Crafts (e.g., Clothes)</SelectItem>
+                          <SelectItem value="food">{t.form.category.options.food}</SelectItem>
+                          <SelectItem value="culture">{t.form.category.options.culture}</SelectItem>
+                          <SelectItem value="history">{t.form.category.options.history}</SelectItem>
+                          <SelectItem value="adventure">{t.form.category.options.adventure}</SelectItem>
+                          <SelectItem value="crafts">{t.form.category.options.crafts}</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -143,15 +148,15 @@ export default function AddExperiencePage() {
                   name="location"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-lg">Location</FormLabel>
+                      <FormLabel className="text-lg">{t.form.location.label}</FormLabel>
                        <div className="relative">
                          <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                         <FormControl>
-                          <Input placeholder="e.g., Abha, Asir" className="pl-10" {...field} />
+                          <Input placeholder={t.form.location.placeholder} className="pl-10" {...field} />
                         </FormControl>
                       </div>
                       <div className="mt-4">
-                        <Map location={form.watch('location') || 'Asir Region'} />
+                        <Map location={form.watch('location') || t.form.location.mapDefault} />
                       </div>
                       <FormMessage />
                     </FormItem>
@@ -159,24 +164,24 @@ export default function AddExperiencePage() {
                 />
 
               <FormItem>
-                <FormLabel className="text-lg">Upload Photos</FormLabel>
+                <FormLabel className="text-lg">{t.form.photos.label}</FormLabel>
                 <FormControl>
                     <div className="border-2 border-dashed border-muted rounded-lg p-12 text-center hover:border-primary transition-colors">
                         <Upload className="mx-auto h-12 w-12 text-muted-foreground"/>
-                        <p className="mt-4 text-muted-foreground">Drag & drop your photos here or click to browse.</p>
-                        <p className="text-xs text-muted-foreground mt-1">High-resolution images are recommended</p>
-                         <Button variant="outline" type="button" className="mt-4">Browse Files</Button>
+                        <p className="mt-4 text-muted-foreground">{t.form.photos.prompt}</p>
+                        <p className="text-xs text-muted-foreground mt-1">{t.form.photos.recommendation}</p>
+                         <Button variant="outline" type="button" className="mt-4">{t.form.photos.button}</Button>
                     </div>
                 </FormControl>
                  <FormDescription>
-                  You can upload multiple images. The first image will be the main cover.
+                  {t.form.photos.description}
                 </FormDescription>
                 <FormMessage />
               </FormItem>
               
               <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-6">
                 <PlusCircle className="mr-2 h-6 w-6"/>
-                Add Experience
+                {t.form.submitButton}
               </Button>
             </form>
           </Form>
