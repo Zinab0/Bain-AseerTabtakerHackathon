@@ -231,7 +231,7 @@ const translations = {
             ]
         },
         'exp-3': {
-            name: 'جولة في جبل أثرب |A trip to Mount Athrab',
+            name: 'A trip to Mount Athrab',
             description: 'Explore the stunning landscapes and hidden villages of the Asir mountains.',
             longDescription: "Embark on a guided hike or 4x4 tour with Ali, a seasoned local guide, through the breathtaking mountains of Asir National Park. This tour will take you to panoramic viewpoints, through ancient terraced farms, and to a hidden village where you'll share tea with locals. Learn about the unique flora and fauna of the region.",
             location: 'Asir National Park',
@@ -530,7 +530,7 @@ const translations = {
             ]
         },
         'exp-3': {
-            name: 'جولة في جبل أثرب |A trip to Mount Athrab',
+            name: 'جولة في جبل أثرب',
             description: 'استكشف المناظر الطبيعية الخلابة والقرى الخفية في جبال عسير.',
             longDescription: 'انطلق في جولة مشي لمسافات طويلة أو جولة بالدفع الرباعي مع علي، وهو دليل محلي متمرس، عبر جبال متنزه عسير الوطني الخلابة. ستأخذك هذه الجولة إلى وجهات نظر بانورامية، عبر مزارع المدرجات القديمة، وإلى قرية خفية حيث ستشارك الشاي مع السكان المحليين. تعرف على النباتات والحيوانات الفريدة في المنطقة.',
             location: 'متنزه عسير الوطني',
