@@ -42,6 +42,7 @@ const signupSchema = z.object({
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(1, "Password is required"),
+  role: z.enum(["tourist", "host"]), // Add role to login for simulation
 });
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -56,7 +57,7 @@ export default function UserAuthForm({
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const router = useRouter();
 
-  const formSchema = mode === "signup" ? signupSchema : loginSchema;
+  const formSchema = mode === "signup" ? signupSchema: loginSchema.extend({ role: z.enum(["tourist", "host"]).optional() });
   type FormValues = z.infer<typeof formSchema>;
 
   const form = useForm<FormValues>({
@@ -76,61 +77,63 @@ export default function UserAuthForm({
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      // In a real app, you'd handle success/error from your auth provider
-      router.push("/profile");
-    }, 2000);
+      // In a real app, you'd get the user's role from the auth response.
+      // Here, we'll use the role from the form to simulate the correct dashboard view.
+      const role = 'role' in data ? data.role : 'tourist';
+      router.push(`/profile?role=${role}`);
+    }, 1500);
   }
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          
+          <FormField
+            control={form.control}
+            name="role"
+            render={({ field }) => (
+              <FormItem className="space-y-3">
+                <FormLabel>I am a...</FormLabel>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    className="flex space-x-4"
+                  >
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormControl>
+                        <RadioGroupItem value="tourist" />
+                      </FormControl>
+                      <FormLabel className="font-normal">Tourist</FormLabel>
+                    </FormItem>
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormControl>
+                        <RadioGroupItem value="host" />
+                      </FormControl>
+                      <FormLabel className="font-normal">Host</FormLabel>
+                    </FormItem>
+                  </RadioGroup>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           {mode === "signup" && (
-            <>
-              <FormField
-                control={form.control}
-                name="role"
-                render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel>I am a...</FormLabel>
-                    <FormControl>
-                      <RadioGroup
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                        className="flex space-x-4"
-                      >
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value="tourist" />
-                          </FormControl>
-                          <FormLabel className="font-normal">Tourist</FormLabel>
-                        </FormItem>
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value="host" />
-                          </FormControl>
-                          <FormLabel className="font-normal">Host</FormLabel>
-                        </FormItem>
-                      </RadioGroup>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your full name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </>
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your full name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           )}
 
           <FormField

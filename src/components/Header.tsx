@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
-import { Menu, Mountain, Globe } from 'lucide-react';
+import { Menu, Mountain, Globe, User } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu';
+import { Separator } from './ui/separator';
 
 export default function Header() {
   const navLinks = [
@@ -38,12 +39,23 @@ export default function Header() {
               <DropdownMenuItem>العربية</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button asChild variant="ghost">
-            <Link href="/login">Login</Link>
+
+           <Button asChild variant="ghost" size="icon">
+            <Link href="/profile">
+              <User className="h-5 w-5" />
+              <span className="sr-only">Profile</span>
+            </Link>
           </Button>
-          <Button asChild>
-             <Link href="/signup">Sign Up</Link>
-          </Button>
+
+          <div className="hidden sm:flex items-center space-x-2">
+            <Button asChild variant="ghost">
+              <Link href="/login">Login</Link>
+            </Button>
+            <Button asChild>
+               <Link href="/signup">Sign Up</Link>
+            </Button>
+          </div>
+
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden">
@@ -62,8 +74,15 @@ export default function Header() {
                     {link.label}
                   </Link>
                 ))}
+                <Separator className="my-2"/>
+                 <Link href="/profile" className="flex w-full items-center py-2 text-lg font-semibold">
+                    Profile
+                  </Link>
+                 <Link href="/login" className="flex w-full items-center py-2 text-lg font-semibold">
+                    Login
+                  </Link>
                  <Button asChild className="w-full mt-4">
-                  <Link href="/signup">Become a Host</Link>
+                  <Link href="/signup">Sign Up</Link>
                 </Button>
               </div>
             </SheetContent>

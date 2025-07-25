@@ -1,4 +1,9 @@
 
+"use client"
+
+import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,10 +14,12 @@ import { Edit, Mail, PlusCircle, Settings } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 
-export default function ProfilePage() {
-  // To demonstrate both views, we'll simulate switching between user types.
-  // In a real app, this would be based on the logged-in user's data.
-  const isHost = true; // Set to true to see Host View, false for Tourist View
+function ProfilePageContent() {
+  const searchParams = useSearchParams();
+  // In a real app, role would come from a user session. Here we simulate it with a URL parameter.
+  // Example: /profile?role=host
+  const role = searchParams.get('role');
+  const isHost = role === 'host';
   const user = isHost ? users[0] : users[2];
 
   const bookedExperiences = [experiences[0], experiences[2]];
@@ -43,8 +50,8 @@ export default function ProfilePage() {
           
           <Tabs defaultValue={isHost ? "host-dashboard" : "bookings"} className="mt-8">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="bookings">My Bookings</TabsTrigger>
-              <TabsTrigger value="host-dashboard">Host Dashboard</TabsTrigger>
+              <TabsTrigger value="bookings" disabled={isHost}>My Bookings</TabsTrigger>
+              <TabsTrigger value="host-dashboard" disabled={!isHost}>Host Dashboard</TabsTrigger>
             </TabsList>
             <TabsContent value="bookings" className="mt-6">
                 <h2 className="text-2xl font-headline font-bold mb-4">Your Upcoming Adventures</h2>
@@ -91,8 +98,10 @@ export default function ProfilePage() {
               ) : (
                  <div className="text-center p-8 bg-muted rounded-lg">
                     <h2 className="text-2xl font-headline font-bold mb-2">You are not a host yet</h2>
-                    <p className="text-muted-foreground mb-4">Share your culture and earn money by becoming a host on Asir Connect.</p>
-                    <Button className="bg-accent text-accent-foreground hover:bg-accent/90">Become a host</Button>
+                    <p className="text-muted-foreground mb-4">To manage experiences, please sign up or log in as a host.</p>
+                     <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+                       <Link href="/signup">Become a host</Link>
+                     </Button>
                   </div>
               )}
             </TabsContent>
@@ -102,4 +111,12 @@ export default function ProfilePage() {
       </Card>
     </div>
   );
+}
+
+export default function ProfilePage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ProfilePageContent />
+    </Suspense>
+  )
 }
