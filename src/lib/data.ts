@@ -58,7 +58,7 @@ export const experiences: Experience[] = [
   },
   {
     id: 'exp-3',
-    name: 'جولة في جبل أثرب |A trip to Mount Athrab',
+    name: 'A trip to Mount Athrab',
     description: 'Embark on a tour with an experienced local guide through Mount Athrab, one of the most beautiful mountains in the Asir region. You will visit panoramic viewpoints, pass by old farms, and stop in a traditional village for tea with the locals. Learn about the unique plants and animals of the area.',
     longDescription: "Embark on a tour with an experienced local guide through Mount Athrab, one of the most beautiful mountains in the Asir region. You will visit panoramic viewpoints, pass by old farms, and stop in a traditional village for tea with the locals. Learn about the unique plants and animals of the area.",
     image: 'https://i.postimg.cc/YCgZrz7Z/Chat-GPT-Image-Jul-26-2025-01-52-34-AM.png',
@@ -168,3 +168,5 @@ export const conversations: Conversation[] = [
     ],
   },
 ];
+
+    

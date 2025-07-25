@@ -232,7 +232,7 @@ const translations = {
         },
         'exp-3': {
             name: 'A trip to Mount Athrab',
-            description: 'Embark on a tour with an experienced local guide through Mount Athrab, one of the most beautiful mountains in the Asir region.',
+            description: 'Embark on a tour with an experienced local guide through Mount Athrab, one of the most beautiful mountains in the Asir region. You will visit panoramic viewpoints, pass by old farms, and stop in a traditional village for tea with the locals. Learn about the unique plants and animals of the area.',
             longDescription: "Embark on a tour with an experienced local guide through Mount Athrab, one of the most beautiful mountains in the Asir region. You will visit panoramic viewpoints, pass by old farms, and stop in a traditional village for tea with the locals. Learn about the unique plants and animals of the area.",
             location: 'Asir National Park',
             category: 'Adventure',
@@ -530,7 +530,7 @@ const translations = {
             ]
         },
         'exp-3': {
-            name: 'جولة في جبل أثرب |A trip to Mount Athrab',
+            name: 'جولة في جبل أثرب',
             description: 'انطلق في جولة بصحبة دليل محلي متمرس عبر جبل أثرب، أحد أجمل الجبال في منطقة عسير. ستزور نقاط مشاهدة بانورامية، وتمر بالمزارع القديمة، وتتوقف في قرية تقليدية لتناول الشاي مع السكان المحليين. تعرف على النباتات والحيوانات الفريدة في المنطقة.',
             longDescription: "انطلق في جولة بصحبة دليل محلي متمرس عبر جبل أثرب، أحد أجمل الجبال في منطقة عسير. ستزور نقاط مشاهدة بانورامية، وتمر بالمزارع القديمة، وتتوقف في قرية تقليدية لتناول الشاي مع السكان المحليين. تعرف على النباتات والحيوانات الفريدة في المنطقة.",
             location: 'متنزه عسير الوطني',
@@ -601,3 +601,5 @@ const translations = {
 };
 
 export default translations;
+
+    
