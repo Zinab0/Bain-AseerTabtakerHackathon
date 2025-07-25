@@ -232,8 +232,8 @@ const translations = {
         },
         'exp-3': {
             name: 'A trip to Mount Athrab',
-            description: 'Explore the stunning landscapes and hidden villages of the Asir mountains.',
-            longDescription: "Embark on a guided hike or 4x4 tour with Ali, a seasoned local guide, through the breathtaking mountains of Asir National Park. This tour will take you to panoramic viewpoints, through ancient terraced farms, and to a hidden village where you'll share tea with locals. Learn about the unique flora and fauna of the region.",
+            description: 'Embark on a tour with an experienced local guide through Mount Athrab, one of the most beautiful mountains in the Asir region.',
+            longDescription: "Embark on a tour with an experienced local guide through Mount Athrab, one of the most beautiful mountains in the Asir region. You will visit panoramic viewpoints, pass by old farms, and stop in a traditional village for tea with the locals. Learn about the unique plants and animals of the area.",
             location: 'Asir National Park',
             category: 'Adventure',
             whatYoullDo: ['Hike or drive through scenic mountain trails', 'Visit a traditional Asiri village', 'Learn about local plants and wildlife'],
@@ -531,7 +531,7 @@ const translations = {
         },
         'exp-3': {
             name: 'جولة في جبل أثرب |A trip to Mount Athrab',
-            description: 'انطلق في جولة بصحبة دليل محلي متمرس عبر جبل أثرب، أحد أجمل الجبال في منطقة عسير.',
+            description: 'انطلق في جولة بصحبة دليل محلي متمرس عبر جبل أثرب، أحد أجمل الجبال في منطقة عسير. ستزور نقاط مشاهدة بانورامية، وتمر بالمزارع القديمة، وتتوقف في قرية تقليدية لتناول الشاي مع السكان المحليين. تعرف على النباتات والحيوانات الفريدة في المنطقة.',
             longDescription: "انطلق في جولة بصحبة دليل محلي متمرس عبر جبل أثرب، أحد أجمل الجبال في منطقة عسير. ستزور نقاط مشاهدة بانورامية، وتمر بالمزارع القديمة، وتتوقف في قرية تقليدية لتناول الشاي مع السكان المحليين. تعرف على النباتات والحيوانات الفريدة في المنطقة.",
             location: 'متنزه عسير الوطني',
             category: 'مغامرة',

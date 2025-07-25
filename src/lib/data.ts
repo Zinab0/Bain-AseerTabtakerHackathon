@@ -59,8 +59,8 @@ export const experiences: Experience[] = [
   {
     id: 'exp-3',
     name: 'جولة في جبل أثرب |A trip to Mount Athrab',
-    description: 'Explore the stunning landscapes and hidden villages of the Asir mountains.',
-    longDescription: "Embark on a guided hike or 4x4 tour with Ali, a seasoned local guide, through the breathtaking mountains of Asir National Park. This tour will take you to panoramic viewpoints, through ancient terraced farms, and to a hidden village where you'll share tea with locals. Learn about the unique flora and fauna of the region.",
+    description: 'Embark on a tour with an experienced local guide through Mount Athrab, one of the most beautiful mountains in the Asir region.',
+    longDescription: "Embark on a tour with an experienced local guide through Mount Athrab, one of the most beautiful mountains in the Asir region. You will visit panoramic viewpoints, pass by old farms, and stop in a traditional village for tea with the locals. Learn about the unique plants and animals of the area.",
     image: 'https://placehold.co/600x400.png',
     images: ['https://placehold.co/800x600.png', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
     aiHint: 'mountain hiking',
