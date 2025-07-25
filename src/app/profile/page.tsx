@@ -1,18 +1,22 @@
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { users, experiences } from "@/lib/data";
 import ExperienceCard from "@/components/ExperienceCard";
-import { Edit, Mail, Phone, Settings } from "lucide-react";
+import { Edit, Mail, PlusCircle, Settings } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Link from "next/link";
 
 export default function ProfilePage() {
-  const user = users[2]; // Mocked: A tourist user
-  const host = users[0]; // Mocked: A host user
+  // To demonstrate both views, we'll simulate switching between user types.
+  // In a real app, this would be based on the logged-in user's data.
+  const isHost = true; // Set to true to see Host View, false for Tourist View
+  const user = isHost ? users[0] : users[2];
 
   const bookedExperiences = [experiences[0], experiences[2]];
-  const hostedExperiences = experiences.filter(exp => exp.host.id === host.id);
+  const hostedExperiences = experiences.filter(exp => exp.host.id === user.id);
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
@@ -25,7 +29,7 @@ export default function ProfilePage() {
             </Avatar>
             <div className="text-center sm:text-left">
               <h1 className="text-3xl font-headline font-bold">{user.name}</h1>
-              <p className="text-muted-foreground">Tourist</p>
+              <p className="text-muted-foreground">{user.isHost ? 'Host' : 'Tourist'}</p>
               <div className="flex gap-4 mt-2 justify-center sm:justify-start">
                   <div className="flex items-center text-muted-foreground"><Mail className="w-4 h-4 mr-2"/> {user.name.toLowerCase().replace(' ', '.')}@email.com</div>
               </div>
@@ -37,7 +41,7 @@ export default function ProfilePage() {
           
           <Separator />
           
-          <Tabs defaultValue="bookings" className="mt-8">
+          <Tabs defaultValue={isHost ? "host-dashboard" : "bookings"} className="mt-8">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="bookings">My Bookings</TabsTrigger>
               <TabsTrigger value="host-dashboard">Host Dashboard</TabsTrigger>
@@ -49,15 +53,48 @@ export default function ProfilePage() {
                         {bookedExperiences.map(exp => <ExperienceCard key={exp.id} experience={exp} />)}
                     </div>
                 ) : (
-                    <p className="text-muted-foreground">You have no upcoming bookings. <a href="/experiences" className="text-primary hover:underline">Explore experiences</a>.</p>
+                    <div className="text-center py-12 bg-muted rounded-lg">
+                      <h3 className="text-xl font-semibold">You have no upcoming bookings.</h3>
+                      <p className="text-muted-foreground mt-2 mb-4">Time to find your next adventure!</p>
+                      <Button asChild>
+                        <Link href="/experiences">Explore Experiences</Link>
+                      </Button>
+                    </div>
                 )}
             </TabsContent>
             <TabsContent value="host-dashboard" className="mt-6">
-              <div className="text-center p-8 bg-muted rounded-lg">
-                <h2 className="text-2xl font-headline font-bold mb-2">You are not a host yet</h2>
-                <p className="text-muted-foreground mb-4">Share your culture and earn money by becoming a host on Asir Connect.</p>
-                <Button className="bg-accent text-accent-foreground hover:bg-accent/90">Become a host</Button>
-              </div>
+              {user.isHost ? (
+                <div>
+                  <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-2xl font-headline font-bold">Your Hosted Experiences</h2>
+                    <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+                      <Link href="/host/add-experience">
+                        <PlusCircle className="w-4 h-4 mr-2"/>
+                        Add New Experience
+                      </Link>
+                    </Button>
+                  </div>
+                   {hostedExperiences.length > 0 ? (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          {hostedExperiences.map(exp => <ExperienceCard key={exp.id} experience={exp} />)}
+                      </div>
+                  ) : (
+                      <div className="text-center py-12 bg-muted rounded-lg">
+                        <h3 className="text-xl font-semibold">You haven't created any experiences yet.</h3>
+                        <p className="text-muted-foreground mt-2 mb-4">Start sharing your culture with the world!</p>
+                         <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+                           <Link href="/host/add-experience">Create Your First Experience</Link>
+                         </Button>
+                      </div>
+                  )}
+                </div>
+              ) : (
+                 <div className="text-center p-8 bg-muted rounded-lg">
+                    <h2 className="text-2xl font-headline font-bold mb-2">You are not a host yet</h2>
+                    <p className="text-muted-foreground mb-4">Share your culture and earn money by becoming a host on Asir Connect.</p>
+                    <Button className="bg-accent text-accent-foreground hover:bg-accent/90">Become a host</Button>
+                  </div>
+              )}
             </TabsContent>
           </Tabs>
 
