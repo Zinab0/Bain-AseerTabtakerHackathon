@@ -1,21 +1,26 @@
+
+"use client"
+
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
 import { Menu, Mountain, Globe, User } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu';
-import { Separator } from './ui/separator';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Header() {
+  const { language, setLanguage, translations } = useLanguage();
+  
   const navLinks = [
-    { href: "/experiences", label: "Experiences", labelAr: "التجارب" },
-    { href: "/recommendations", label: "AI Recommendations", labelAr: "توصيات الذكاء الاصطناعي" },
-    { href: "/messages", label: "Messages", labelAr: "الرسائل" },
+    { href: "/experiences", label: translations.header.experiences },
+    { href: "/recommendations", label: translations.header.aiRecommendations },
+    { href: "/messages", label: translations.header.messages },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container flex h-16 items-center">
-        <Link href="/" className="mr-6 flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2" style={{ marginLeft: language === 'ar' ? '1.5rem' : '0', marginRight: language === 'ar' ? '0' : '1.5rem'}}>
           <Mountain className="h-6 w-6 text-primary" />
           <span className="font-bold font-headline text-lg tracking-wider">Asir Connect</span>
         </Link>
@@ -35,8 +40,8 @@ export default function Header() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>English</DropdownMenuItem>
-              <DropdownMenuItem>العربية</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLanguage('en')}>English</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLanguage('ar')}>العربية</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
@@ -49,10 +54,10 @@ export default function Header() {
 
           <div className="hidden sm:flex items-center space-x-2">
             <Button asChild variant="ghost">
-              <Link href="/login">Login</Link>
+              <Link href="/login">{translations.header.login}</Link>
             </Button>
             <Button asChild>
-               <Link href="/signup">Sign Up</Link>
+               <Link href="/signup">{translations.header.signUp}</Link>
             </Button>
           </div>
 
@@ -63,7 +68,7 @@ export default function Header() {
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side={language === 'ar' ? 'left' : 'right'}>
               <div className="grid gap-4 py-6">
                 <Link href="/" className="flex items-center space-x-2 mb-4">
                   <Mountain className="h-6 w-6 text-primary" />
@@ -74,15 +79,14 @@ export default function Header() {
                     {link.label}
                   </Link>
                 ))}
-                <Separator className="my-2"/>
                  <Link href="/profile" className="flex w-full items-center py-2 text-lg font-semibold">
-                    Profile
+                    {translations.header.profile}
                   </Link>
                  <Link href="/login" className="flex w-full items-center py-2 text-lg font-semibold">
-                    Login
+                    {translations.header.login}
                   </Link>
                  <Button asChild className="w-full mt-4">
-                  <Link href="/signup">Sign Up</Link>
+                  <Link href="/signup">{translations.header.signUp}</Link>
                 </Button>
               </div>
             </SheetContent>
