@@ -10,7 +10,7 @@ const translations = {
       signUp: 'Sign Up',
     },
     home: {
-      title: "Feel the Heartbeat of Asir",
+      title: "Live Asir, Not Just Visit It",
       subtitle: 'From timeless traditions to mountain adventures — discover Asir through real stories, real people, and real moments.',
       browseButton: 'Browse Experiences',
       aiButton: 'Get AI Recommendations',
@@ -309,7 +309,7 @@ const translations = {
       signUp: 'إنشاء حساب',
     },
     home: {
-      title: 'اشعر بنبض عسير',
+      title: 'عش عسير، لا تزرها فقط',
       subtitle: 'من التقاليد الخالدة إلى مغامرات الجبال — اكتشف عسير من خلال قصص حقيقية وأناس حقيقيين ولحظات واقعية.',
       browseButton: 'تصفح التجارب',
       aiButton: 'احصل على توصيات الذكاء الاصطناعي',
@@ -505,9 +505,9 @@ const translations = {
     },
     experiences: {
         'exp-1': {
-            name: 'مذاق عسير: صنع العريكة',
-            description: 'تعلم صنع العريكة الشهيرة (عريكة)، وهي حجر الزاوية في المطبخ العسيري.',
-            longDescription: 'انضم إلى فاطمة في منزل عائلتها لتجربة طهي غامرة تركز على العريكة. سوف تتعلم أسرار صنع هذا الطبق اللذيذ والشهي، من إعداد العجين إلى طريقة التقديم الفنية مع التمر والعسل. ينتهي هذا الدرس العملي بوجبة جماعية حيث يمكنك الاستمتاع بالعريكة التي أعددتها.',
+            name: 'Taste of Asir: Areeqah Making',
+            description: 'Learn to make the famous Areeqah (عريكة), a cornerstone of Asiri cuisine.',
+            longDescription: 'Join Fatima in her family home for an immersive cooking experience focused on Areeqah. You will learn the secrets of making this delicious and hearty dish, from preparing the dough to the artful presentation with dates and honey. This hands-on class ends with a communal meal where you can enjoy the Areeqah you prepared.',
             location: 'أبها، عسير',
             category: 'طعام',
             whatYoullDo: ['تعرف على الأهمية الثقافية للعريكة', 'تحضير العريكة من الصفر بمكونات محلية طازجة', 'استمتع بالوجبة مع العائلة المضيفة'],
@@ -518,9 +518,9 @@ const translations = {
             ]
         },
         'exp-2': {
-            name: 'حضور حفل زفاف عسيري تقليدي',
-            description: 'جرب الاحتفال النابض بالحياة لحفل زفاف عسيري تقليدي مع عائلة محلية.',
-            longDescription: 'كن ضيفًا مُكرمًا في حفل زفاف عسيري حقيقي. باستضافة نورة وعائلتها، سيتم إرشادك بكل احترام خلال الاحتفالات والموسيقى والرقصات. هذه فرصة فريدة لمشاهدة التقاليد الثقافية الغنية للمنطقة في جو حقيقي واحتفالي. يرجى ملاحظة أنه سيتم توفير إرشادات خاصة بالملابس والسلوك لضمان احترام المناسبة.',
+            name: 'Attend a Traditional Asiri Wedding',
+            description: 'Experience the vibrant celebration of a traditional Asiri wedding with a local family.',
+            longDescription: 'Be an honored guest at a real Asiri wedding. Hosted by Noura and her family, you will be respectfully guided through the ceremonies, music, and dances. This is a unique opportunity to witness the rich cultural traditions of the region in a genuine and festive atmosphere. Please note that attire and conduct guidelines will be provided to ensure respect for the occasion.',
             location: 'خميس مشيط',
             category: 'ثقافة',
             whatYoullDo: ['حضور حفل زفاف كضيف', 'مشاهدة عروض الموسيقى والرقص التقليدية', 'المشاركة في وليمة الزفاف'],
@@ -542,9 +542,9 @@ const translations = {
             ]
         },
         'exp-4': {
-            name: 'ارتداء الملابس العسيرية التقليدية وجلسة تصوير',
-            description: 'ارتدِ الأزياء العسيرية التقليدية الجميلة لجلسة تصوير ثقافية فريدة.',
-            longDescription: 'انضم إلى ليلى لتجربة انغماس ثقافي فريدة. ستتمكن من الاختيار من بين مجموعة من الملابس العسيرية الأصيلة والمصنوعة يدويًا للرجال والنساء. بعد ارتداء الزي التقليدي، بما في ذلك أطواق الورد الشهيرة (المخلب)، ستحصل على جلسة تصوير في موقع ذي مناظر خلابة لالتقاط الذكرى.',
+            name: 'Wear Traditional Asiri Clothes & Photoshoot',
+            description: 'Dress in beautiful traditional Asiri attire for a unique cultural photoshoot.',
+            longDescription: 'Join Layla for a unique cultural immersion. You will get to choose from a selection of authentic, handcrafted Asiri garments for both men and women. After being dressed in the traditional style, including the famous flower crowns (Mekhlab), you will have a photoshoot in a scenic location to capture the memory.',
             location: 'أبها، عسير',
             category: 'ثقافة',
             whatYoullDo: ['التعرف على العناصر المختلفة للملابس العسيرية', 'ارتداء زي تقليدي كامل', 'الحصول على جلسة تصوير احترافية في مكان جميل'],
@@ -552,9 +552,9 @@ const translations = {
             reviews: []
         },
         'exp-5': {
-            name: "رحلة عبر تاريخ رجال ألمع",
-            description: 'جولة إرشادية في قرية رجال ألمع الحجرية التاريخية.',
-            longDescription: "امشِ عبر ممرات الزمن مع مرشد مؤرخ في قرية رجال ألمع المذهلة. سوف تستكشف العمارة الفريدة للحصون الحجرية، وتزور المتحف المحلي، وتستمع إلى قصص تاريخ القرية الغني كمركز تجاري إقليمي. توفر هذه الجولة رؤى عميقة في تراث منطقة عسير.",
+            name: "A Journey Through Rijal Almaa's History",
+            description: 'A guided tour of the historic stone village of Rijal Almaa.',
+            longDescription: "Walk through the corridors of time with a historian guide in the stunning village of Rijal Almaa. You will explore the unique architecture of the stone fortresses, visit the local museum, and hear stories of the village's rich history as a regional trade center. This tour provides deep insights into the heritage of the Asir region.",
             location: 'رجال ألمع',
             category: 'تاريخ',
             whatYoullDo: ['استكشاف الأزقة والمباني القديمة', 'زيارة متحف رجال ألمع', 'التعرف على تاريخ وثقافة القرية'],
@@ -562,9 +562,9 @@ const translations = {
             reviews: []
         },
         'exp-6': {
-            name: 'ورشة عمل فن القط العسيري',
-            description: 'اكتشف فن القط العسيري القديم مع حرفي محترف.',
-            longDescription: 'بتوجيه من إبراهيم، وهو حرفي محترف في فن القط العسيري المعترف به من قبل اليونسكو، ستقوم بإنشاء تحفتك الفنية الخاصة. تغطي ورشة العمل هذه تاريخ الفن، والمعنى الكامن وراء الأنماط الهندسية، والتقنيات المستخدمة لإنشاء هذه الجداريات النابضة بالحياة. ستغادر ومعك لوحة خشبية مزينة من صنعك.',
+            name: 'Al-Qatt Al-Asiri Art Workshop',
+            description: 'Discover the ancient art of Al-Qatt Al-Asiri with a master artisan.',
+            longDescription: 'Under the guidance of Ibrahim, a master of the UNESCO-recognized Al-Qatt Al-Asiri art form, you will create your own masterpiece. This workshop covers the history of the art, the meaning behind the geometric patterns, and the techniques used to create these vibrant murals. You will leave with your own decorated wooden panel.',
             location: 'رجال ألمع',
             category: 'حرف يدوية',
             whatYoullDo: ['التعرف على تاريخ ورمزية القط العسيري', 'التدرب على رسم الأنماط التقليدية', 'رسم قطعتك الزخرفية الخاصة لأخذها إلى المنزل'],
