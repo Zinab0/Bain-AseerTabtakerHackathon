@@ -2,7 +2,7 @@
 "use client"
 
 import Image from "next/image";
-import { experiences } from "@/lib/data";
+import { experiences, users } from "@/lib/data";
 import { notFound } from "next/navigation";
 import { Star, MapPin, Users, Calendar, CheckCircle, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -108,15 +108,14 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
            <div id="reviews">
                 <h2 className="font-headline text-3xl mb-4">{t.reviews}</h2>
                 <div className="space-y-6">
-                    {reviewsT.map((review, index) => {
-                      const reviewUser = users.find(u => u.id === review.user)!
-                      const reviewUserT = translations.users[review.user as keyof typeof translations.users];
+                    {experience.reviews.map((review) => {
+                      const reviewUserT = translations.users[review.user.id as keyof typeof translations.users];
                       return (
                         <Card key={review.id}>
                             <CardContent className="p-6">
                                 <div className="flex items-start gap-4">
                                     <Avatar>
-                                        <AvatarImage src={reviewUser.avatar} alt={reviewUserT.name} data-ai-hint={reviewUser.aiHint} />
+                                        <AvatarImage src={review.user.avatar} alt={reviewUserT.name} data-ai-hint={review.user.aiHint} />
                                         <AvatarFallback>{reviewUserT.name.charAt(0)}</AvatarFallback>
                                     </Avatar>
                                     <div>
@@ -135,7 +134,7 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
                             </CardContent>
                         </Card>
                     )})}
-                    {reviewsT.length === 0 && <p className="text-muted-foreground">{t.noReviews}</p>}
+                    {experience.reviews.length === 0 && <p className="text-muted-foreground">{t.noReviews}</p>}
                 </div>
             </div>
 
