@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container flex h-16 items-center">
-        <Link href="/" className="flex items-center space-x-2" style={{ marginLeft: language === 'ar' ? '1.5rem' : '0', marginRight: language === 'ar' ? '0' : '1.5rem'}}>
+        <Link href="/" className="flex items-center space-x-2 rtl:ml-6 ltr:mr-6">
           <Mountain className="h-6 w-6 text-primary" />
           <span className="font-bold font-headline text-lg tracking-wider">Asir Connect</span>
         </Link>
