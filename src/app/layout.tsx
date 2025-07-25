@@ -1,38 +1,14 @@
 
-"use client"
-
 import './globals.css';
+import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster";
 import Header from '@/components/Header';
-import { LanguageProvider, useLanguage } from '@/contexts/LanguageContext';
-import { useEffect } from 'react';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 
-// This component ensures that client-side hooks like useLanguage
-// can set attributes on the body without causing hydration mismatches.
-function AppBody({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const { language, dir } = useLanguage();
-
-  useEffect(() => {
-    document.documentElement.lang = language;
-    document.documentElement.dir = dir;
-  }, [language, dir]);
-
-  return (
-    <body className="font-body antialiased" dir={dir}>
-      <div className="relative flex min-h-screen flex-col">
-        <Header />
-        <main className="flex-1">
-          {children}
-        </main>
-      </div>
-      <Toaster />
-    </body>
-  )
-}
+export const metadata: Metadata = {
+  title: 'Asir Connect',
+  description: 'Connect with local hosts for authentic cultural experiences in Asir.',
+};
 
 export default function RootLayout({
   children,
@@ -40,17 +16,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <LanguageProvider>
-      <html lang="en" suppressHydrationWarning>
-        <head>
-          <title>Asir Connect</title>
-          <meta name="description" content="Connect with local hosts for authentic cultural experiences in Asir." />
+    <html lang="en" suppressHydrationWarning>
+      <head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
-        </head>
-        <AppBody>{children}</AppBody>
-      </html>
-    </LanguageProvider>
+      </head>
+      <body className="font-body antialiased">
+        <LanguageProvider>
+          <div className="relative flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+          </div>
+          <Toaster />
+        </LanguageProvider>
+      </body>
+    </html>
   );
 }
