@@ -10,8 +10,8 @@ const translations = {
       signUp: 'Sign Up',
     },
     home: {
-      title: "Discover Asir's Hidden Gems",
-      subtitle: 'Immerse yourself in the rich culture and breathtaking landscapes of Asir with unique experiences hosted by locals.',
+      title: "Feel the Heartbeat of Asir",
+      subtitle: 'From timeless traditions to mountain adventures — discover Asir through real stories, real people, and real moments.',
       browseButton: 'Browse Experiences',
       aiButton: 'Get AI Recommendations',
       featuredExperiences: 'Featured Experiences',
@@ -309,8 +309,8 @@ const translations = {
       signUp: 'إنشاء حساب',
     },
     home: {
-      title: 'اكتشف كنوز عسير الخفية',
-      subtitle: 'انغمس في ثقافة عسير الغنية ومناظرها الطبيعية الخلابة مع تجارب فريدة يستضيفها السكان المحليون.',
+      title: 'اشعر بنبض عسير',
+      subtitle: 'من التقاليد الخالدة إلى مغامرات الجبال — اكتشف عسير من خلال قصص حقيقية وأناس حقيقيين ولحظات واقعية.',
       browseButton: 'تصفح التجارب',
       aiButton: 'احصل على توصيات الذكاء الاصطناعي',
       featuredExperiences: 'تجارب مميزة',
@@ -552,9 +552,9 @@ const translations = {
             reviews: []
         },
         'exp-5': {
-            name: 'رحلة عبر تاريخ رجال ألمع',
+            name: "رحلة عبر تاريخ رجال ألمع",
             description: 'جولة إرشادية في قرية رجال ألمع الحجرية التاريخية.',
-            longDescription: 'امشِ عبر ممرات الزمن مع مرشد مؤرخ في قرية رجال ألمع المذهلة. سوف تستكشف العمارة الفريدة للحصون الحجرية، وتزور المتحف المحلي، وتستمع إلى قصص تاريخ القرية الغني كمركز تجاري إقليمي. توفر هذه الجولة رؤى عميقة في تراث منطقة عسير.',
+            longDescription: "امشِ عبر ممرات الزمن مع مرشد مؤرخ في قرية رجال ألمع المذهلة. سوف تستكشف العمارة الفريدة للحصون الحجرية، وتزور المتحف المحلي، وتستمع إلى قصص تاريخ القرية الغني كمركز تجاري إقليمي. توفر هذه الجولة رؤى عميقة في تراث منطقة عسير.",
             location: 'رجال ألمع',
             category: 'تاريخ',
             whatYoullDo: ['استكشاف الأزقة والمباني القديمة', 'زيارة متحف رجال ألمع', 'التعرف على تاريخ وثقافة القرية'],
@@ -602,4 +602,5 @@ const translations = {
 
 export default translations;
 
+    
     
