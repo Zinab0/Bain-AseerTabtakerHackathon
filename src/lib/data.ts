@@ -58,7 +58,7 @@ export const experiences: Experience[] = [
   },
   {
     id: 'exp-3',
-    name: 'Mountain Tour',
+    name: 'Mountain Tour جبل اثرب',
     description: 'Explore the stunning landscapes and hidden villages of the Asir mountains.',
     longDescription: "Embark on a guided hike or 4x4 tour with Ali, a seasoned local guide, through the breathtaking mountains of Asir National Park. This tour will take you to panoramic viewpoints, through ancient terraced farms, and to a hidden village where you'll share tea with locals. Learn about the unique flora and fauna of the region.",
     image: 'https://placehold.co/600x400.png',
