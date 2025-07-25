@@ -7,10 +7,10 @@ export default function LoginPage() {
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[450px]">
         <div className="flex flex-col space-y-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight font-headline">
-            Welcome Back!
+            !أهلاً بعودتك
           </h1>
           <p className="text-sm text-muted-foreground">
-            Select your role and enter your details to sign in.
+            اختر دورك وأدخل بياناتك لتسجيل الدخول.
           </p>
         </div>
         <UserAuthForm mode="login" />

@@ -6,10 +6,10 @@ export default function SignUpPage() {
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[450px]">
         <div className="flex flex-col space-y-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight font-headline">
-            Create an account
+            إنشاء حساب
           </h1>
           <p className="text-sm text-muted-foreground">
-            Choose your role, enter your details, and select your preferred language.
+            اختر دورك، أدخل بياناتك، واختر لغتك المفضلة.
           </p>
         </div>
         <UserAuthForm mode="signup" />

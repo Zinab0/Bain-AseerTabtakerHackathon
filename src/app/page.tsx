@@ -19,19 +19,19 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div className="relative z-20 container mx-auto px-4">
-          <h1 className="text-5xl md:text-7xl font-headline font-bold mb-4 drop-shadow-lg">Discover Asir's Hidden Gems</h1>
+          <h1 className="text-5xl md:text-7xl font-headline font-bold mb-4 drop-shadow-lg">اكتشف كنوز عسير الخفية</h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 drop-shadow-md">
-            Immerse yourself in the rich culture and breathtaking landscapes of Asir with unique experiences hosted by locals.
+            انغمس في ثقافة عسير الغنية ومناظرها الطبيعية الخلابة مع تجارب فريدة يستضيفها السكان المحليون.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
              <Link href="/experiences">
                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary">
-                Browse Experiences
+                تصفح التجارب
               </Button>
             </Link>
             <Link href="/recommendations">
               <Button size="lg" variant="secondary" className="bg-accent text-accent-foreground hover:bg-accent/90 border-2 border-accent">
-                Get AI Recommendations
+                احصل على توصيات الذكاء الاصطناعي
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -41,7 +41,7 @@ export default function Home() {
 
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-headline font-bold mb-12 text-center">Featured Experiences</h2>
+          <h2 className="text-4xl font-headline font-bold mb-12 text-center">تجارب مميزة</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {experiences.slice(0, 6).map((experience) => (
               <ExperienceCard key={experience.id} experience={experience} />
@@ -49,7 +49,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-12">
             <Link href="/experiences">
-               <Button variant="outline" size="lg">Browse All Experiences</Button>
+               <Button variant="outline" size="lg">تصفح كل التجارب</Button>
             </Link>
           </div>
         </div>

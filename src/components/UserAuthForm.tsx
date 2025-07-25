@@ -28,20 +28,20 @@ import { Loader2 } from "lucide-react";
 
 
 const signupSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
+  name: z.string().min(1, "الاسم مطلوب"),
+  email: z.string().email("بريد إلكتروني غير صالح"),
+  password: z.string().min(8, "يجب أن لا تقل كلمة المرور عن 8 أحرف"),
   role: z.enum(["tourist", "host"], {
-    required_error: "You need to select a role.",
+    required_error: "يجب عليك اختيار دور.",
   }),
   language: z.string({
-    required_error: "Please select a language.",
+    required_error: "الرجاء اختيار لغة.",
   }),
 });
 
 const loginSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(1, "Password is required"),
+  email: z.string().email("بريد إلكتروني غير صالح"),
+  password: z.string().min(1, "كلمة المرور مطلوبة"),
   role: z.enum(["tourist", "host"]), // Add role to login for simulation
 });
 
@@ -94,7 +94,7 @@ export default function UserAuthForm({
             name="role"
             render={({ field }) => (
               <FormItem className="space-y-3">
-                <FormLabel>I am a...</FormLabel>
+                <FormLabel>أنا...</FormLabel>
                 <FormControl>
                   <RadioGroup
                     onValueChange={field.onChange}
@@ -105,13 +105,13 @@ export default function UserAuthForm({
                       <FormControl>
                         <RadioGroupItem value="tourist" />
                       </FormControl>
-                      <FormLabel className="font-normal">Tourist</FormLabel>
+                      <FormLabel className="font-normal">سائح</FormLabel>
                     </FormItem>
                     <FormItem className="flex items-center space-x-3 space-y-0">
                       <FormControl>
                         <RadioGroupItem value="host" />
                       </FormControl>
-                      <FormLabel className="font-normal">Host</FormLabel>
+                      <FormLabel className="font-normal">مضيف</FormLabel>
                     </FormItem>
                   </RadioGroup>
                 </FormControl>
@@ -126,9 +126,9 @@ export default function UserAuthForm({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>الاسم</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your full name" {...field} />
+                    <Input placeholder="اسمك الكامل" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -141,7 +141,7 @@ export default function UserAuthForm({
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>البريد الإلكتروني</FormLabel>
                 <FormControl>
                   <Input
                     type="email"
@@ -159,7 +159,7 @@ export default function UserAuthForm({
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>كلمة المرور</FormLabel>
                 <FormControl>
                   <Input type="password" placeholder="••••••••" {...field} />
                 </FormControl>
@@ -174,14 +174,14 @@ export default function UserAuthForm({
               name="language"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Preferred Language</FormLabel>
+                  <FormLabel>اللغة المفضلة</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a language" />
+                        <SelectValue placeholder="اختر لغة" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -199,7 +199,7 @@ export default function UserAuthForm({
             {isLoading && (
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             )}
-            {mode === "login" ? "Sign In" : "Sign Up"}
+            {mode === "login" ? "تسجيل الدخول" : "إنشاء حساب"}
           </Button>
         </form>
       </Form>
@@ -210,14 +210,14 @@ export default function UserAuthForm({
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-background px-2 text-muted-foreground">
             {mode === 'login'
-              ? "Don't have an account?"
-              : "Already have an account?"}
+              ? "ليس لديك حساب؟"
+              : "هل لديك حساب بالفعل؟"}
           </span>
         </div>
       </div>
        <Button variant="outline" asChild>
         <a href={mode === 'login' ? '/signup' : '/login'}>
-            {mode === 'login' ? 'Sign Up' : 'Login'}
+            {mode === 'login' ? 'إنشاء حساب' : 'تسجيل الدخول'}
         </a>
       </Button>
     </div>

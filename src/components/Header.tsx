@@ -7,9 +7,9 @@ import { Separator } from './ui/separator';
 
 export default function Header() {
   const navLinks = [
-    { href: "/experiences", label: "Experiences" },
-    { href: "/recommendations", label: "AI Recommendations" },
-    { href: "/messages", label: "Messages" },
+    { href: "/experiences", label: "Experiences", labelAr: "التجارب" },
+    { href: "/recommendations", label: "AI Recommendations", labelAr: "توصيات الذكاء الاصطناعي" },
+    { href: "/messages", label: "Messages", labelAr: "الرسائل" },
   ];
 
   return (
