@@ -4,6 +4,7 @@ const translations = {
     header: {
       experiences: 'Experiences',
       aiRecommendations: 'AI Recommendations',
+      aiRecommendations2: 'AI Recs 2',
       profile: 'Profile',
       login: 'Login',
       signUp: 'Sign Up',
@@ -324,6 +325,7 @@ const translations = {
     header: {
       experiences: 'التجارب',
       aiRecommendations: 'توصيات الذكاء الاصطناعي',
+      aiRecommendations2: 'توصيات 2',
       profile: 'الملف الشخصي',
       login: 'تسجيل الدخول',
       signUp: 'إنشاء حساب',
