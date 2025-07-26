@@ -65,15 +65,15 @@ export default function RecommendationsPage() {
                         </div>
                         <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-6" disabled={isLoading}>
                             {isLoading ? (
-                                <>
+                                <span className="flex items-center justify-center">
                                     <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                                     {t.form.loadingButton}
-                                </>
+                                </span>
                             ) : (
-                                <>
+                                <span className="flex items-center justify-center">
                                     <Wand2 className="mr-2 h-5 w-5" />
                                     {t.form.submitButton}
-                                </>
+                                </span>
                             )}
                         </Button>
                     </form>
