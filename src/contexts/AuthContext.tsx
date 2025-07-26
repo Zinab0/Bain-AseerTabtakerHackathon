@@ -28,9 +28,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       console.error("Failed to parse user from localStorage", error);
       localStorage.removeItem('user');
-    } finally {
-      setIsMounted(true);
     }
+    setIsMounted(true);
   }, []);
 
   const login = (userData: User) => {
@@ -43,7 +42,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
     router.push('/');
   };
-
+  
   if (!isMounted) {
     return null; 
   }
