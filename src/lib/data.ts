@@ -159,9 +159,9 @@ export const conversations: Conversation[] = [
     lastMessage: 'Perfect, see you then!',
     lastMessageTimestamp: 'Yesterday',
      messages: [
-      { id: 'msg-2-1', sender: 'participant', text: 'Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.', timestamp: 'Yesterday' },
-      { id: 'msg-2-2', sender: 'user', text: 'Hi! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before.', timestamp: 'Yesterday' },
-      { id: 'msg-2-3', sender: 'participant', text: 'Perfect, see you then!', timestamp: 'Yesterday' },
+      { id: 'msg-2-1', sender: 'user', text: 'Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.', timestamp: 'Yesterday' },
+      { id: 'msg-2-2', sender: 'participant', text: 'Hi! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before.', timestamp: 'Yesterday' },
+      { id: 'msg-2-3', sender: 'user', text: 'Perfect, see you then!', timestamp: 'Yesterday' },
     ],
   },
   {
