@@ -2,12 +2,12 @@
 import type { User, Experience, Conversation, ReviewData, Booking } from './types';
 
 export const users: User[] = [
-  { id: 'user-1', name: 'Ali Mohammed', avatar: 'https://placehold.co/100x100.png', aiHint: "man portrait", isHost: true },
-  { id: 'user-2', name: 'Fatima Al-Asmari', avatar: 'https://placehold.co/100x100.png', aiHint: "woman portrait", isHost: true },
+  { id: 'user-1', name: 'Ali Mohammed', avatar: 'https://i.postimg.cc/d14MgbTw/Chat-GPT-Image-Jul-26-2025-03-40-39-AM-removebg-preview.png', aiHint: "man portrait", isHost: true },
+  { id: 'user-2', name: 'Fatima Al-Asmari', avatar: 'https://i.postimg.cc/RVJ8T6GM/Chat-GPT-Image-Jul-26-2025-03-45-40-AM-removebg-preview.png', aiHint: "woman portrait", isHost: true },
   { id: 'user-3', name: 'John Doe', avatar: 'https://i.postimg.cc/nztcHfzm/9a7da2a8-b47c-441b-91c1-65e0266a841f.png', aiHint: "tourist portrait", isHost: false },
-  { id: 'user-4', name: 'Noura Khalid', avatar: 'https://placehold.co/100x100.png', aiHint: "host portrait", isHost: true },
-  { id: 'user-5', name: 'Ibrahim Hassan', avatar: 'https://placehold.co/100x100.png', aiHint: "artisan portrait", isHost: true },
-  { id: 'user-6', name: 'Layla Faisal', avatar: 'https://placehold.co/100x100.png', aiHint: "chef portrait", isHost: true },
+  { id: 'user-4', name: 'Noura Khalid', avatar: 'https://i.postimg.cc/RVJ8T6GM/Chat-GPT-Image-Jul-26-2025-03-45-40-AM-removebg-preview.png', aiHint: "host portrait", isHost: true },
+  { id: 'user-5', name: 'Ibrahim Hassan', avatar: 'https://i.postimg.cc/d14MgbTw/Chat-GPT-Image-Jul-26-2025-03-40-39-AM-removebg-preview.png', aiHint: "artisan portrait", isHost: true },
+  { id: 'user-6', name: 'Layla Faisal', avatar: 'https://i.postimg.cc/RVJ8T6GM/Chat-GPT-Image-Jul-26-2025-03-45-40-AM-removebg-preview.png', aiHint: "chef portrait", isHost: true },
   { id: 'user-7', name: 'Jane Smith', avatar: 'https://i.postimg.cc/nztcHfzm/9a7da2a8-b47c-441b-91c1-65e0266a841f.png', aiHint: 'tourist portrait', isHost: false },
 ];
 
@@ -146,8 +146,8 @@ export const conversations: Conversation[] = [
   {
     id: 'conv-1',
     participant: users[0], // Ali Mohammed, host of mountain trip
-    lastMessage: 'Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.',
-    lastMessageTimestamp: '9:15 AM',
+    lastMessage: 'Hi John! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before.',
+    lastMessageTimestamp: '9:17 AM',
     messages: [
       { id: 'msg-1-1', sender: 'user', text: 'Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.', timestamp: '9:15 AM' },
       { id: 'msg-1-2', sender: 'participant', text: 'Hi John! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before.', timestamp: '9:17 AM' },
@@ -156,7 +156,7 @@ export const conversations: Conversation[] = [
   {
     id: 'conv-2',
     participant: users[1], // Fatima Al-Asmari
-    lastMessage: "Perfect, see you then!",
+    lastMessage: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you.",
     lastMessageTimestamp: "Yesterday",
     messages: [
       { id: "msg-2-1", sender: "user", text: "Hi! I'm really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy.", timestamp: "Yesterday" },
@@ -166,7 +166,7 @@ export const conversations: Conversation[] = [
   {
     id: 'conv-3',
     participant: users[3],
-    lastMessage: 'It was a pleasure to have you.',
+    lastMessage: 'You are very welcome! Our family was happy to share our special day. It was a pleasure to have you.',
     lastMessageTimestamp: '3 days ago',
      messages: [
       { id: 'msg-3-1', sender: 'user', text: 'Thank you for the incredible wedding experience. It was an honor to be there.', timestamp: '3 days ago' },
