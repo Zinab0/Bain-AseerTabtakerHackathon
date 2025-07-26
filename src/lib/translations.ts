@@ -200,8 +200,8 @@ const translations = {
             },
             dates: {
                 label: 'Travel Dates',
-                placeholder: 'e.g., December 1st to December 10th, 2024',
-                description: 'Provide your planned dates of travel in any format.',
+                placeholder: 'Pick a date range',
+                description: 'Select your planned start and end dates of travel.',
             },
             submitButton: 'Find My Experiences',
             loadingButton: 'Thinking...',
@@ -298,21 +298,21 @@ const translations = {
     },
     conversations: {
         'conv-1': {
-            lastMessage: "Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.",
+            lastMessage: "Hi John! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before.",
             messages: [
                 { id: 'msg-1-1', sender: 'user', text: "Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point." },
                 { id: 'msg-1-2', sender: 'participant', text: "Hi John! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before." },
             ],
         },
         'conv-2': {
-            lastMessage: "Perfect, see you then!",
+            lastMessage: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you.",
             messages: [
                 { id: "msg-2-1", sender: "user", text: "Hi! I'm really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy." },
                 { id: "msg-2-2", sender: "participant", text: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you." },
             ],
         },
         'conv-3': {
-            lastMessage: 'It was a pleasure to have you.',
+            lastMessage: 'You are very welcome! Our family was happy to share our special day. It was a pleasure to have you.',
             messages: [
                 { id: 'msg-3-1', sender: 'user', text: 'Thank you for the incredible wedding experience. It was an honor to be there.' },
                 { id: 'msg-3-2', sender: 'participant', text: 'You are very welcome! Our family was happy to share our special day. It was a pleasure to have you.' },
@@ -520,8 +520,8 @@ const translations = {
             },
             dates: {
                 label: 'تواريخ السفر',
-                placeholder: 'مثال: من 1 إلى 10 ديسمبر 2024',
-                description: 'قدم تواريخ سفرك المخطط لها بأي تنسيق.',
+                placeholder: 'اختر نطاقًا زمنيًا',
+                description: 'حدد تواريخ بداية ونهاية سفرك المخطط لها.',
             },
             submitButton: 'ابحث عن تجاربي',
             loadingButton: 'جاري التفكير...',
@@ -618,21 +618,21 @@ const translations = {
     },
     conversations: {
         'conv-1': {
-            lastMessage: "مرحباً علي، لقد حجزت الجولة الجبلية ليوم الجمعة القادم. فقط أؤكد نقطة الالتقاء.",
+            lastMessage: 'أهلاً يا جون! نعم، سنلتقي عند مدخل منتزه عسير الوطني الساعة 8 صباحًا. سأرسل لك موقعًا دقيقًا في اليوم السابق.',
             messages: [
                 { id: 'msg-1-1', sender: 'user', text: "مرحباً علي، لقد حجزت الجولة الجبلية ليوم الجمعة القادم. فقط أؤكد نقطة الالتقاء." },
                 { id: 'msg-1-2', sender: 'participant', text: "أهلاً يا جون! نعم، سنلتقي عند مدخل منتزه عسير الوطني الساعة 8 صباحًا. سأرسل لك موقعًا دقيقًا في اليوم السابق." },
             ],
         },
         'conv-2': {
-            lastMessage: 'ممتاز، أراكِ حينها!',
+            lastMessage: 'أهلاً بك! شكراً لسؤالك. نحن أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأقوم بإعدادها لك بدون مكسرات.',
             messages: [
                 { id: "msg-2-1", sender: "user", text: "مرحبًا! أنا مهتم جدًا بتجربة صنع العريكة، ولكن لدي سؤال سريع: هل تحتوي على أي مكسرات؟ لدي حساسية من المكسرات." },
                 { id: "msg-2-2", sender: "participant", text: "أهلاً بك! شكراً لسؤالك. نحن أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأقوم بإعدادها لك بدون مكسرات." },
             ],
         },
         'conv-3': {
-            lastMessage: 'كان من دواعي سرورنا وجودك.',
+            lastMessage: 'على الرحب والسعة! سعدت عائلتنا بمشاركة يومنا الخاص. كان من دواعي سرورنا وجودك.',
             messages: [
                 { id: 'msg-3-1', sender: 'user', text: 'شكراً لكم على تجربة الزفاف المذهلة. كان لي الشرف أن أكون هناك.' },
                 { id: 'msg-3-2', sender: 'participant', text: 'على الرحب والسعة! سعدت عائلتنا بمشاركة يومنا الخاص. كان من دواعي سرورنا وجودك.' },

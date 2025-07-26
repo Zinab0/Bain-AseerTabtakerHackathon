@@ -5,21 +5,30 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { format } from "date-fns";
 import { recommendExperiences, type RecommendExperiencesOutput } from '@/ai/flows/recommend-experiences';
 
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Wand2, Frown } from 'lucide-react';
+import { Wand2, Frown, CalendarIcon } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { DateRange } from "react-day-picker";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   interests: z.string().min(10, 'Please describe your interests in a bit more detail (e.g., "love hiking, history, and trying new food").'),
-  travelDates: z.string().min(1, 'Please enter your travel dates (e.g., "October 15-22, 2024").'),
+  travelDates: z.object({
+    from: z.date(),
+    to: z.date(),
+  }, {
+    required_error: "Please select your travel dates.",
+  }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -35,7 +44,6 @@ export default function RecommendationClient() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       interests: '',
-      travelDates: '',
     },
   });
 
@@ -44,8 +52,13 @@ export default function RecommendationClient() {
     setError(null);
     setRecommendations(null);
 
+    const formattedValues = {
+      ...values,
+      travelDates: `From ${format(values.travelDates.from, "LLL dd, y")} to ${format(values.travelDates.to, "LLL dd, y")}`,
+    };
+
     try {
-      const result = await recommendExperiences(values);
+      const result = await recommendExperiences(formattedValues);
       if (result.recommendations && result.recommendations.length > 0) {
         setRecommendations(result);
       } else {
@@ -90,13 +103,48 @@ export default function RecommendationClient() {
                 control={form.control}
                 name="travelDates"
                 render={({ field }) => (
-                  <FormItem>
+                   <FormItem className="flex flex-col">
                     <FormLabel className="text-lg">{t.form.dates.label}</FormLabel>
-                    <FormControl>
-                      <Input placeholder={t.form.dates.placeholder} {...field} />
-                    </FormControl>
-                     <FormDescription>
-                      {t.form.dates.description}
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            id="date"
+                            variant={"outline"}
+                            className={cn(
+                              "w-full justify-start text-left font-normal",
+                              !field.value && "text-muted-foreground"
+                            )}
+                          >
+                            <CalendarIcon className="mr-2 h-4 w-4" />
+                            {field.value?.from ? (
+                              field.value.to ? (
+                                <>
+                                  {format(field.value.from, "LLL dd, y")} -{" "}
+                                  {format(field.value.to, "LLL dd, y")}
+                                </>
+                              ) : (
+                                format(field.value.from, "LLL dd, y")
+                              )
+                            ) : (
+                              <span>{t.form.dates.placeholder}</span>
+                            )}
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          initialFocus
+                          mode="range"
+                          defaultMonth={field.value?.from}
+                          selected={field.value}
+                          onSelect={field.onChange}
+                          numberOfMonths={2}
+                        />
+                      </PopoverContent>
+                    </Popover>
+                    <FormDescription>
+                       {t.form.dates.description}
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
