@@ -112,6 +112,9 @@ const translations = {
             title: 'You have no new messages.',
             subtitle: 'Conversations with guests will appear here.',
         },
+        touristTabs: {
+            messages: 'Messages',
+        },
         hostTabs: {
             myExperiences: 'My Experiences',
             bookings: 'Bookings',
@@ -305,9 +308,9 @@ const translations = {
         'conv-2': {
             lastMessage: 'Perfect, see you then!',
             messages: [
-                { id: 'msg-2-1', sender: 'participant', text: 'Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.' },
-                { id: 'msg-2-2', sender: 'user', text: 'Hi! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before.' },
-                { id: 'msg-2-3', sender: 'participant', text: 'Perfect, see you then!' },
+                { id: 'msg-2-1', sender: 'user', text: 'Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.' },
+                { id: 'msg-2-2', sender: 'participant', text: 'Hi! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before.' },
+                { id: 'msg-2-3', sender: 'user', text: 'Perfect, see you then!' },
             ],
         },
         'conv-3': {
@@ -429,7 +432,10 @@ const translations = {
         },
         noMessages: {
             title: 'ليس لديك رسائل جديدة.',
-            subtitle: 'ستظهر هنا المحادثات مع الضيوف.',
+            subtitle: 'ستظهر هنا المحادثات مع المضيفين.',
+        },
+        touristTabs: {
+            messages: 'الرسائل',
         },
         hostTabs: {
             myExperiences: 'تجاربي',
@@ -617,23 +623,23 @@ const translations = {
         'conv-1': {
             lastMessage: "أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأجهزها لك بدون مكسرات.",
             messages: [
-                { id: 'msg-1-1', text: "مرحبًا! حبيت تجربة صنع العريكة، بس عندي سؤال: هل تحتوي على مكسرات؟ لأن عندي حساسية منها." },
-                { id: 'msg-1-2', text: "أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأجهزها لك بدون مكسرات." },
+                { id: 'msg-1-1', sender: 'participant', text: "مرحبًا! حبيت تجربة صنع العريكة، بس عندي سؤال: هل تحتوي على مكسرات؟ لأن عندي حساسية منها." },
+                { id: 'msg-1-2', sender: 'user', text: "أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأجهزها لك بدون مكسرات." },
             ],
         },
         'conv-2': {
             lastMessage: 'ممتاز، أراك حينها!',
             messages: [
-                { id: 'msg-2-1', text: 'مرحباً علي، لقد حجزت الجولة الجبلية ليوم الجمعة القادم. فقط أؤكد نقطة الالتقاء.' },
-                { id: 'msg-2-2', text: 'أهلاً! نعم، سنلتقي عند مدخل منتزه عسير الوطني الساعة 8 صباحًا. سأرسل لك موقعًا دقيقًا في اليوم السابق.' },
-                { id: 'msg-2-3', text: 'ممتاز، أراك حينها!' },
+                { id: 'msg-2-1', sender: 'user', text: 'مرحباً علي، لقد حجزت الجولة الجبلية ليوم الجمعة القادم. فقط أؤكد نقطة الالتقاء.' },
+                { id: 'msg-2-2', sender: 'participant', text: 'أهلاً! نعم، سنلتقي عند مدخل منتزه عسير الوطني الساعة 8 صباحًا. سأرسل لك موقعًا دقيقًا في اليوم السابق.' },
+                { id: 'msg-2-3', sender: 'user', text: 'ممتاز، أراك حينها!' },
             ],
         },
         'conv-3': {
             lastMessage: 'كان من دواعي سرورنا وجودك.',
             messages: [
-                { id: 'msg-3-1', text: 'شكراً لكم على تجربة الزفاف المذهلة. كان لي الشرف أن أكون هناك.' },
-                { id: 'msg-3-2', text: 'على الرحب والسعة! سعدت عائلتنا بمشاركة يومنا الخاص. كان من دواعي سرورنا وجودك.' },
+                { id: 'msg-3-1', sender: 'user', text: 'شكراً لكم على تجربة الزفاف المذهلة. كان لي الشرف أن أكون هناك.' },
+                { id: 'msg-3-2', sender: 'participant', text: 'على الرحب والسعة! سعدت عائلتنا بمشاركة يومنا الخاص. كان من دواعي سرورنا وجودك.' },
             ],
         },
     },
