@@ -3,6 +3,7 @@ const translations = {
   en: {
     header: {
       experiences: 'Experiences',
+      recommendations: 'AI Recommender',
       profile: 'Profile',
       login: 'Login',
       signUp: 'Sign Up',
@@ -322,6 +323,7 @@ const translations = {
   ar: {
     header: {
       experiences: 'التجارب',
+      recommendations: 'موصي الذكاء الاصطناعي',
       profile: 'الملف الشخصي',
       login: 'تسجيل الدخول',
       signUp: 'إنشاء حساب',
