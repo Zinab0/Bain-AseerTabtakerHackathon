@@ -7,15 +7,18 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { users, experiences, bookings } from "@/lib/data";
+import { users, experiences, bookings, conversations } from "@/lib/data";
 import ExperienceCard from "@/components/ExperienceCard";
-import { Edit, Mail, PlusCircle } from "lucide-react";
+import { Edit, Mail, PlusCircle, Send, Search } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from '@/components/ui/badge';
 import Link from "next/link";
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
+import { Input } from '@/components/ui/input';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Conversation } from '@/lib/types';
 
 function ProfilePageContent() {
   const { language, translations } = useLanguage();
@@ -32,6 +35,17 @@ function ProfilePageContent() {
 
   const hostExperienceIds = hostedExperiences.map(exp => exp.id);
   const hostBookings = bookings.filter(booking => hostExperienceIds.includes(booking.experienceId));
+  const hostBookingGuestIds = hostBookings.map(booking => booking.guest.id);
+
+  const hostConversations = conversations.filter(convo => 
+      (convo.participant.id === currentUser.id) || // Messages sent to the host
+      (hostBookingGuestIds.includes(convo.participant.id)) || // Messages with guests who booked
+      (convo.participant.isHost === false) // Simulate other inquiries from tourists
+  );
+
+  const activeConversation = hostConversations[0];
+  const activeConvoT = activeConversation ? translations.conversations[activeConversation.id as keyof typeof translations.conversations] : null;
+  const activeParticipantT = activeConversation ? translations.users[activeConversation.participant.id as keyof typeof translations.users] : null;
 
 
   if (!user) {
@@ -99,9 +113,10 @@ function ProfilePageContent() {
             <TabsContent value="host-dashboard" className="mt-6">
               {user.isHost ? (
                  <Tabs defaultValue="my-experiences">
-                    <TabsList className="grid w-full grid-cols-2 gap-x-2 mb-4">
+                    <TabsList className="grid w-full grid-cols-3 gap-x-2 mb-4">
                         <TabsTrigger value="my-experiences">{t.hostTabs.myExperiences}</TabsTrigger>
                         <TabsTrigger value="bookings">{t.hostTabs.bookings}</TabsTrigger>
+                        <TabsTrigger value="messages">{t.hostTabs.messages}</TabsTrigger>
                     </TabsList>
 
                     <TabsContent value="my-experiences">
@@ -173,6 +188,85 @@ function ProfilePageContent() {
                             </div>
                          )}
                     </TabsContent>
+                    
+                    <TabsContent value="messages">
+                        <h2 className="text-2xl font-headline font-bold mb-4">{t.hostTabs.messages}</h2>
+                        {hostConversations.length > 0 && activeConvoT && activeParticipantT ? (
+                            <Card className="h-[600px]">
+                                <div className="flex h-full">
+                                    <aside className="w-1/3 border-r flex flex-col">
+                                        <div className="p-4 border-b">
+                                            <div className="relative">
+                                                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                                                <Input placeholder={translations.messagesPage.searchPlaceholder} className="pl-8" />
+                                            </div>
+                                        </div>
+                                        <ScrollArea className="flex-1">
+                                            <div className="flex flex-col">
+                                                {hostConversations.map((convo) => {
+                                                    const convoT = translations.conversations[convo.id as keyof typeof translations.conversations];
+                                                    const participantT = translations.users[convo.participant.id as keyof typeof translations.users];
+                                                    return (
+                                                        <div key={convo.id} className={`p-4 border-b cursor-pointer hover:bg-muted/50 ${convo.id === activeConversation.id ? 'bg-muted' : ''}`}>
+                                                            <div className="flex items-center gap-3">
+                                                                <Avatar className="h-10 w-10">
+                                                                    <AvatarImage src={convo.participant.avatar} alt={participantT.name} data-ai-hint={convo.participant.aiHint} />
+                                                                    <AvatarFallback>{participantT.name.charAt(0)}</AvatarFallback>
+                                                                </Avatar>
+                                                                <div className="flex-1 overflow-hidden">
+                                                                    <p className="font-semibold truncate">{participantT.name}</p>
+                                                                    <p className="text-xs text-muted-foreground truncate">{convoT.lastMessage}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </ScrollArea>
+                                    </aside>
+                                    <main className="w-2/3 flex flex-col">
+                                         <div className="p-4 border-b flex items-center gap-4">
+                                            <Avatar>
+                                                <AvatarImage src={activeConversation.participant.avatar} alt={activeParticipantT.name} data-ai-hint={activeConversation.participant.aiHint} />
+                                                <AvatarFallback>{activeParticipantT.name.charAt(0)}</AvatarFallback>
+                                            </Avatar>
+                                            <div>
+                                                <p className="font-semibold">{activeParticipantT.name}</p>
+                                            </div>
+                                        </div>
+                                        <ScrollArea className="flex-1 p-6 bg-muted/20">
+                                            <div className="space-y-4">
+                                                {activeConvoT.messages.map((message, index) => (
+                                                    <div key={message.id} className={`flex items-end gap-2 ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                                                        {message.sender === 'participant' && <Avatar className="h-8 w-8"><AvatarImage src={activeConversation.participant.avatar} data-ai-hint={activeConversation.participant.aiHint}/></Avatar>}
+                                                        <div className={`max-w-xs md:max-w-md lg:max-w-lg p-3 rounded-xl ${message.sender === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-card shadow-sm rounded-bl-none'}`}>
+                                                            <p>{message.text}</p>
+                                                            <p className="text-xs mt-1 opacity-70 text-right">{activeConversation.messages[index].timestamp}</p>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </ScrollArea>
+                                        <div className="p-4 border-t bg-background">
+                                            <div className="relative">
+                                                <Input placeholder={translations.messagesPage.inputPlaceholder} className="pr-12 h-12" />
+                                                <Button type="submit" size="icon" className="absolute top-1.5 right-1.5 h-9 w-9 bg-accent hover:bg-accent/90">
+                                                    <Send className="h-5 w-5" />
+                                                    <span className="sr-only">{translations.messagesPage.sendButton}</span>
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </main>
+                                </div>
+                            </Card>
+                        ) : (
+                            <div className="text-center py-12 bg-muted rounded-lg">
+                                <h3 className="text-xl font-semibold">{t.noMessages.title}</h3>
+                                <p className="text-muted-foreground mt-2">{t.noMessages.subtitle}</p>
+                            </div>
+                        )}
+                    </TabsContent>
+
                 </Tabs>
               ) : (
                  <div className="text-center p-8 bg-muted rounded-lg">

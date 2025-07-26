@@ -108,9 +108,14 @@ const translations = {
             subtitle: 'Time to find your next adventure!',
             button: 'Explore Experiences',
         },
+        noMessages: {
+            title: 'You have no new messages.',
+            subtitle: 'Conversations with guests will appear here.',
+        },
         hostTabs: {
             myExperiences: 'My Experiences',
             bookings: 'Bookings',
+            messages: 'Messages',
         },
         bookingsTable: {
             guest: 'Guest',
@@ -293,23 +298,23 @@ const translations = {
         'conv-1': {
             lastMessage: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you.",
             messages: [
-                { id: 'msg-1-1', text: "Hi! I'm really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy." },
-                { id: 'msg-1-2', text: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you." },
+                { id: 'msg-1-1', sender: 'participant', text: "Hi! I'm really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy." },
+                { id: 'msg-1-2', sender: 'user', text: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you." },
             ],
         },
         'conv-2': {
             lastMessage: 'Perfect, see you then!',
             messages: [
-                { id: 'msg-2-1', text: 'Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.' },
-                { id: 'msg-2-2', text: 'Hi! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before.' },
-                { id: 'msg-2-3', text: 'Perfect, see you then!' },
+                { id: 'msg-2-1', sender: 'participant', text: 'Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.' },
+                { id: 'msg-2-2', sender: 'user', text: 'Hi! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before.' },
+                { id: 'msg-2-3', sender: 'participant', text: 'Perfect, see you then!' },
             ],
         },
         'conv-3': {
             lastMessage: 'It was a pleasure to have you.',
             messages: [
-                { id: 'msg-3-1', text: 'Thank you for the incredible wedding experience. It was an honor to be there.' },
-                { id: 'msg-3-2', text: 'You are very welcome! Our family was happy to share our special day. It was a pleasure to have you.' },
+                { id: 'msg-3-1', sender: 'user', text: 'Thank you for the incredible wedding experience. It was an honor to be there.' },
+                { id: 'msg-3-2', sender: 'participant', text: 'You are very welcome! Our family was happy to share our special day. It was a pleasure to have you.' },
             ],
         },
     },
@@ -422,9 +427,14 @@ const translations = {
             subtitle: 'حان الوقت للعثور على مغامرتك القادمة!',
             button: 'استكشف التجارب',
         },
+        noMessages: {
+            title: 'ليس لديك رسائل جديدة.',
+            subtitle: 'ستظهر هنا المحادثات مع الضيوف.',
+        },
         hostTabs: {
             myExperiences: 'تجاربي',
             bookings: 'الحجوزات',
+            messages: 'الرسائل',
         },
         bookingsTable: {
             guest: 'الضيف',
