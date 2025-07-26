@@ -20,17 +20,12 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    const savedLanguage = localStorage.getItem('language') as Language | null;
+    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ar')) {
+      setLanguageState(savedLanguage);
+    }
     setIsMounted(true);
   }, []);
-
-  useEffect(() => {
-    if (isMounted) {
-        const savedLanguage = localStorage.getItem('language') as Language | null;
-        if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ar')) {
-          setLanguageState(savedLanguage);
-        }
-    }
-  }, [isMounted]);
   
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
