@@ -10,8 +10,8 @@ const translations = {
       logout: 'Log Out',
     },
     home: {
-      title: "Live Asir, Not Just Visit It",
-      subtitle: 'The bridge between tourists and the people of Asir.',
+      title: "The bridge between tourists and the people of Asir.",
+      subtitle: "Live Asir, Not Just Visit It",
       browseButton: 'Browse Experiences',
       aiButton: 'Get AI Recommendations',
       featuredExperiences: 'Featured Experiences',
@@ -321,8 +321,8 @@ const translations = {
       logout: 'تسجيل الخروج',
     },
     home: {
-      title: 'عِش عسير، لا تزُرها فقط',
-      subtitle: 'الجسر بين السائح وأهل عسير',
+      title: 'الجسر بين السائح وأهل عسير',
+      subtitle: 'عِش عسير، لا تزُرها فقط',
       browseButton: 'تصفح التجارب',
       aiButton: 'احصل على توصيات الذكاء الاصطناعي',
       featuredExperiences: 'تجارب مميزة',
