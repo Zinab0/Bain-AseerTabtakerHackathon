@@ -11,7 +11,7 @@ const translations = {
     },
     home: {
       title: "Live Asir, Not Just Visit It",
-      subtitle: 'From timeless traditions to mountain adventures — discover Asir through real stories, real people, and real moments.',
+      subtitle: 'The bridge between tourists and the people of Asir.',
       browseButton: 'Browse Experiences',
       aiButton: 'Get AI Recommendations',
       featuredExperiences: 'Featured Experiences',
@@ -322,7 +322,7 @@ const translations = {
     },
     home: {
       title: 'عِش عسير، لا تزُرها فقط',
-      subtitle: 'من تقاليدها الأصيلة إلى مغامرات جبالها — اكتشف عسير من خلال أهلها وتجارب لا تُنسى.',
+      subtitle: 'الجسر بين السائح وأهل عسير',
       browseButton: 'تصفح التجارب',
       aiButton: 'احصل على توصيات الذكاء الاصطناعي',
       featuredExperiences: 'تجارب مميزة',
