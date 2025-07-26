@@ -20,17 +20,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
 
   useEffect(() => {
-    try {
-      const savedUser = localStorage.getItem('user');
-      if (savedUser) {
-        setUser(JSON.parse(savedUser));
-      }
-    } catch (error) {
-      console.error("Failed to parse user from localStorage", error);
-      localStorage.removeItem('user');
-    }
     setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      try {
+        const savedUser = localStorage.getItem('user');
+        if (savedUser) {
+          setUser(JSON.parse(savedUser));
+        }
+      } catch (error) {
+        console.error("Failed to parse user from localStorage", error);
+        localStorage.removeItem('user');
+      }
+    }
+  }, [isMounted]);
 
   const login = (userData: User) => {
     localStorage.setItem('user', JSON.stringify(userData));
@@ -42,10 +47,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
     router.push('/');
   };
-
-  if (!isMounted) {
-    return null; // Or a loading spinner, but null is fine for preventing render
-  }
 
   return (
     <AuthContext.Provider value={{ user, login, logout, isAuthenticated: !!user }}>
