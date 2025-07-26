@@ -18,7 +18,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Conversation } from '@/lib/types';
+import { Conversation, User } from '@/lib/types';
 
 function ProfilePageContent() {
   const { language, translations } = useLanguage();
@@ -41,7 +41,6 @@ function ProfilePageContent() {
   const hostedExperiences = experiences.filter(exp => exp.host.id === currentUser.id);
   const hostExperienceIds = hostedExperiences.map(exp => exp.id);
   const hostBookings = bookings.filter(booking => hostExperienceIds.includes(booking.experienceId));
-  const hostBookingGuestIds = hostBookings.map(booking => booking.guest.id);
   const hostConversations = conversations.filter(convo => {
       const guestIds = hostBookings.map(b => b.guest.id);
       return guestIds.includes(convo.participant.id) || convo.participant.id === users[2].id;
@@ -174,7 +173,7 @@ function ProfilePageContent() {
                   
                   <TabsContent value="messages">
                       <h2 className="text-2xl font-headline font-bold mb-4">{t.hostTabs.messages}</h2>
-                      {hostConversations.length > 0 && activeHostConvoT && activeHostParticipantT ? (
+                      {hostConversations.length > 0 && activeHostConvoT && activeHostParticipantT && activeHostConversation ? (
                           <Card className="h-[600px]">
                               <div className="flex h-full">
                                   <aside className="w-1/3 border-r flex flex-col">
@@ -276,7 +275,7 @@ function ProfilePageContent() {
                 </TabsContent>
                 <TabsContent value="messages">
                   <h2 className="text-2xl font-headline font-bold mb-4">{t.touristTabs.messages}</h2>
-                  {touristConversations.length > 0 && activeTouristConvoT && activeTouristParticipantT ? (
+                  {touristConversations.length > 0 && activeTouristConvoT && activeTouristParticipantT && activeTouristConversation ? (
                       <Card className="h-[600px]">
                           <div className="flex h-full">
                               <aside className="w-1/3 border-r flex flex-col">
