@@ -146,7 +146,7 @@ export default function ExperienceDetailPage({ params }: { params: { id: string 
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="text-3xl font-bold">
-                        ${experience.price} <span className="text-base font-normal text-muted-foreground">/ {t.person}</span>
+                        {experience.price} {t.currency} <span className="text-base font-normal text-muted-foreground">/ {t.person}</span>
                     </div>
                     <Separator />
                     <div className="grid grid-cols-2 gap-4">

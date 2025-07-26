@@ -83,6 +83,7 @@ const translations = {
         whereYoullBe: "Where you'll be",
         noReviews: 'No reviews yet for this experience.',
         bookYourSpot: 'Book Your Spot',
+        currency: 'SAR',
         person: 'person',
         guests: 'Guests',
         guest: 'guest',
@@ -152,7 +153,7 @@ const translations = {
                 placeholder: "Describe what makes your experience unique. Talk about the activities, the culture, and what guests will learn.",
             },
             price: {
-                label: 'Price per Person',
+                label: 'Price per Person (in SAR)',
                 placeholder: '75',
             },
             category: {
@@ -198,11 +199,6 @@ const translations = {
                 label: 'Your Interests',
                 placeholder: "e.g., I'm passionate about history, love hiking in nature, and enjoy authentic culinary experiences...",
             },
-            dates: {
-                label: 'Travel Dates',
-                placeholder: 'Pick a date range',
-                description: 'Select your planned start and end dates of travel.',
-            },
             submitButton: 'Find My Experiences',
             loadingButton: 'Thinking...',
         },
@@ -210,12 +206,7 @@ const translations = {
             loading: {
                 title: 'Generating your personalized recommendations...',
             },
-            errorTitle: 'Something went wrong',
-            noResults: 'No recommendations found for your criteria. Please try being more descriptive.',
-            error: 'An unexpected error occurred. Please try again later.',
-            successTitle: 'Here are your recommendations!',
-            hostedBy: 'Hosted by',
-            availability: 'Availability',
+            successTitle: "Here's our top recommendation for you!",
         }
     },
     users: {
@@ -403,6 +394,7 @@ const translations = {
         whereYoullBe: 'أين ستكون',
         noReviews: 'لا توجد تقييمات لهذه التجربة بعد.',
         bookYourSpot: 'احجز مكانك',
+        currency: 'ريال سعودي',
         person: 'شخص',
         guests: 'الضيوف',
         guest: 'ضيف',
@@ -472,7 +464,7 @@ const translations = {
                 placeholder: 'صف ما يجعل تجربتك فريدة. تحدث عن الأنشطة والثقافة وما سيتعلمه الضيوف.',
             },
             price: {
-                label: 'السعر للشخص الواحد',
+                label: 'السعر للشخص الواحد (بالريال السعودي)',
                 placeholder: '75',
             },
             category: {
@@ -518,11 +510,6 @@ const translations = {
                 label: 'اهتماماتك',
                 placeholder: 'مثال: أنا شغوف بالتاريخ، أحب التنزه في الطبيعة، وأستمتع بالتجارب الطهوية الأصيلة...',
             },
-            dates: {
-                label: 'تواريخ السفر',
-                placeholder: 'اختر نطاقًا زمنيًا',
-                description: 'حدد تواريخ بداية ونهاية سفرك المخطط لها.',
-            },
             submitButton: 'ابحث عن تجاربي',
             loadingButton: 'جاري التفكير...',
         },
@@ -530,12 +517,7 @@ const translations = {
             loading: {
                 title: 'جاري إنشاء توصياتك المخصصة...',
             },
-            errorTitle: 'حدث خطأ ما',
-            noResults: 'لم يتم العثور على توصيات لمعاييرك. يرجى محاولة أن تكون أكثر وصفًا.',
-            error: 'حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى في وقت لاحق.',
-            successTitle: 'إليك توصياتك!',
-            hostedBy: 'بواسطة',
-            availability: 'التوفر',
+            successTitle: "إليك أفضل توصياتنا لك!",
         }
     },
     users: {
