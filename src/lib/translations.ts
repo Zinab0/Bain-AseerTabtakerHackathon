@@ -4,7 +4,6 @@ const translations = {
     header: {
       experiences: 'Experiences',
       aiRecommendations: 'AI Recommendations',
-      messages: 'Messages',
       profile: 'Profile',
       login: 'Login',
       signUp: 'Sign Up',
@@ -301,8 +300,8 @@ const translations = {
         'conv-1': {
             lastMessage: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you.",
             messages: [
-                { id: 'msg-1-1', sender: 'participant', text: "Hi! I'm really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy." },
-                { id: 'msg-1-2', sender: 'user', text: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you." },
+                { id: 'msg-1-1', sender: 'user', text: "Hi! I'm really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy." },
+                { id: 'msg-1-2', sender: 'participant', text: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you." },
             ],
         },
         'conv-2': {
@@ -326,7 +325,6 @@ const translations = {
     header: {
       experiences: 'التجارب',
       aiRecommendations: 'توصيات الذكاء الاصطناعي',
-      messages: 'الرسائل',
       profile: 'الملف الشخصي',
       login: 'تسجيل الدخول',
       signUp: 'إنشاء حساب',
@@ -505,11 +503,11 @@ const translations = {
         }
     },
     messagesPage: {
-        title: 'الرسائل',
-        searchPlaceholder: 'ابحث في المحادثات...',
-        online: 'متصل',
-        inputPlaceholder: 'اكتب رسالة...',
-        sendButton: 'إرسال'
+        title: 'Messages',
+        searchPlaceholder: 'Search conversations...',
+        online: 'Online',
+        inputPlaceholder: 'Type a message...',
+        sendButton: 'Send Message'
     },
     recommendationsPage: {
         title: 'موصي التجارب بالذكاء الاصطناعي',
@@ -623,8 +621,8 @@ const translations = {
         'conv-1': {
             lastMessage: "أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأجهزها لك بدون مكسرات.",
             messages: [
-                { id: 'msg-1-1', sender: 'participant', text: "مرحبًا! حبيت تجربة صنع العريكة، بس عندي سؤال: هل تحتوي على مكسرات؟ لأن عندي حساسية منها." },
-                { id: 'msg-1-2', sender: 'user', text: "أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأجهزها لك بدون مكسرات." },
+                { id: 'msg-1-1', sender: 'user', text: "مرحبًا! حبيت تجربة صنع العريكة، بس عندي سؤال: هل تحتوي على مكسرات؟ لأن عندي حساسية منها." },
+                { id: 'msg-1-2', sender: 'participant', text: "أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأجهزها لك بدون مكسرات." },
             ],
         },
         'conv-2': {
