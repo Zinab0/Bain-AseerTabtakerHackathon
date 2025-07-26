@@ -78,8 +78,21 @@ const recommendExperiencesFlow = ai.defineFlow(
     inputSchema: RecommendExperiencesInputSchema,
     outputSchema: RecommendExperiencesOutputSchema,
   },
-  async input => {
-    const {output} = await prompt({...input, experiences});
-    return output!;
+  async (input) => {
+    // For prototype purposes, always return the "Al-Qatt Al-Asiri Art Workshop"
+    const workshop = experiences.find(exp => exp.id === 'exp-6');
+    if (!workshop) {
+      return { recommendations: [] };
+    }
+    return {
+      recommendations: [
+        {
+          experienceName: workshop.name,
+          hostName: workshop.host.name,
+          description: workshop.description,
+          availability: workshop.availability,
+        },
+      ],
+    };
   }
 );
