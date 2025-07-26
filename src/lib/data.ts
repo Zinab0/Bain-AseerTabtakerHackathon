@@ -4,11 +4,11 @@ import type { User, Experience, Conversation, ReviewData, Booking } from './type
 export const users: User[] = [
   { id: 'user-1', name: 'Ali Mohammed', avatar: 'https://placehold.co/100x100.png', aiHint: "man portrait", isHost: true },
   { id: 'user-2', name: 'Fatima Al-Asmari', avatar: 'https://placehold.co/100x100.png', aiHint: "woman portrait", isHost: true },
-  { id: 'user-3', name: 'John Doe', avatar: 'https://placehold.co/100x100.png', aiHint: "tourist portrait", isHost: false },
+  { id: 'user-3', name: 'John Doe', avatar: 'https://i.postimg.cc/nztcHfzm/9a7da2a8-b47c-441b-91c1-65e0266a841f.png', aiHint: "tourist portrait", isHost: false },
   { id: 'user-4', name: 'Noura Khalid', avatar: 'https://placehold.co/100x100.png', aiHint: "host portrait", isHost: true },
   { id: 'user-5', name: 'Ibrahim Hassan', avatar: 'https://placehold.co/100x100.png', aiHint: "artisan portrait", isHost: true },
   { id: 'user-6', name: 'Layla Faisal', avatar: 'https://placehold.co/100x100.png', aiHint: "chef portrait", isHost: true },
-  { id: 'user-7', name: 'Jane Smith', avatar: 'https://placehold.co/100x100.png', aiHint: 'tourist portrait', isHost: false },
+  { id: 'user-7', name: 'Jane Smith', avatar: 'https://i.postimg.cc/nztcHfzm/9a7da2a8-b47c-441b-91c1-65e0266a841f.png', aiHint: 'tourist portrait', isHost: false },
 ];
 
 const reviews: ReviewData[] = [
