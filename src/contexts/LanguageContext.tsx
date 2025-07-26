@@ -20,31 +20,18 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    const savedLanguage = localStorage.getItem('language') as Language | null;
+    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ar')) {
+      setLanguageState(savedLanguage);
+    }
     setIsMounted(true);
   }, []);
-
-  useEffect(() => {
-    if (isMounted) {
-        const savedLanguage = localStorage.getItem('language') as Language | null;
-        if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ar')) {
-          setLanguageState(savedLanguage);
-          document.documentElement.lang = savedLanguage;
-          document.documentElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr';
-        } else {
-            // Default to 'en' if nothing is saved or value is invalid
-            document.documentElement.lang = 'en';
-            document.documentElement.dir = 'ltr';
-        }
-    }
-  }, [isMounted]);
   
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    if (typeof window !== 'undefined') {
-        localStorage.setItem('language', lang);
-        document.documentElement.lang = lang;
-        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    }
+    localStorage.setItem('language', lang);
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   };
   
   useEffect(() => {
@@ -53,6 +40,10 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
         document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
     }
   }, [language, isMounted]);
+
+  if (!isMounted) {
+    return null;
+  }
 
   const currentTranslations = translations[language];
   const dir = language === 'ar' ? 'rtl' : 'ltr';
