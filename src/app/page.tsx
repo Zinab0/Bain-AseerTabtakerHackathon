@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <section className="relative h-[60vh] flex items-center justify-center text-center text-white overflow-hidden" dir={dir}>
         <Image
-          src="https://i.postimg.cc/KvrMgQLB/A-Tapestry-of-Saudi-Culture-Dq-Living-Magazine.jpg"
+          src="https://i.postimg.cc/mkG2VfMj/Chat-GPT-Image-Jul-26-2025-04-24-34-AM.png"
           alt="Breathtaking view of Asir mountains at sunset"
           layout="fill"
           objectFit="cover"
