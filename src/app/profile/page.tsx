@@ -32,7 +32,7 @@ function ProfilePageContent() {
 
   // Data for Tourists
   const bookedExperiences = [experiences[0], experiences[2]];
-  const touristConversations = conversations.filter(convo => convo.participant.isHost);
+  const touristConversations: Conversation[] = [conversations[1]];
   const activeTouristConversation = touristConversations[0];
   const activeTouristConvoT = activeTouristConversation ? translations.conversations[activeTouristConversation.id as keyof typeof translations.conversations] : null;
   const activeTouristParticipantT = activeTouristConversation ? translations.users[activeTouristConversation.participant.id as keyof typeof translations.users] : null;
@@ -42,11 +42,12 @@ function ProfilePageContent() {
   const hostExperienceIds = hostedExperiences.map(exp => exp.id);
   const hostBookings = bookings.filter(booking => hostExperienceIds.includes(booking.experienceId));
   const hostBookingGuestIds = hostBookings.map(booking => booking.guest.id);
-  const hostConversations = conversations.filter(convo => 
-      (hostBookingGuestIds.includes(convo.participant.id)) || // Messages with guests who booked
-      (convo.id === 'conv-1') // Simulate inquiry from tourist
-  );
-  const activeHostConversation = hostConversations[0];
+  const hostConversations = conversations.filter(convo => {
+      const guestIds = hostBookings.map(b => b.guest.id);
+      return guestIds.includes(convo.participant.id) || convo.participant.id === users[2].id;
+  });
+  
+  const activeHostConversation = hostConversations.find(c => c.id === 'conv-1');
   const activeHostConvoT = activeHostConversation ? translations.conversations[activeHostConversation.id as keyof typeof translations.conversations] : null;
   const activeHostParticipantT = activeHostConversation ? translations.users[activeHostConversation.participant.id as keyof typeof translations.users] : null;
 
@@ -189,7 +190,7 @@ function ProfilePageContent() {
                                                   const convoT = translations.conversations[convo.id as keyof typeof translations.conversations];
                                                   const participantT = translations.users[convo.participant.id as keyof typeof translations.users];
                                                   return (
-                                                      <div key={convo.id} className={`p-4 border-b cursor-pointer hover:bg-muted/50 ${convo.id === activeHostConversation.id ? 'bg-muted' : ''}`}>
+                                                      <div key={convo.id} className={`p-4 border-b cursor-pointer hover:bg-muted/50 ${activeHostConversation && convo.id === activeHostConversation.id ? 'bg-muted' : ''}`}>
                                                           <div className="flex items-center gap-3">
                                                               <Avatar className="h-10 w-10">
                                                                   <AvatarImage src={convo.participant.avatar} alt={participantT.name} data-ai-hint={convo.participant.aiHint} />
@@ -219,9 +220,9 @@ function ProfilePageContent() {
                                       <ScrollArea className="flex-1 p-6 bg-muted/20">
                                           <div className="space-y-4">
                                               {activeHostConvoT.messages.map((message, index) => (
-                                                  <div key={message.id} className={`flex items-end gap-2 ${message.sender === 'user' ? 'justify-start' : 'justify-end'}`}>
+                                                  <div key={message.id} className={`flex items-end gap-2 ${message.sender === 'participant' ? 'justify-start' : 'justify-end'}`}>
                                                       {message.sender === 'participant' && <Avatar className="h-8 w-8"><AvatarImage src={activeHostConversation.participant.avatar} data-ai-hint={activeHostConversation.participant.aiHint}/></Avatar>}
-                                                      <div className={`max-w-xs md:max-w-md lg:max-w-lg p-3 rounded-xl ${message.sender === 'user' ? 'bg-card shadow-sm rounded-bl-none' : 'bg-primary text-primary-foreground rounded-br-none'}`}>
+                                                      <div className={`max-w-xs md:max-w-md lg:max-w-lg p-3 rounded-xl ${message.sender === 'participant' ? 'bg-card shadow-sm rounded-bl-none' : 'bg-primary text-primary-foreground rounded-br-none'}`}>
                                                           <p>{message.text}</p>
                                                           <p className="text-xs mt-1 opacity-70 text-right">{activeHostConversation.messages[index].timestamp}</p>
                                                       </div>
