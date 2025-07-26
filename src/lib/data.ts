@@ -145,23 +145,23 @@ export const bookings: Booking[] = [
 export const conversations: Conversation[] = [
   {
     id: 'conv-1',
-    participant: users[1],
-    lastMessage: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you.",
-    lastMessageTimestamp: '9:17 AM',
+    participant: users[0], // Ali Mohammed, host of mountain trip
+    lastMessage: 'Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.',
+    lastMessageTimestamp: '9:15 AM',
     messages: [
-      { id: 'msg-1-1', sender: 'user', text: "Hi! I'm really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy.", timestamp: '9:15 AM' },
-      { id: 'msg-1-2', sender: 'participant', text: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you.", timestamp: '9:17 AM' },
+      { id: 'msg-1-1', sender: 'user', text: 'Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.', timestamp: '9:15 AM' },
+      { id: 'msg-1-2', sender: 'participant', text: 'Hi John! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before.', timestamp: '9:17 AM' },
     ],
   },
   {
     id: 'conv-2',
-    participant: users[0],
+    participant: users[1], // Fatima Al-Asmari
     lastMessage: 'Perfect, see you then!',
     lastMessageTimestamp: 'Yesterday',
      messages: [
-      { id: 'msg-2-1', sender: 'user', text: 'Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.', timestamp: 'Yesterday' },
-      { id: 'msg-2-2', sender: 'participant', text: 'Hi! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before.', timestamp: 'Yesterday' },
-      { id: 'msg-2-3', sender: 'user', text: 'Perfect, see you then!', timestamp: 'Yesterday' },
+      { id: 'msg-2-1', sender: 'user', text: 'Hi Fatima, I\'m interested in the Areeqah making, is it suitable for beginners?', timestamp: 'Yesterday' },
+      { id: 'msg-2-2', sender: 'participant', text: 'Hi! Absolutely, it is designed for all skill levels. I will guide you through every step.', timestamp: 'Yesterday' },
+      { id: 'msg-2-3', sender: 'user', text: 'That\'s great! Thank you. I am looking forward to it.', timestamp: 'Yesterday' },
     ],
   },
   {

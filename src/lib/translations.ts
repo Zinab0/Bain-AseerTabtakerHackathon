@@ -298,18 +298,18 @@ const translations = {
     },
     conversations: {
         'conv-1': {
-            lastMessage: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you.",
+            lastMessage: "Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.",
             messages: [
-                { id: 'msg-1-1', sender: 'user', text: "Hi! I'm really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy." },
-                { id: 'msg-1-2', sender: 'participant', text: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you." },
+                { id: 'msg-1-1', sender: 'user', text: "Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point." },
+                { id: 'msg-1-2', sender: 'participant', text: "Hi John! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before." },
             ],
         },
         'conv-2': {
             lastMessage: 'Perfect, see you then!',
             messages: [
-                { id: 'msg-2-1', sender: 'user', text: 'Hi Ali, I booked the mountain tour for next Friday. Just confirming the meeting point.' },
-                { id: 'msg-2-2', sender: 'participant', text: 'Hi! Yes, we will meet at the entrance of Asir National Park at 8am. I will send you a precise location pin the day before.' },
-                { id: 'msg-2-3', sender: 'user', text: 'Perfect, see you then!' },
+                { id: 'msg-2-1', sender: 'user', text: 'Hi Fatima, I\'m interested in the Areeqah making, is it suitable for beginners?' },
+                { id: 'msg-2-2', sender: 'participant', text: 'Hi! Absolutely, it is designed for all skill levels. I will guide you through every step.' },
+                { id: 'msg-2-3', sender: 'user', text: 'That\'s great! Thank you. I am looking forward to it.' },
             ],
         },
         'conv-3': {
@@ -619,18 +619,18 @@ const translations = {
     },
     conversations: {
         'conv-1': {
-            lastMessage: "أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأجهزها لك بدون مكسرات.",
+            lastMessage: "مرحباً علي، لقد حجزت الجولة الجبلية ليوم الجمعة القادم. فقط أؤكد نقطة الالتقاء.",
             messages: [
-                { id: 'msg-1-1', sender: 'user', text: "مرحبًا! حبيت تجربة صنع العريكة، بس عندي سؤال: هل تحتوي على مكسرات؟ لأن عندي حساسية منها." },
-                { id: 'msg-1-2', sender: 'participant', text: "أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأجهزها لك بدون مكسرات." },
+                { id: 'msg-1-1', sender: 'user', text: "مرحباً علي، لقد حجزت الجولة الجبلية ليوم الجمعة القادم. فقط أؤكد نقطة الالتقاء." },
+                { id: 'msg-1-2', sender: 'participant', text: "أهلاً يا جون! نعم، سنلتقي عند مدخل منتزه عسير الوطني الساعة 8 صباحًا. سأرسل لك موقعًا دقيقًا في اليوم السابق." },
             ],
         },
         'conv-2': {
             lastMessage: 'ممتاز، أراك حينها!',
             messages: [
-                { id: 'msg-2-1', sender: 'user', text: 'مرحباً علي، لقد حجزت الجولة الجبلية ليوم الجمعة القادم. فقط أؤكد نقطة الالتقاء.' },
-                { id: 'msg-2-2', sender: 'participant', text: 'أهلاً! نعم، سنلتقي عند مدخل منتزه عسير الوطني الساعة 8 صباحًا. سأرسل لك موقعًا دقيقًا في اليوم السابق.' },
-                { id: 'msg-2-3', sender: 'user', text: 'ممتاز، أراك حينها!' },
+                { id: 'msg-2-1', sender: 'user', text: 'مرحباً فاطمة، أنا مهتم بصنع العريكة، هل هي مناسبة للمبتدئين؟' },
+                { id: 'msg-2-2', sender: 'participant', text: 'أهلاً! بالتأكيد، هي مصممة لجميع مستويات المهارة. سأرشدك في كل خطوة.' },
+                { id: 'msg-2-3', sender: 'user', text: 'هذا رائع! شكراً لك. أنا أتطلع لذلك.' },
             ],
         },
         'conv-3': {
