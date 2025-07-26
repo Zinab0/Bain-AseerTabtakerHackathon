@@ -20,21 +20,26 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
     const savedLanguage = localStorage.getItem('language') as Language | null;
     if (savedLanguage) {
       setLanguageState(savedLanguage);
+      document.documentElement.lang = savedLanguage;
+      document.documentElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr';
     }
+    setIsMounted(true);
   }, []);
   
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     if (typeof window !== 'undefined') {
         localStorage.setItem('language', lang);
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     }
   };
   
   useEffect(() => {
+    // This effect runs on language change to update the document attributes
     if (isMounted) {
         document.documentElement.lang = language;
         document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
@@ -46,7 +51,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const dir = language === 'ar' ? 'rtl' : 'ltr';
 
   if (!isMounted) {
-    return null;
+    return null; // Render nothing on the server and initial client render
   }
 
   return (

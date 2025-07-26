@@ -20,7 +20,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
 
   useEffect(() => {
-    setIsMounted(true);
     try {
       const savedUser = localStorage.getItem('user');
       if (savedUser) {
@@ -30,6 +29,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       console.error("Failed to parse user from localStorage", error);
       localStorage.removeItem('user');
     }
+    setIsMounted(true);
   }, []);
 
   const login = (userData: User) => {
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   if (!isMounted) {
-    return null; // or a loading spinner
+    return null; // Or a loading spinner, but null is fine for preventing render
   }
 
   return (
