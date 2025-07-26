@@ -26,10 +26,8 @@ export default function RecommendationsPage() {
         setIsLoading(true);
         setResult(null);
 
-        // Simulate API call delay
         await new Promise(resolve => setTimeout(resolve, 1500));
 
-        // Hardcoded result for the prototype
         const recommendedExperience = experiences.find(exp => exp.id === 'exp-6');
         
         setResult(recommendedExperience || null);
@@ -38,7 +36,6 @@ export default function RecommendationsPage() {
     
     const tExpCard = translations.experienceCard;
     const expT = result ? translations.experiences[result.id as keyof typeof translations.experiences] : null;
-
 
     return (
         <div className="container mx-auto px-4 py-8 md:py-12" dir={dir}>
@@ -63,17 +60,19 @@ export default function RecommendationsPage() {
                             />
                         </div>
                         <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-6" disabled={isLoading}>
+                           <span className="flex items-center justify-center">
                             {isLoading ? (
-                                <span className="flex items-center justify-center">
+                                <>
                                     <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                                     {t.form.loadingButton}
-                                </span>
+                                </>
                             ) : (
-                                <span className="flex items-center justify-center">
+                                <>
                                     <Wand2 className="mr-2 h-5 w-5" />
                                     {t.form.submitButton}
-                                </span>
+                                </>
                             )}
+                            </span>
                         </Button>
                     </form>
                 </CardContent>
