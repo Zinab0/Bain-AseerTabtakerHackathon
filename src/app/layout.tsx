@@ -7,7 +7,7 @@ import { LanguageProvider } from '@/contexts/LanguageContext';
 import { AuthProvider } from '@/contexts/AuthContext';
 
 export const metadata: Metadata = {
-  title: 'Asir Connect',
+  title: 'عيش عسير',
   description: 'Connect with local hosts for authentic cultural experiences in Asir.',
 };
 

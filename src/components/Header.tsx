@@ -24,7 +24,7 @@ export default function Header() {
       <div className="container flex h-16 items-center">
         <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse ltr:mr-6 rtl:ml-6">
           <Mountain className="h-6 w-6 text-primary" />
-          <span className="font-bold font-headline text-lg tracking-wider">Asir Connect</span>
+          <span className="font-bold font-headline text-lg tracking-wider">عيش عسير</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           {navLinks.map(link => (
@@ -96,7 +96,7 @@ export default function Header() {
               <div className="grid gap-4 py-6">
                 <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse mb-4">
                   <Mountain className="h-6 w-6 text-primary" />
-                  <span className="font-bold font-headline text-lg">Asir Connect</span>
+                  <span className="font-bold font-headline text-lg">عيش عسير</span>
                 </Link>
                 {navLinks.map(link => (
                   <Link key={link.href} href={link.href} className="flex w-full items-center py-2 text-lg font-semibold">
