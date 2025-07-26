@@ -27,13 +27,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     setIsMounted(true);
   }, []);
   
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem('language', lang);
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-  };
-  
   useEffect(() => {
     if (isMounted) {
         document.documentElement.lang = language;
@@ -41,6 +34,15 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [language, isMounted]);
 
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', lang);
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    }
+  };
+  
   if (!isMounted) {
     return null;
   }
