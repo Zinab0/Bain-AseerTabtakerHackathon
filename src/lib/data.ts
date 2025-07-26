@@ -1,5 +1,5 @@
 
-import type { User, Experience, Conversation, ReviewData } from './types';
+import type { User, Experience, Conversation, ReviewData, Booking } from './types';
 
 export const users: User[] = [
   { id: 'user-1', name: 'Ali Mohammed', avatar: 'https://placehold.co/100x100.png', aiHint: "man portrait", isHost: true },
@@ -8,11 +8,12 @@ export const users: User[] = [
   { id: 'user-4', name: 'Noura Khalid', avatar: 'https://placehold.co/100x100.png', aiHint: "host portrait", isHost: true },
   { id: 'user-5', name: 'Ibrahim Hassan', avatar: 'https://placehold.co/100x100.png', aiHint: "artisan portrait", isHost: true },
   { id: 'user-6', name: 'Layla Faisal', avatar: 'https://placehold.co/100x100.png', aiHint: "chef portrait", isHost: true },
+  { id: 'user-7', name: 'Jane Smith', avatar: 'https://placehold.co/100x100.png', aiHint: 'tourist portrait', isHost: false },
 ];
 
 const reviews: ReviewData[] = [
     { id: 'rev-1-1', user: users[2], rating: 5, comment: "Amazing experience! Fatima is a wonderful host and the Areeqah was the best I've ever tasted.", date: '2023-10-15' },
-    { id: 'rev-1-2', user: { id: 'user-7', name: 'Jane Smith', avatar: 'https://placehold.co/100x100.png', aiHint: 'tourist portrait', isHost: false }, rating: 5, comment: "A must-do in Abha. The food was incredible.", date: '2023-10-12' },
+    { id: 'rev-1-2', user: users[6], rating: 5, comment: "A must-do in Abha. The food was incredible.", date: '2023-10-12' },
     { id: 'rev-2-1', user: users[2], rating: 5, comment: "Attending a real Asiri wedding was a privilege. Noura's family was so welcoming!", date: '2023-09-20' },
     { id: 'rev-3-1', user: users[2], rating: 5, comment: "The views were absolutely spectacular. Ali is very knowledgeable about the area.", date: '2023-10-05' },
 ];
@@ -97,8 +98,8 @@ export const experiences: Experience[] = [
   {
     id: 'exp-5',
     name: "A Journey Through Rijal Almaa's History",
-    description: 'A guided tour of the historic stone village of Rijal Almaa.',
-    longDescription: 'Walk through the corridors of time with a historian guide in the stunning village of Rijal Almaa. You will explore the unique architecture of the stone fortresses, visit the local museum, and hear stories of the village\'s rich history as a regional trade center. This tour provides deep insights into the heritage of the Asir region.',
+    description: "A guided tour of the historic stone village of Rijal Almaa.",
+    longDescription: "Walk through the corridors of time with a historian guide in the stunning village of Rijal Almaa. You will explore the unique architecture of the stone fortresses, visit the local museum, and hear stories of the village's rich history as a regional trade center. This tour provides deep insights into the heritage of the Asir region.",
     image: 'https://i.postimg.cc/fLj0DFqy/attraction-page-1.webp',
     images: ['https://i.postimg.cc/fLj0DFqy/attraction-page-1.webp', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
     aiHint: 'historic village',
@@ -134,11 +135,18 @@ export const experiences: Experience[] = [
   },
 ];
 
+export const bookings: Booking[] = [
+    { id: 'booking-1', experienceId: 'exp-1', guest: users[2], bookingDate: '2023-10-20', status: 'Confirmed' },
+    { id: 'booking-2', experienceId: 'exp-1', guest: users[6], bookingDate: '2023-10-22', status: 'Confirmed' },
+    { id: 'booking-3', experienceId: 'exp-3', guest: users[6], bookingDate: '2023-11-05', status: 'Confirmed' },
+    { id: 'booking-4', experienceId: 'exp-3', guest: users[2], bookingDate: '2023-11-12', status: 'Pending' },
+];
+
 export const conversations: Conversation[] = [
   {
     id: 'conv-1',
     participant: users[1],
-    lastMessage: "We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient...",
+    lastMessage: "Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you.",
     lastMessageTimestamp: '9:17 AM',
     messages: [
       { id: 'msg-1-1', sender: 'user', text: "Hi! I'm really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy.", timestamp: '9:15 AM' },
@@ -167,5 +175,3 @@ export const conversations: Conversation[] = [
     ],
   },
 ];
-
-    

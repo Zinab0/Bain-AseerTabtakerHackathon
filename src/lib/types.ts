@@ -35,6 +35,14 @@ export type Experience = {
   whatIsIncluded: string[];
 };
 
+export type Booking = {
+  id: string;
+  experienceId: string;
+  guest: User;
+  bookingDate: string;
+  status: 'Confirmed' | 'Pending' | 'Cancelled';
+};
+
 export type Message = {
   id: string;
   sender: 'user' | 'participant';

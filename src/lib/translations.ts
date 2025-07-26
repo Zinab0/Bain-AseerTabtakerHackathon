@@ -108,6 +108,17 @@ const translations = {
             subtitle: 'Time to find your next adventure!',
             button: 'Explore Experiences',
         },
+        hostTabs: {
+            myExperiences: 'My Experiences',
+            bookings: 'Bookings',
+        },
+        bookingsTable: {
+            guest: 'Guest',
+            experience: 'Experience',
+            date: 'Date',
+            status: 'Status',
+            noBookings: 'No bookings for your experiences yet.'
+        },
         yourHostedExperiences: 'Your Hosted Experiences',
         addNewExperience: 'Add New Experience',
         noExperiences: {
@@ -259,7 +270,7 @@ const translations = {
         },
         'exp-5': {
             name: "A Journey Through Rijal Almaa's History",
-            description: 'A guided tour of the historic stone village of Rijal Almaa.',
+            description: "A guided tour of the historic stone village of Rijal Almaa.",
             longDescription: "Walk through the corridors of time with a historian guide in the stunning village of Rijal Almaa. You will explore the unique architecture of the stone fortresses, visit the local museum, and hear stories of the village's rich history as a regional trade center. This tour provides deep insights into the heritage of the Asir region.",
             location: 'Rijal Almaa',
             category: 'History',
@@ -411,6 +422,17 @@ const translations = {
             subtitle: 'حان الوقت للعثور على مغامرتك القادمة!',
             button: 'استكشف التجارب',
         },
+        hostTabs: {
+            myExperiences: 'تجاربي',
+            bookings: 'الحجوزات',
+        },
+        bookingsTable: {
+            guest: 'الضيف',
+            experience: 'التجربة',
+            date: 'التاريخ',
+            status: 'الحالة',
+            noBookings: 'لا توجد حجوزات لتجاربك حتى الآن.'
+        },
         yourHostedExperiences: 'تجاربك المستضافة',
         addNewExperience: 'أضف تجربة جديدة',
         noExperiences: {
@@ -561,9 +583,9 @@ const translations = {
             reviews: []
         },
         'exp-5': {
-            name: 'رحلة عبر تاريخ رجال ألمع',
-            description: 'جولة إرشادية في قرية رجال ألمع الحجرية التاريخية.',
-            longDescription: 'تجول في ممرات الزمن مع مرشد مؤرخ في قرية رجال ألمع المذهلة. ستستكشف العمارة الفريدة للحصون الحجرية، وتزور المتحف المحلي، وتسمع قصصًا عن تاريخ القرية الغني كمركز تجاري إقليمي. توفر هذه الجولة رؤى عميقة في تراث منطقة عسير.',
+            name: "رحلة عبر تاريخ رجال ألمع",
+            description: "جولة إرشادية في قرية رجال ألمع الحجرية التاريخية.",
+            longDescription: "تجول في ممرات الزمن مع مرشد مؤرخ في قرية رجال ألمع المذهلة. ستستكشف العمارة الفريدة للحصون الحجرية، وتزور المتحف المحلي، وتسمع قصصًا عن تاريخ القرية الغني كمركز تجاري إقليمي. توفر هذه الجولة رؤى عميقة في تراث منطقة عسير.",
             location: 'رجال ألمع',
             category: 'تاريخ',
             whatYoullDo: ['استكشاف الأزقة والمباني القديمة', 'زيارة متحف رجال ألمع', 'التعرف على تاريخ وثقافة القرية'],
@@ -583,10 +605,10 @@ const translations = {
     },
     conversations: {
         'conv-1': {
-            lastMessage: 'أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا...',
+            lastMessage: "أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأجهزها لك بدون مكسرات.",
             messages: [
-                { id: 'msg-1-1', text: 'مرحبًا! حبيت تجربة صنع العريكة، بس عندي سؤال: هل تحتوي على مكسرات؟ لأن عندي حساسية منها.' },
-                { id: 'msg-1-2', text: 'أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأجهزها لك بدون مكسرات.' },
+                { id: 'msg-1-1', text: "مرحبًا! حبيت تجربة صنع العريكة، بس عندي سؤال: هل تحتوي على مكسرات؟ لأن عندي حساسية منها." },
+                { id: 'msg-1-2', text: "أهلًا وسهلًا! شكرًا إنك سألت. أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأجهزها لك بدون مكسرات." },
             ],
         },
         'conv-2': {
