@@ -79,22 +79,6 @@ const recommendExperiencesFlow = ai.defineFlow(
     outputSchema: RecommendExperiencesOutputSchema,
   },
   async input => {
-    // For testing: always return the Al-Qatt Al-Asiri Art Workshop
-    const artWorkshop = experiences.find(exp => exp.id === 'exp-6');
-    if (artWorkshop) {
-        return {
-            recommendations: [
-                {
-                    experienceName: artWorkshop.name,
-                    hostName: artWorkshop.host.name,
-                    description: artWorkshop.description,
-                    availability: artWorkshop.availability,
-                }
-            ]
-        }
-    }
-
-    // Fallback to the original implementation if the workshop is not found
     const {output} = await prompt({...input, experiences});
     return output!;
   }
