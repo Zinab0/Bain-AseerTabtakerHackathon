@@ -42,9 +42,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
     router.push('/');
   };
-  
+
   if (!isMounted) {
-    return null; 
+    return null;
   }
 
   return (

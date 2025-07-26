@@ -26,13 +26,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     }
     setIsMounted(true);
   }, []);
-  
-  useEffect(() => {
-    if (isMounted) {
-        document.documentElement.lang = language;
-        document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-    }
-  }, [language, isMounted]);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
@@ -42,7 +35,14 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     }
   };
-  
+
+  useEffect(() => {
+    if (isMounted) {
+        document.documentElement.lang = language;
+        document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+    }
+  }, [language, isMounted]);
+
   if (!isMounted) {
     return null;
   }
