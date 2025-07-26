@@ -10,6 +10,7 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
+import { experiences } from '@/lib/data';
 
 const RecommendExperiencesInputSchema = z.object({
   interests: z
@@ -47,10 +48,20 @@ const prompt = ai.definePrompt({
   output: {schema: RecommendExperiencesOutputSchema},
   prompt: `You are a travel expert specializing in Asir cultural experiences.
 
-  Based on the tourist's interests and travel dates, recommend a list of cultural experiences.
+  Based on the tourist's interests and travel dates, recommend a list of cultural experiences from the list provided below.
 
   Interests: {{{interests}}}
   Travel Dates: {{{travelDates}}}
+
+  Available Experiences:
+  {{#each experiences}}
+  - Name: {{this.name}}
+    - Host: {{this.host.name}}
+    - Description: {{this.description}}
+    - Availability: {{this.availability}}
+    - Category: {{this.category}}
+  {{/each}}
+
 
   Format your response as a JSON object with a "recommendations" field containing an array of objects, where each object has the following fields:
   - experienceName: The name of the experience.
@@ -67,7 +78,7 @@ const recommendExperiencesFlow = ai.defineFlow(
     outputSchema: RecommendExperiencesOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
+    const {output} = await prompt({...input, experiences});
     return output!;
   }
 );

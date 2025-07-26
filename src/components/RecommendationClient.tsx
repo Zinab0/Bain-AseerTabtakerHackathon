@@ -90,7 +90,7 @@ export default function RecommendationClient() {
                     <FormLabel className="text-lg">{t.form.interests.label}</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder={t.form.interests.placeholder}
+                        placeholder={"I am an artist and I love to see the art from different cultures"}
                         className="min-h-[120px]"
                         {...field}
                       />
