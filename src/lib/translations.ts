@@ -305,11 +305,10 @@ const translations = {
             ],
         },
         'conv-2': {
-            lastMessage: 'Perfect, see you then!',
+            lastMessage: 'Hi! I\'m really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy.',
             messages: [
-                { id: 'msg-2-1', sender: 'user', text: 'Hi Fatima, I\'m interested in the Areeqah making, is it suitable for beginners?' },
-                { id: 'msg-2-2', sender: 'participant', text: 'Hi! Absolutely, it is designed for all skill levels. I will guide you through every step.' },
-                { id: 'msg-2-3', sender: 'user', text: 'That\'s great! Thank you. I am looking forward to it.' },
+                { id: 'msg-2-1', sender: 'user', text: 'Hi! I\'m really interested in the Areeqah-making experience, but I have a quick question: does it contain any nuts? I have a nut allergy.' },
+                { id: 'msg-2-2', sender: 'participant', text: 'Welcome! Thank you for asking. We sometimes garnish the Areeqah with nuts like walnuts or almonds, but they’re not an essential ingredient. If you book the experience, just let me know and I’ll prepare it without nuts for you.' },
             ],
         },
         'conv-3': {
@@ -626,11 +625,10 @@ const translations = {
             ],
         },
         'conv-2': {
-            lastMessage: 'ممتاز، أراك حينها!',
+            lastMessage: 'مرحبًا! أنا مهتم جدًا بتجربة صنع العريكة، ولكن لدي سؤال سريع: هل تحتوي على أي مكسرات؟ لدي حساسية من المكسرات.',
             messages: [
-                { id: 'msg-2-1', sender: 'user', text: 'مرحباً فاطمة، أنا مهتم بصنع العريكة، هل هي مناسبة للمبتدئين؟' },
-                { id: 'msg-2-2', sender: 'participant', text: 'أهلاً! بالتأكيد، هي مصممة لجميع مستويات المهارة. سأرشدك في كل خطوة.' },
-                { id: 'msg-2-3', sender: 'user', text: 'هذا رائع! شكراً لك. أنا أتطلع لذلك.' },
+                { id: 'msg-2-1', sender: 'user', text: 'مرحبًا! أنا مهتم جدًا بتجربة صنع العريكة، ولكن لدي سؤال سريع: هل تحتوي على أي مكسرات؟ لدي حساسية من المكسرات.' },
+                { id: 'msg-2-2', sender: 'participant', text: 'أهلاً بك! شكراً لسؤالك. نحن أحيانًا نزين العريكة بالمكسرات مثل الجوز أو اللوز، لكنها ليست مكونًا أساسيًا. إذا حجزت التجربة، فقط أخبرني وسأقوم بإعدادها لك بدون مكسرات.' },
             ],
         },
         'conv-3': {
