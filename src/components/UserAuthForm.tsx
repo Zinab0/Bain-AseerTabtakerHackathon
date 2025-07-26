@@ -27,8 +27,9 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useAuth } from "@/contexts/AuthContext";
-import { users } from "@/lib/data";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { app } from "@/lib/firebase";
+import { useToast } from "@/hooks/use-toast";
 
 
 export default function UserAuthForm({
@@ -43,7 +44,8 @@ export default function UserAuthForm({
   const router = useRouter();
   const searchParams = useSearchParams();
   const { language, setLanguage, translations } = useLanguage();
-  const { login } = useAuth();
+  const { toast } = useToast();
+  const auth = getAuth(app);
 
   const t = translations.authForm;
 
@@ -62,7 +64,7 @@ export default function UserAuthForm({
   const loginSchema = z.object({
     email: z.string().email(t.validation.invalidEmail),
     password: z.string().min(1, t.validation.passwordRequired),
-    role: z.enum(["tourist", "host"]), // Add role to login for simulation
+    role: z.enum(["tourist", "host"]), // Role is kept for UI logic but not directly for Firebase auth
   });
 
   const formSchema = mode === "signup" ? signupSchema : loginSchema;
@@ -86,40 +88,31 @@ export default function UserAuthForm({
   async function onSubmit(data: FormValues) {
     setIsLoading(true);
     
-    if (mode === 'signup' && 'language' in data) {
+    if ('language' in data && data.language) {
       setLanguage(data.language as 'en' | 'ar');
     }
 
-    // Simulate API call and user creation/lookup
-    setTimeout(() => {
-      setIsLoading(false);
-      const isHost = data.role === 'host';
-      
-      // For this prototype, we'll just pick a user from the static data
-      // based on the selected role. A real app would have a proper user database.
-      let loggedInUser;
-      if (mode === 'login') {
-        loggedInUser = isHost ? users.find(u => u.isHost) : users.find(u => !u.isHost);
-      } else { // signup
-        // Let's pretend we create a new user and add it to our list
-        loggedInUser = {
-          id: `user-${Date.now()}`,
-          name: data.name,
-          avatar: 'https://placehold.co/100x100.png',
-          aiHint: 'new user',
-          isHost: isHost,
-        };
-      }
-      
-      if (loggedInUser) {
-        login(loggedInUser);
-        router.push('/profile');
+    try {
+      if (mode === "signup") {
+        const signupData = data as z.infer<typeof signupSchema>;
+        const userCredential = await createUserWithEmailAndPassword(auth, signupData.email, signupData.password);
+        await updateProfile(userCredential.user, { displayName: signupData.name });
+        // In a real app, you would set the user's role (host/tourist) in Firestore or via custom claims.
       } else {
-        // Handle case where no suitable user is found (for login)
-        console.error("Could not find a user to log in.");
+        const loginData = data as z.infer<typeof loginSchema>;
+        await signInWithEmailAndPassword(auth, loginData.email, loginData.password);
       }
-
-    }, 1500);
+      router.push('/profile');
+    } catch (error: any) {
+      console.error("Authentication error:", error);
+      toast({
+        variant: "destructive",
+        title: "Authentication Failed",
+        description: error.message || "An unexpected error occurred.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (

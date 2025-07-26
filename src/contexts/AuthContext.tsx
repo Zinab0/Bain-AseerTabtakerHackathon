@@ -3,53 +3,75 @@
 
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { getAuth, onAuthStateChanged, signOut, User as FirebaseUser } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { app, db } from '@/lib/firebase'; // Assuming you have a firestore instance exported from firebase.ts
 import type { User } from '@/lib/types';
+import { users as mockUsers } from '@/lib/data'; // Import mock users for data fetching
 
 interface AuthContextType {
   user: User | null;
-  login: (user: User) => void;
+  firebaseUser: FirebaseUser | null;
+  loading: boolean;
   logout: () => void;
-  isAuthenticated: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
+  const [firebaseUser, setFirebaseUser] = useState<FirebaseUser | null>(null);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const auth = getAuth(app);
 
   useEffect(() => {
-    try {
-      const savedUser = localStorage.getItem('user');
-      if (savedUser) {
-        setUser(JSON.parse(savedUser));
+    const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
+      setFirebaseUser(fbUser);
+      if (fbUser) {
+        // In a real app, you would fetch user profile from Firestore
+        // For this prototype, we'll find the user in the mock data
+        const mockUser = mockUsers.find(u => u.id.startsWith('user-')); // Simple logic to find a user
+        
+        if (mockUser) {
+           setUser({ ...mockUser, id: fbUser.uid });
+        } else {
+           // Create a default user profile if none found
+           const defaultUser: User = {
+             id: fbUser.uid,
+             name: fbUser.displayName || fbUser.email || 'New User',
+             avatar: fbUser.photoURL || 'https://placehold.co/100x100.png',
+             aiHint: 'user portrait',
+             isHost: false, // Default role
+           };
+           setUser(defaultUser);
+        }
+      } else {
+        setUser(null);
       }
-    } catch (error) {
-      console.error("Failed to parse user from localStorage", error);
-      localStorage.removeItem('user');
-    }
-    setIsMounted(true);
-  }, []);
+      setLoading(false);
+    });
 
-  const login = (userData: User) => {
-    localStorage.setItem('user', JSON.stringify(userData));
-    setUser(userData);
-  };
+    return () => unsubscribe();
+  }, [auth]);
 
-  const logout = () => {
-    localStorage.removeItem('user');
+  const logout = async () => {
+    await signOut(auth);
     setUser(null);
+    setFirebaseUser(null);
     router.push('/');
   };
 
-  if (!isMounted) {
-    return null;
-  }
+  const value = {
+    user,
+    firebaseUser,
+    loading,
+    logout,
+  };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isAuthenticated: !!user }}>
-      {children}
+    <AuthContext.Provider value={value}>
+      {!loading && children}
     </AuthContext.Provider>
   );
 };

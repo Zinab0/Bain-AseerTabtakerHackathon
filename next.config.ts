@@ -27,7 +27,13 @@ const nextConfig: NextConfig = {
         hostname: 'postimg.cc',
         port: '',
         pathname: '/**',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'asir-connect.firebasestorage.app',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
