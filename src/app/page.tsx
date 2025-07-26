@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <section className="relative h-[60vh] flex items-center justify-center text-center text-white overflow-hidden" dir={dir}>
         <Image
-          src="https://i.postimg.cc/59sYmjyk/resize.webp"
+          src="https://i.postimg.cc/6qtP6Ynz/image.jpg"
           alt="Breathtaking view of Asir mountains at sunset"
           layout="fill"
           objectFit="cover"
