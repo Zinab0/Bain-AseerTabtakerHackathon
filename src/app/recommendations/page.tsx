@@ -3,13 +3,12 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader2, Wand2, Star, MapPin, ArrowRight } from "lucide-react";
 import { useLanguage } from '@/contexts/LanguageContext';
 import { experiences } from '@/lib/data';
 import type { Experience } from '@/lib/types';
-import ExperienceCard from '@/components/ExperienceCard';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
