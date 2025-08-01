@@ -21,7 +21,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container flex items-center justify-between h-16 px-4 md:px-6">
         <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse">
@@ -98,7 +98,7 @@ export default function Header() {
             <SheetContent side={language === 'ar' ? 'left' : 'right'}>
               <div className="grid gap-6 py-6">
                 <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse mb-4">
-                  <Image src="https://i.postimg.cc/HcsHyHLK/logo.png" alt="بَيْن logo" width={45} height={45} />
+                  <Image src="https://i.postimg.cc/HcsHyHLK/logo.png" alt="بَيْن logo" width={50} height={50} />
                   <span className="font-bold font-headline text-lg">بَيْن</span>
                 </Link>
                 {navLinks.map(link => (
