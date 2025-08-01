@@ -49,25 +49,14 @@ export default function UserAuthForm({
 
   const t = translations.authForm;
 
-  const signupSchema = z.object({
-    name: z.string().min(1, t.validation.nameRequired),
-    email: z.string().email(t.validation.invalidEmail),
-    password: z.string().min(8, t.validation.passwordLength),
-    role: z.enum(["tourist", "host"], {
-      required_error: t.validation.roleRequired,
-    }),
-    language: z.string({
-      required_error: t.validation.languageRequired,
-    }),
+  const formSchema = z.object({
+      name: mode === 'signup' ? z.string().min(1, t.validation.nameRequired) : z.string().optional(),
+      email: z.string().email(t.validation.invalidEmail),
+      password: z.string().min(mode === 'signup' ? 8 : 1, mode === 'signup' ? t.validation.passwordLength : t.validation.passwordRequired),
+      role: z.enum(["tourist", "host"]),
+      language: mode === 'signup' ? z.string({ required_error: t.validation.languageRequired }) : z.string().optional(),
   });
 
-  const loginSchema = z.object({
-    email: z.string().email(t.validation.invalidEmail),
-    password: z.string().min(1, t.validation.passwordRequired),
-    role: z.enum(["tourist", "host"]), // Role is kept for UI logic but not directly for Firebase auth
-  });
-
-  const formSchema = mode === "signup" ? signupSchema : loginSchema;
   type FormValues = z.infer<typeof formSchema>;
 
   const form = useForm<FormValues>({
@@ -82,25 +71,26 @@ export default function UserAuthForm({
   });
 
   React.useEffect(() => {
-    form.setValue('language', language);
-  }, [language, form]);
+    if (mode === 'signup') {
+      form.setValue('language', language);
+    }
+  }, [language, form, mode]);
 
   async function onSubmit(data: FormValues) {
     setIsLoading(true);
     
-    if ('language' in data && data.language) {
+    if (mode === 'signup' && 'language' in data && data.language) {
       setLanguage(data.language as 'en' | 'ar');
     }
 
     try {
       if (mode === "signup") {
-        const signupData = data as z.infer<typeof signupSchema>;
-        const userCredential = await createUserWithEmailAndPassword(auth, signupData.email, signupData.password);
-        await updateProfile(userCredential.user, { displayName: signupData.name });
-        // In a real app, you would set the user's role (host/tourist) in Firestore or via custom claims.
+        const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
+        if (data.name) {
+            await updateProfile(userCredential.user, { displayName: data.name });
+        }
       } else {
-        const loginData = data as z.infer<typeof loginSchema>;
-        await signInWithEmailAndPassword(auth, loginData.email, loginData.password);
+        await signInWithEmailAndPassword(auth, data.email, data.password);
       }
       router.push('/profile');
     } catch (error: any) {
