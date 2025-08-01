@@ -17,12 +17,12 @@ export default function Home() {
     <>
       <section className="relative h-[60vh] flex items-center justify-center text-center text-white overflow-hidden" dir={dir}>
         <Image
-          src="https://i.postimg.cc/mkG2VfMj/Chat-GPT-Image-Jul-26-2025-04-24-34-AM.png"
+          src="https://i.postimg.cc/wMKD9G3v/image.png"
           alt="Breathtaking view of Asir mountains at sunset"
           layout="fill"
           objectFit="cover"
           className="z-0"
-          data-ai-hint="mountain landscape"
+          data-ai-hint="decorative pattern"
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div className="relative z-20 container mx-auto px-4">
