@@ -38,6 +38,10 @@ const translations = {
         namePlaceholder: 'Your full name',
         email: 'Email',
         password: 'Password',
+        passport: 'Passport Number',
+        passportPlaceholder: 'Enter your passport number',
+        hostId: 'National ID',
+        hostIdPlaceholder: 'Enter your National ID',
         preferredLanguage: 'Preferred Language',
         languagePlaceholder: 'Select a language',
         loginButton: 'Login',
@@ -52,7 +56,9 @@ const translations = {
             passwordLength: 'Password must be at least 8 characters',
             roleRequired: 'You must select a role.',
             languageRequired: 'Please select a language.',
-            passwordRequired: 'Password is required'
+            passwordRequired: 'Password is required',
+            passportRequired: 'Passport number is required.',
+            hostIdRequired: 'National ID is required.',
         }
     },
     experiencesPage: {
@@ -354,6 +360,10 @@ const translations = {
         namePlaceholder: 'اسمك الكامل',
         email: 'البريد الإلكتروني',
         password: 'كلمة المرور',
+        passport: 'رقم جواز السفر',
+        passportPlaceholder: 'أدخل رقم جواز سفرك',
+        hostId: 'رقم الهوية الوطنية',
+        hostIdPlaceholder: 'أدخل رقم هويتك الوطنية',
         preferredLanguage: 'اللغة المفضلة',
         languagePlaceholder: 'اختر لغة',
         loginButton: 'تسجيل الدخول',
@@ -368,7 +378,9 @@ const translations = {
             passwordLength: 'يجب أن لا تقل كلمة المرور عن 8 أحرف',
             roleRequired: 'يجب عليك اختيار دور.',
             languageRequired: 'الرجاء اختيار لغة.',
-            passwordRequired: 'كلمة المرور مطلوبة'
+            passwordRequired: 'كلمة المرور مطلوبة',
+            passportRequired: 'رقم جواز السفر مطلوب.',
+            hostIdRequired: 'رقم الهوية الوطنية مطلوب.',
         }
     },
     experiencesPage: {

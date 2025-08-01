@@ -54,7 +54,26 @@ export default function UserAuthForm({
       email: z.string().email(t.validation.invalidEmail),
       password: z.string().min(mode === 'signup' ? 8 : 1, mode === 'signup' ? t.validation.passwordLength : t.validation.passwordRequired),
       role: z.enum(["tourist", "host"]),
+      passport: z.string().optional(),
+      hostId: z.string().optional(),
       language: mode === 'signup' ? z.string({ required_error: t.validation.languageRequired }) : z.string().optional(),
+  }).superRefine((data, ctx) => {
+    if (mode === 'signup') {
+      if (data.role === 'tourist' && (!data.passport || data.passport.length === 0)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: t.validation.passportRequired,
+          path: ['passport'],
+        });
+      }
+      if (data.role === 'host' && (!data.hostId || data.hostId.length === 0)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: t.validation.hostIdRequired,
+          path: ['hostId'],
+        });
+      }
+    }
   });
 
   type FormValues = z.infer<typeof formSchema>;
@@ -69,6 +88,8 @@ export default function UserAuthForm({
       language: language,
     },
   });
+  
+  const role = form.watch("role");
 
   React.useEffect(() => {
     if (mode === 'signup') {
@@ -89,6 +110,8 @@ export default function UserAuthForm({
         if (data.name) {
             await updateProfile(userCredential.user, { displayName: data.name });
         }
+        // Here you would typically save the passport/hostId to your database (e.g., Firestore)
+        // console.log("User role specific data:", { role: data.role, id: data.role === 'tourist' ? data.passport : data.hostId });
       } else {
         await signInWithEmailAndPassword(auth, data.email, data.password);
       }
@@ -142,19 +165,53 @@ export default function UserAuthForm({
           />
 
           {mode === "signup" && (
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t.name}</FormLabel>
-                  <FormControl>
-                    <Input placeholder={t.namePlaceholder} {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
+            <>
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t.name}</FormLabel>
+                    <FormControl>
+                      <Input placeholder={t.namePlaceholder} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {role === 'tourist' && (
+                <FormField
+                  control={form.control}
+                  name="passport"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t.passport}</FormLabel>
+                      <FormControl>
+                        <Input placeholder={t.passportPlaceholder} {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               )}
-            />
+
+              {role === 'host' && (
+                <FormField
+                  control={form.control}
+                  name="hostId"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t.hostId}</FormLabel>
+                      <FormControl>
+                        <Input placeholder={t.hostIdPlaceholder} {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
+            </>
           )}
 
           <FormField

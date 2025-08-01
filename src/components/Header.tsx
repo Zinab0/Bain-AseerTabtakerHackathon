@@ -96,9 +96,9 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side={language === 'ar' ? 'left' : 'right'}>
-              <div className="grid gap-4 py-6">
+              <div className="grid gap-6 py-6">
                 <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse mb-4">
-                  <Image src="https://i.postimg.cc/HcsHyHLK/logo.png" alt="بَيْن logo" width={32} height={32} />
+                  <Image src="https://i.postimg.cc/HcsHyHLK/logo.png" alt="بَيْن logo" width={45} height={45} />
                   <span className="font-bold font-headline text-lg">بَيْن</span>
                 </Link>
                 {navLinks.map(link => (
