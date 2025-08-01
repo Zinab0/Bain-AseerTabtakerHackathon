@@ -11,7 +11,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        headline: ['"Mada"', 'sans-serif'],
+        headline: ['"Tajawal"', 'sans-serif'],
         body: ['"Rubik"', 'sans-serif'],
         code: ['monospace'],
       },
