@@ -23,10 +23,12 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container flex h-16 items-center">
-        <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse ltr:mr-6 rtl:ml-6">
-          <Image src="https://i.postimg.cc/HcsHyHLK/logo.png" alt="بَيْن logo" width={32} height={32} />
-          <span className="font-bold font-headline text-lg tracking-wider">بَيْن</span>
-        </Link>
+        <div className="mr-4 flex items-center">
+            <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse">
+              <Image src="https://i.postimg.cc/HcsHyHLK/logo.png" alt="بَيْن logo" width={32} height={32} />
+              <span className="font-bold font-headline text-lg tracking-wider">بَيْن</span>
+            </Link>
+        </div>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           {navLinks.map(link => (
             <Link key={link.href} href={link.href} className="transition-colors hover:text-primary">
