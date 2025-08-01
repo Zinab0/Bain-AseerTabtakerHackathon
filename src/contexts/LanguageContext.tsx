@@ -27,24 +27,26 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     setIsMounted(true);
   }, []);
 
+  const setLanguage = (lang: Language) => {
+    localStorage.setItem('language', lang);
+    setLanguageState(lang);
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  };
+  
   useEffect(() => {
     if (isMounted) {
-        document.documentElement.lang = language;
-        document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-        localStorage.setItem('language', language);
+      document.documentElement.lang = language;
+      document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
     }
   }, [language, isMounted]);
 
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-  };
-  
+  const currentTranslations = translations[language];
+  const dir = language === 'ar' ? 'rtl' : 'ltr';
+
   if (!isMounted) {
     return null;
   }
-
-  const currentTranslations = translations[language];
-  const dir = language === 'ar' ? 'rtl' : 'ltr';
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, translations: currentTranslations, dir }}>
