@@ -4,10 +4,9 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { getAuth, onAuthStateChanged, signOut, User as FirebaseUser } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
-import { app, db } from '@/lib/firebase'; // Assuming you have a firestore instance exported from firebase.ts
+import { app } from '@/lib/firebase';
 import type { User } from '@/lib/types';
-import { users as mockUsers } from '@/lib/data'; // Import mock users for data fetching
+import { users as mockUsers } from '@/lib/data'; 
 
 interface AuthContextType {
   user: User | null;
@@ -29,23 +28,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
       setFirebaseUser(fbUser);
       if (fbUser) {
-        // In a real app, you would fetch user profile from Firestore
-        // For this prototype, we'll find the user in the mock data
-        const mockUser = mockUsers.find(u => u.id.startsWith('user-')); // Simple logic to find a user
-        
-        if (mockUser) {
-           setUser({ ...mockUser, id: fbUser.uid });
-        } else {
-           // Create a default user profile if none found
-           const defaultUser: User = {
-             id: fbUser.uid,
-             name: fbUser.displayName || fbUser.email || 'New User',
-             avatar: fbUser.photoURL || 'https://placehold.co/100x100.png',
-             aiHint: 'user portrait',
-             isHost: false, // Default role
-           };
-           setUser(defaultUser);
-        }
+        // Use the actual Firebase user data
+        const authenticatedUser: User = {
+          id: fbUser.uid,
+          name: fbUser.displayName || fbUser.email || 'New User',
+          avatar: fbUser.photoURL || `https://i.postimg.cc/nztcHfzm/9a7da2a8-b47c-441b-91c1-65e0266a841f.png`,
+          aiHint: 'user portrait',
+          // In a real app, role would be stored in Firestore or custom claims
+          // For now, we'll check mock data or default to 'tourist'.
+          isHost: mockUsers.find(u => u.name === fbUser.displayName)?.isHost ?? false,
+        };
+        setUser(authenticatedUser);
       } else {
         setUser(null);
       }
