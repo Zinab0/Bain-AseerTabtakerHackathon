@@ -65,9 +65,9 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative h-[60vh] flex items-center justify-center text-center text-white overflow-hidden" dir={dir}>
+      <section className="relative h-[50vh] flex items-center justify-center text-center text-white overflow-hidden" dir={dir}>
         <Image
-          src="https://postimg.cc/FddpGWDZ"
+          src="https://i.postimg.cc/1tMdmbFL/image.png"
           alt="Breathtaking view of Asir mountains at sunset"
           fill
           objectFit="cover"
@@ -75,7 +75,7 @@ export default function Home() {
           data-ai-hint="decorative pattern"
           priority
         />
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="absolute inset-0 bg-black/5 z-10" />
         <div className="relative z-20 container mx-auto px-4">
           <h1 className="text-5xl md:text-7xl font-headline font-bold mb-4 drop-shadow-lg">{translations.home.title}</h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 drop-shadow-md">
