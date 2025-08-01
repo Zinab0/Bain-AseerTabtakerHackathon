@@ -15,7 +15,12 @@ const translations = {
       browseButton: 'Browse Experiences',
       aiButton: 'Get AI Recommendations',
       featuredExperiences: 'Featured Experiences',
-      browseAllButton: 'Browse All Experiences'
+      browseAllButton: 'Browse All Experiences',
+      recommendations: {
+        title: 'Recommended For You',
+        subtitle: 'Based on your past experiences, you might also like these.',
+        aiButton: 'Get More AI Recommendations',
+      }
     },
     loginPage: {
       title: 'Welcome Back!',
@@ -326,7 +331,12 @@ const translations = {
       browseButton: 'تصفح التجارب',
       aiButton: 'احصل على توصيات الذكاء الاصطناعي',
       featuredExperiences: 'تجارب مميزة',
-      browseAllButton: 'تصفح كل التجارب'
+      browseAllButton: 'تصفح كل التجارب',
+      recommendations: {
+        title: 'مقترح لك',
+        subtitle: 'بناءً على تجاربك السابقة، قد تعجبك هذه أيضًا.',
+        aiButton: 'احصل على المزيد من توصيات الذكاء الاصطناعي',
+      }
     },
     loginPage: {
       title: 'أهلاً بعودتك!',

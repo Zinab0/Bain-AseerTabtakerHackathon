@@ -5,9 +5,59 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ExperienceCard from "@/components/ExperienceCard";
-import { experiences } from "@/lib/data";
-import { ArrowRight } from "lucide-react";
+import { experiences, bookings } from "@/lib/data";
+import { ArrowRight, Wand2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useAuth } from "@/contexts/AuthContext";
+import type { Experience } from "@/lib/types";
+
+function RecommendedExperiences() {
+    const { user } = useAuth();
+    const { language, translations } = useLanguage();
+    const t = translations.home;
+
+    if (!user) {
+        return null;
+    }
+
+    const userBookings = bookings.filter(b => b.guest.id === user.id);
+    if (userBookings.length === 0) {
+        return null;
+    }
+
+    // Simple recommendation logic: find experiences the user has NOT booked yet.
+    const bookedExperienceIds = new Set(userBookings.map(b => b.experienceId));
+    const recommended = experiences.filter(exp => !bookedExperienceIds.has(exp.id)).slice(0, 3);
+    
+    if (recommended.length === 0) {
+        return null;
+    }
+
+    return (
+        <section className="py-16 md:py-24 bg-muted" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-12">
+                    <h2 className="text-4xl font-headline font-bold mb-3">{t.recommendations.title}</h2>
+                    <p className="text-lg text-muted-foreground">{t.recommendations.subtitle}</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {recommended.map((experience) => (
+                        <ExperienceCard key={experience.id} experience={experience} />
+                    ))}
+                </div>
+                 <div className="text-center mt-12">
+                    <Link href="/recommendations">
+                       <Button variant="outline" size="lg">
+                           <Wand2 className="mr-2 h-5 w-5" />
+                           {t.recommendations.aiButton}
+                        </Button>
+                    </Link>
+                </div>
+            </div>
+        </section>
+    )
+}
+
 
 export default function Home() {
   const { language, translations } = useLanguage();
@@ -45,6 +95,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <RecommendedExperiences />
 
       <section className="py-16 md:py-24" dir={dir}>
         <div className="container mx-auto px-4">
