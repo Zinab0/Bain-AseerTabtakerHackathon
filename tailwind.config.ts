@@ -12,7 +12,7 @@ export default {
     extend: {
       fontFamily: {
         headline: ['"Playfair Display"', 'serif'],
-        body: ['"Amiri"', 'serif'],
+        body: ['"Rubik"', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
