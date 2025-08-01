@@ -20,39 +20,25 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    const savedLanguage = localStorage.getItem('language') as Language | null;
+    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ar')) {
+      setLanguageState(savedLanguage);
+    }
     setIsMounted(true);
   }, []);
 
   useEffect(() => {
     if (isMounted) {
-      const savedLanguage = localStorage.getItem('language') as Language | null;
-      if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ar')) {
-        setLanguageState(savedLanguage);
-        document.documentElement.lang = savedLanguage;
-        document.documentElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr';
-      } else {
-        document.documentElement.lang = 'en';
-        document.documentElement.dir = 'ltr';
-      }
-    }
-  }, [isMounted]);
-
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('language', lang);
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    }
-  };
-
-  useEffect(() => {
-    if (isMounted) {
         document.documentElement.lang = language;
         document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+        localStorage.setItem('language', language);
     }
   }, [language, isMounted]);
 
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+  };
+  
   if (!isMounted) {
     return null;
   }
