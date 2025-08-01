@@ -9,6 +9,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import Image from 'next/image';
 
 export default function Header() {
   const { language, setLanguage, translations } = useLanguage();
@@ -23,7 +24,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container flex h-16 items-center">
         <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse ltr:mr-6 rtl:ml-6">
-          <Mountain className="h-6 w-6 text-primary" />
+          <Image src="https://i.postimg.cc/HcsHyHLK/logo.png" alt="بَيْن logo" width={32} height={32} />
           <span className="font-bold font-headline text-lg tracking-wider">بَيْن</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -95,7 +96,7 @@ export default function Header() {
             <SheetContent side={language === 'ar' ? 'left' : 'right'}>
               <div className="grid gap-4 py-6">
                 <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse mb-4">
-                  <Mountain className="h-6 w-6 text-primary" />
+                  <Image src="https://i.postimg.cc/HcsHyHLK/logo.png" alt="بَيْن logo" width={32} height={32} />
                   <span className="font-bold font-headline text-lg">بَيْن</span>
                 </Link>
                 {navLinks.map(link => (
