@@ -28,7 +28,7 @@ export default function RootLayout({
           <LanguageProvider>
             <div className="relative flex min-h-screen flex-col">
               <Header />
-              <main className="flex-1">
+              <main className="flex-1 mt-16">
                 {children}
               </main>
             </div>
