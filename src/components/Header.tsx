@@ -36,7 +36,7 @@ export default function Header() {
             ))}
           </nav>
         </div>
-        <div className="flex items-center justify-end space-x-2 rtl:space-x-reverse">
+        <div className="flex items-center justify-end gap-4">
            <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">
