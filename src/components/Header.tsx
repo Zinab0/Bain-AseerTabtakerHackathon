@@ -21,10 +21,10 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-      <div className="container flex items-center justify-between h-16 px-4 md:px-6">
-        <div className="flex items-center gap-6">
-            <Link href="/" className="flex items-center space-x-2 rtl:space-x-reverse">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="container flex h-16 items-center justify-between px-4 md:px-6">
+        <div className="flex items-center gap-6 md:gap-10">
+            <Link href="/" className="flex items-center gap-2">
               <Image src="https://i.postimg.cc/HcsHyHLK/logo.png" alt="بَيْن logo" width={32} height={32} />
               <span className="font-bold font-headline text-lg tracking-wider">بَيْن</span>
             </Link>
@@ -36,7 +36,7 @@ export default function Header() {
             ))}
           </nav>
         </div>
-        <div className="flex items-center justify-end gap-4">
+        <div className="flex items-center justify-end gap-2">
            <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">
