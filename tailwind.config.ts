@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -11,7 +12,7 @@ export default {
     extend: {
       fontFamily: {
         headline: ['"Playfair Display"', 'serif'],
-        body: ['"PT Sans"', 'sans-serif'],
+        body: ['"Amiri"', 'serif'],
         code: ['monospace'],
       },
       colors: {
