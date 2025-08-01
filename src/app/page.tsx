@@ -69,10 +69,11 @@ export default function Home() {
         <Image
           src="https://postimg.cc/FddpGWDZ"
           alt="Breathtaking view of Asir mountains at sunset"
-          layout="fill"
+          fill
           objectFit="cover"
           className="z-0"
           data-ai-hint="decorative pattern"
+          priority
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div className="relative z-20 container mx-auto px-4">
