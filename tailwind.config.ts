@@ -11,7 +11,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        headline: ['"Playfair Display"', 'serif'],
+        headline: ['"Mada"', 'sans-serif'],
         body: ['"Rubik"', 'sans-serif'],
         code: ['monospace'],
       },
