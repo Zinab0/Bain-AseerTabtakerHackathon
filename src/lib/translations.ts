@@ -223,7 +223,7 @@ const translations = {
     users: {
         'user-1': { name: 'Ali Mohammed' },
         'user-2': { name: 'Fatima Al-Asmari' },
-        'user-3': { name: 'John Doe' },
+        'user-3': { name: 'John Doe', isHost: false },
         'user-4': { name: 'Noura Khalid' },
         'user-5': { name: 'Ibrahim Hassan' },
         'user-6': { name: 'Layla Faisal' },
@@ -545,7 +545,7 @@ const translations = {
     users: {
         'user-1': { name: 'علي محمد' },
         'user-2': { name: 'فاطمة الأسمري' },
-        'user-3': { name: 'جون دو' },
+        'user-3': { name: 'جون دو', isHost: false },
         'user-4': { name: 'نورة خالد' },
         'user-5': { name: 'إبراهيم حسن' },
         'user-6': { name: 'ليلى فيصل' },

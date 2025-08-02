@@ -25,7 +25,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Loader2 } from "lucide-react";
+import { Loader2, CreditCard } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
@@ -53,7 +53,16 @@ export default function UserAuthForm({
       email: z.string().email(t.validation.invalidEmail).optional().or(z.literal('')),
       password: z.string().min(1, t.validation.passwordRequired),
       role: z.enum(["tourist", "host"]),
+      nationalId: z.string().optional(),
       language: mode === 'signup' ? z.string({ required_error: t.validation.languageRequired }) : z.string().optional(),
+  }).refine(data => {
+    if (mode === 'signup' && data.role === 'host') {
+        return !!data.nationalId && data.nationalId.length > 0;
+    }
+    return true;
+  }, {
+      message: t.validation.hostIdRequired,
+      path: ['nationalId'],
   });
 
   type FormValues = z.infer<typeof formSchema>;
@@ -105,6 +114,8 @@ export default function UserAuthForm({
     }
   }
 
+  const role = form.watch("role");
+
   return (
     <div className={cn("grid gap-6", className)} {...props} dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <Form {...form}>
@@ -154,6 +165,26 @@ export default function UserAuthForm({
               </FormItem>
             )}
           />
+          
+          {mode === 'signup' && role === 'host' && (
+            <FormField
+              control={form.control}
+              name="nationalId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t.hostId}</FormLabel>
+                  <div className="relative">
+                      <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <FormControl>
+                        <Input placeholder={t.hostIdPlaceholder} {...field} className="pl-10" />
+                      </FormControl>
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
+
 
           <FormField
             control={form.control}
@@ -221,11 +252,11 @@ export default function UserAuthForm({
           )}
 
           <Button disabled={isLoading} className="w-full" type="submit">
-            <span className="flex items-center justify-center">
+             <span className="flex items-center justify-center">
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  {t.loginButton}
+                  {mode === "login" ? t.loginButton : t.signupButton}
                 </>
               ) : (
                 mode === "login" ? t.loginButton : t.signupButton
