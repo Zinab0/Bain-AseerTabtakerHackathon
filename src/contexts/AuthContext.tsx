@@ -36,13 +36,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     // Find user by full name or first name, case-insensitive
     const foundUser = mockUsers.find(u => 
         u.name.toLowerCase() === name.toLowerCase() || 
-        u.name.toLowerCase().split(' ')[0] === name.toLowerCase()
+        u.name.toLowerCase().split(' ')[0] === name.toLowerCase().split(' ')[0]
     );
 
     if (foundUser) {
-      setUser(foundUser);
-      localStorage.setItem('mockUser', JSON.stringify(foundUser));
-      return foundUser;
+      const userToLogin = {...foundUser, isHost: role === 'host'};
+      setUser(userToLogin);
+      localStorage.setItem('mockUser', JSON.stringify(userToLogin));
+      return userToLogin;
     }
     
     // If no existing user is found, create a new one.
