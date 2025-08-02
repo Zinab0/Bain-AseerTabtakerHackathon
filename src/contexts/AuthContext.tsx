@@ -33,7 +33,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const login = (name: string, role: 'host' | 'tourist'): User | null => {
-    const foundUser = mockUsers.find(u => u.name.toLowerCase() === name.toLowerCase());
+    // Find user by full name or first name, case-insensitive
+    const foundUser = mockUsers.find(u => 
+        u.name.toLowerCase() === name.toLowerCase() || 
+        u.name.toLowerCase().split(' ')[0] === name.toLowerCase()
+    );
 
     if (foundUser) {
       setUser(foundUser);
@@ -41,6 +45,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       return foundUser;
     }
     
+    // If no existing user is found, create a new one.
     const newUser: User = {
         id: `user-${Date.now()}`,
         name: name,
