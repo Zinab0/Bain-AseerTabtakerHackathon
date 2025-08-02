@@ -4,7 +4,6 @@ import type { User, Experience, Conversation, ReviewData, Booking } from './type
 export const users: User[] = [
   { id: 'user-1', name: 'Ali Mohammed', avatar: 'https://i.postimg.cc/d14MgbTw/Chat-GPT-Image-Jul-26-2025-03-40-39-AM-removebg-preview.png', aiHint: "man portrait", isHost: true },
   { id: 'user-2', name: 'Fatima Al-Asmari', avatar: 'https://i.postimg.cc/RVJ8T6GM/Chat-GPT-Image-Jul-26-2025-03-45-40-AM-removebg-preview.png', aiHint: "woman portrait", isHost: true },
-  { id: 'user-3', name: 'John Doe', avatar: 'https://i.postimg.cc/nztcHfzm/9a7da2a8-b47c-441b-91c1-65e0266a841f.png', aiHint: "tourist portrait", isHost: false },
   { id: 'user-4', name: 'Noura Khalid', avatar: 'https://i.postimg.cc/RVJ8T6GM/Chat-GPT-Image-Jul-26-2025-03-45-40-AM-removebg-preview.png', aiHint: "host portrait", isHost: true },
   { id: 'user-5', name: 'Ibrahim Hassan', avatar: 'https://i.postimg.cc/d14MgbTw/Chat-GPT-Image-Jul-26-2025-03-40-39-AM-removebg-preview.png', aiHint: "artisan portrait", isHost: true },
   { id: 'user-6', name: 'Layla Faisal', avatar: 'https://i.postimg.cc/RVJ8T6GM/Chat-GPT-Image-Jul-26-2025-03-45-40-AM-removebg-preview.png', aiHint: "chef portrait", isHost: true },
@@ -13,7 +12,7 @@ export const users: User[] = [
 
 const reviews: ReviewData[] = [
     { id: 'rev-1-1', user: users[2], rating: 5, comment: "Amazing experience! Fatima is a wonderful host and the Areeqah was the best I've ever tasted.", date: '2023-10-15' },
-    { id: 'rev-1-2', user: users[6], rating: 5, comment: "A must-do in Abha. The food was incredible.", date: '2023-10-12' },
+    { id: 'rev-1-2', user: users[4], rating: 5, comment: "A must-do in Abha. The food was incredible.", date: '2023-10-12' },
     { id: 'rev-2-1', user: users[2], rating: 5, comment: "Attending a real Asiri wedding was a privilege. Noura's family was so welcoming!", date: '2023-09-20' },
     { id: 'rev-3-1', user: users[2], rating: 5, comment: "The views were absolutely spectacular. Ali is very knowledgeable about the area.", date: '2023-10-05' },
 ];
@@ -46,7 +45,7 @@ export const experiences: Experience[] = [
     image: 'https://i.postimg.cc/7ZpB28BL/hq720.jpg',
     images: ['https://i.postimg.cc/7ZpB28BL/hq720.jpg', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
     aiHint: 'wedding celebration',
-    host: users[3],
+    host: users[2],
     location: 'Khamis Mushait',
     price: 50,
     rating: 5.0,
@@ -84,7 +83,7 @@ export const experiences: Experience[] = [
     image: 'https://i.postimg.cc/P54cvrLQ/IMG-2931.jpg',
     images: ['https://i.postimg.cc/P54cvrLQ/IMG-2931.jpg', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
     aiHint: 'traditional clothing',
-    host: users[5],
+    host: users[4],
     location: 'Abha, Asir',
     price: 40,
     rating: 4.9,
@@ -103,7 +102,7 @@ export const experiences: Experience[] = [
     image: 'https://i.postimg.cc/fLj0DFqy/attraction-page-1.webp',
     images: ['https://i.postimg.cc/fLj0DFqy/attraction-page-1.webp', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
     aiHint: 'historic village',
-    host: users[4],
+    host: users[3],
     location: 'Rijal Almaa',
     price: 50,
     rating: 4.8,
@@ -122,7 +121,7 @@ export const experiences: Experience[] = [
     image: 'https://i.postimg.cc/DyrtrcJh/qatt-al-asiri-art-workshop-in-abha-5135760.jpg',
     images: ['https://i.postimg.cc/DyrtrcJh/qatt-al-asiri-art-workshop-in-abha-5135760.jpg', 'https://placehold.co/800x600.png', 'https://placehold.co/800x600.png'],
     aiHint: 'art workshop',
-    host: users[4],
+    host: users[3],
     location: 'Rijal Almaa',
     price: 35,
     rating: 4.8,
@@ -137,8 +136,8 @@ export const experiences: Experience[] = [
 
 export const bookings: Booking[] = [
     { id: 'booking-1', experienceId: 'exp-1', guest: users[2], bookingDate: '2023-10-20', status: 'Confirmed' },
-    { id: 'booking-2', experienceId: 'exp-1', guest: users[6], bookingDate: '2023-10-22', status: 'Confirmed' },
-    { id: 'booking-3', experienceId: 'exp-3', guest: users[6], bookingDate: '2023-11-05', status: 'Confirmed' },
+    { id: 'booking-2', experienceId: 'exp-1', guest: users[4], bookingDate: '2023-10-22', status: 'Confirmed' },
+    { id: 'booking-3', experienceId: 'exp-3', guest: users[4], bookingDate: '2023-11-05', status: 'Confirmed' },
     { id: 'booking-4', experienceId: 'exp-3', guest: users[2], bookingDate: '2023-11-12', status: 'Pending' },
 ];
 
@@ -165,7 +164,7 @@ export const conversations: Conversation[] = [
   },
   {
     id: 'conv-3',
-    participant: users[3],
+    participant: users[2],
     lastMessage: 'You are very welcome! Our family was happy to share our special day. It was a pleasure to have you.',
     lastMessageTimestamp: '3 days ago',
      messages: [
