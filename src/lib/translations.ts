@@ -244,40 +244,42 @@ const translations = {
       plan: {
         title: 'Your Personalized Asir Itinerary',
         header: {
-          title: 'Trip to Asir: August 5th - August 8th',
-          subtitle: 'A 4-day journey through the heart of Saudi culture and nature.'
+          title: 'Your 3-Day Trip to Asir',
+          subtitle: 'A journey through the heart of Saudi culture and nature.'
         },
+        experience: 'Experience',
+        location: 'Location',
+        time: 'Time',
+        transportation: 'Transportation',
+        cost: 'Estimated Cost (Experience)',
         day1: {
-          title: 'Day 1: Arrival and Abha\'s Charm (August 5th)',
-          items: [
-            'Afternoon: Arrive in Abha, check into your hotel.',
-            'Evening: Explore the Abha Dam area and enjoy the sunset views.',
-            'Dinner: Traditional Asiri dinner at a local restaurant.'
-          ]
+          title: 'Day 1: Art & History',
+          experienceName: 'Al-Qatt Al-Asiri Art Workshop',
+          location: 'Rijal Almaa',
+          time: '2:00 PM',
+          transportation: 'Book an Uber or local taxi. I can pre-book this for you upon confirmation.',
+          cost: '90 SAR',
+          bookingNote: 'The experience cost is fixed. Transportation is separate and can be paid directly to the driver.',
         },
         day2: {
-          title: 'Day 2: Mountain Adventure (August 6th)',
-          items: [
-            'Morning: Take the cable car up to the Green Mountain for panoramic views.',
-            'Afternoon: Guided tour of Asir National Park and a hike on Mount Athrab.',
-            "Experience: Connect with host Ali Mohammed for the 'A trip to Mount Athrab' experience."
-          ]
+          title: 'Day 2: Culinary Delights',
+          experienceName: 'Taste of Asir: Areeqah Making',
+          location: 'Abha',
+          time: '11:00 AM',
+          transportation: 'Shared ride with your local host, Fatima. This is included in the experience.',
+          cost: '80 SAR'
         },
         day3: {
-          title: 'Day 3: History and Art (August 7th)',
-          items: [
-            'Morning: Day trip to the historic village of Rijal Almaa.',
-            'Afternoon: Participate in an Al-Qatt Al-Asiri art workshop.',
-            "Experience: Book the 'Al-Qatt Al-Asiri Art Workshop' with host Ibrahim Hassan."
-          ]
+          title: 'Day 3: Mountain Adventure',
+          experienceName: 'Mountain Tour to Mount Athrab',
+          location: 'Asir National Park',
+          time: '8:00 AM',
+          transportation: 'A 4x4 pickup from your hotel is included in the experience.',
+          cost: '150 SAR'
         },
-        day4: {
-          title: 'Day 4: Culinary Delights & Departure (August 8th)',
-          items: [
-            'Morning: Learn to make traditional Areeqah with a local family.',
-            "Experience: Book the 'Taste of Asir: Areeqah Making' with host Fatima Al-Asmari.",
-            'Afternoon: Last-minute souvenir shopping before heading to the airport.'
-          ]
+        totalCost: {
+            label: 'Total Estimated Cost:',
+            value: '320 SAR'
         }
       }
     },
@@ -387,7 +389,7 @@ const translations = {
     header: {
       experiences: 'التجارب',
       recommendations: 'موصي الذكاء الاصطناعي',
-      aiTripPlanner: 'مخطط الرحلات بالذكاء الاصطناعي',
+      aiTripPlanner: 'مخطط الرحلات',
       profile: 'الملف الشخصي',
       login: 'تسجيل الدخول',
       signUp: 'إنشاء حساب',
@@ -627,40 +629,42 @@ const translations = {
       plan: {
         title: 'برنامج رحلتك المخصص في عسير',
         header: {
-          title: 'رحلة إلى عسير: 5 أغسطس - 8 أغسطس',
-          subtitle: 'رحلة لمدة 4 أيام في قلب الثقافة والطبيعة السعودية.'
+          title: 'رحلتك لمدة 3 أيام في عسير',
+          subtitle: 'رحلة في قلب الثقافة والطبيعة السعودية.'
         },
+        experience: 'التجربة',
+        location: 'الموقع',
+        time: 'الوقت',
+        transportation: 'المواصلات',
+        cost: 'التكلفة التقديرية (للتجربة)',
         day1: {
-          title: 'اليوم الأول: الوصول وسحر أبها (5 أغسطس)',
-          items: [
-            'بعد الظهر: الوصول إلى أبها وتسجيل الدخول في الفندق.',
-            'المساء: استكشاف منطقة سد أبها والاستمتاع بمناظر غروب الشمس.',
-            'العشاء: عشاء عسيري تقليدي في مطعم محلي.'
-          ]
+          title: 'اليوم الأول: فن وتاريخ',
+          experienceName: 'ورشة عمل فن القط العسيري',
+          location: 'رجال ألمع',
+          time: '2:00 مساءً',
+          transportation: 'احجز أوبر أو تاكسي محلي. يمكنني الحجز المسبق لك عند التأكيد.',
+          cost: '90 ريال سعودي',
+          bookingNote: 'تكلفة التجربة ثابتة. المواصلات منفصلة ويمكن دفعها مباشرة للسائق.',
         },
         day2: {
-          title: 'اليوم الثاني: مغامرة جبلية (6 أغسطس)',
-          items: [
-            'الصباح: ركوب التلفريك إلى الجبل الأخضر للاستمتاع بالمناظر البانورامية.',
-            'بعد الظهر: جولة إرشادية في منتزه عسير الوطني وتنزه في جبل أثرب.',
-            "تجربة: تواصل مع المضيف علي محمد لتجربة 'رحلة إلى جبل أثرب'."
-          ]
+          title: 'اليوم الثاني: أشهى المأكولات',
+          experienceName: 'تذوق طعم عسير: صنع العريكة',
+          location: 'أبها',
+          time: '11:00 صباحًا',
+          transportation: 'مشوار مشترك مع مضيفتك المحلية، فاطمة. هذا مشمول في سعر التجربة.',
+          cost: '80 ريال سعودي'
         },
         day3: {
-          title: 'اليوم الثالث: تاريخ وفن (7 أغسطس)',
-          items: [
-            'الصباح: رحلة ليوم واحد إلى قرية رجال ألمع التاريخية.',
-            'بعد الظهر: المشاركة في ورشة عمل فن القط العسيري.',
-            "تجربة: احجز 'ورشة عمل فن القط العسيري' مع المضيف إبراهيم حسن."
-          ]
+          title: 'اليوم الثالث: مغامرة جبلية',
+          experienceName: 'جولة جبلية في جبل أثرب',
+          location: 'منتزه عسير الوطني',
+          time: '8:00 صباحًا',
+          transportation: 'سيارة دفع رباعي تقلك من فندقك. هذا مشمول في سعر التجربة.',
+          cost: '150 ريال سعودي'
         },
-        day4: {
-          title: 'اليوم الرابع: أشهى المأكولات والمغادرة (8 أغسطس)',
-          items: [
-            'الصباح: تعلم طريقة عمل العريكة التقليدية مع عائلة محلية.',
-            "تجربة: احجز 'تذوق طعم عسير: صنع العريكة' مع المضيفة فاطمة الأسمري.",
-            'بعد الظهر: تسوق الهدايا التذكارية في اللحظة الأخيرة قبل التوجه إلى المطار.'
-          ]
+        totalCost: {
+            label: 'إجمالي التكلفة التقديرية:',
+            value: '320 ريال سعودي'
         }
       }
     },
