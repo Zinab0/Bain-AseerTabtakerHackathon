@@ -1,5 +1,2 @@
-# Firebase Studio
-
-This is a NextJS starter in Firebase Studio.
-
-To get started, take a look at src/app/page.tsx.
+# منصة بين
+تحوّل “الزيارة” إلى “معايشة”، وتُسدّ الفجوة بين السائح وثقافة عسير عبر منصة ذكية ومستدامة.
