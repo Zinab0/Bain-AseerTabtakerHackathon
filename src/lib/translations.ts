@@ -13,7 +13,7 @@ const translations = {
       title: "The bridge between tourists and the people of Asir.",
       subtitle: "From its authentic traditions to its mountain adventures — discover Asir through its people and unforgettable experiences.",
       browseButton: 'Browse Experiences',
-      aiButton: 'Get AI Recommendations',
+      aiButton: 'Plan with AI',
       featuredExperiences: 'Featured Experiences',
       browseAllButton: 'Browse All Experiences',
       recommendations: {
@@ -397,7 +397,7 @@ const translations = {
       title: 'حلقة الوصل بين السائح وأهل عسير',
       subtitle: 'من تقاليدها الأصيلة إلى مغامرات جبالها — اكتشف عسير من خلال أهلها وتجارب لا تُنسى.',
       browseButton: 'تصفح التجارب',
-      aiButton: 'احصل على توصيات الذكاء الاصطناعي',
+      aiButton: 'خطط مع الذكاء الاصطناعي',
       featuredExperiences: 'تجارب مميزة',
       browseAllButton: 'تصفح كل التجارب',
       recommendations: {
@@ -511,9 +511,9 @@ const translations = {
             messages: 'الرسائل',
         },
         hostTabs: {
-            myExperiences: 'تجاربي',
-            bookings: 'الحجوزات',
-            messages: 'الرسائل',
+            myExperiences: 'My Experiences',
+            bookings: 'Bookings',
+            messages: 'Messages',
         },
         bookingsTable: {
             guest: 'الضيف',
@@ -522,12 +522,12 @@ const translations = {
             status: 'الحالة',
             noBookings: 'لا توجد حجوزات لتجاربك حتى الآن.'
         },
-        yourHostedExperiences: 'تجاربك المستضافة',
-        addNewExperience: 'أضف تجربة جديدة',
+        yourHostedExperiences: 'Your Hosted Experiences',
+        addNewExperience: 'Add New Experience',
         noExperiences: {
-            title: 'لم تقم بإنشاء أي تجارب بعد.',
-            subtitle: 'ابدأ بمشاركة ثقافتك مع العالم!',
-            button: 'أنشئ تجربتك الأولى',
+            title: "You haven't created any experiences yet.",
+            subtitle: 'Start sharing your culture with the world!',
+            button: 'Create Your First Experience',
         },
         notAHost: {
             title: 'أنت لست مضيفًا بعد',
