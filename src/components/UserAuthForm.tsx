@@ -85,6 +85,8 @@ export default function UserAuthForm({
       email: "",
       password: "",
       role: searchParams.get('role') === 'host' ? 'host' : "tourist",
+      passport: "",
+      hostId: "",
       language: language,
     },
   });
