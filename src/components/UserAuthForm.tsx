@@ -222,10 +222,14 @@ export default function UserAuthForm({
 
           <Button disabled={isLoading} className="w-full" type="submit">
             <span className="flex items-center justify-center">
-              {isLoading && (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  {t.loginButton}
+                </>
+              ) : (
+                mode === "login" ? t.loginButton : t.signupButton
               )}
-              {mode === "login" ? t.loginButton : t.signupButton}
             </span>
           </Button>
         </form>
