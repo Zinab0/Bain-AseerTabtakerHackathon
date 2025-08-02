@@ -6,12 +6,12 @@ import { getStorage } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig: FirebaseOptions = { 
-    apiKey: "AIzaSyDUhK_nRhFBSl3xfOzzKW-jeiDyr9rVFnI", 
+    apiKey: "AIza...", 
     authDomain: "asir-connect.firebaseapp.com", 
     projectId: "asir-connect", 
     storageBucket: "asir-connect.appspot.com", 
-    messagingSenderId: "78913698870", 
-    appId: "1:78913698870:web:dc305996d49bd3a364ac97", 
+    messagingSenderId: "...", 
+    appId: "...", 
 };
 
 
@@ -25,6 +25,7 @@ if (!getApps().length) {
 
 const db = getFirestore(app);
 const storage = getStorage(app);
+// The auth object will be initialized with a dummy config, but not used for real auth.
 const auth = getAuth(app);
 
 export { app, db, storage, auth };
