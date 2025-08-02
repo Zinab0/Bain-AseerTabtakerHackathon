@@ -221,6 +221,66 @@ const translations = {
             successTitle: "Here's our top recommendation for you!",
         }
     },
+    aiTripPlanner: {
+      title: 'AI Trip Planner',
+      subtitle: 'Let our AI craft the perfect cultural journey for you in Asir.',
+      form: {
+        title: 'Tell us about your ideal trip',
+        subtitle: 'The more details you provide, the better the plan will be.',
+        interests: {
+          label: 'Interests',
+          placeholder: 'e.g., food, history, nature'
+        },
+        dates: {
+          label: 'Travel Dates',
+          placeholder: 'e.g., 2025-08-05 to 2025-08-08'
+        },
+        budget: {
+          label: 'Budget (Optional)',
+          placeholder: 'e.g., low, medium, high'
+        },
+        button: 'Plan My Trip'
+      },
+      plan: {
+        title: 'Your Personalized Asir Itinerary',
+        header: {
+          title: 'Trip to Asir: August 5th - August 8th',
+          subtitle: 'A 4-day journey through the heart of Saudi culture and nature.'
+        },
+        day1: {
+          title: 'Day 1: Arrival and Abha\'s Charm (August 5th)',
+          items: [
+            'Afternoon: Arrive in Abha, check into your hotel.',
+            'Evening: Explore the Abha Dam area and enjoy the sunset views.',
+            'Dinner: Traditional Asiri dinner at a local restaurant.'
+          ]
+        },
+        day2: {
+          title: 'Day 2: Mountain Adventure (August 6th)',
+          items: [
+            'Morning: Take the cable car up to the Green Mountain for panoramic views.',
+            'Afternoon: Guided tour of Asir National Park and a hike on Mount Athrab.',
+            "Experience: Connect with host Ali Mohammed for the 'A trip to Mount Athrab' experience."
+          ]
+        },
+        day3: {
+          title: 'Day 3: History and Art (August 7th)',
+          items: [
+            'Morning: Day trip to the historic village of Rijal Almaa.',
+            'Afternoon: Participate in an Al-Qatt Al-Asiri art workshop.',
+            "Experience: Book the 'Al-Qatt Al-Asiri Art Workshop' with host Ibrahim Hassan."
+          ]
+        },
+        day4: {
+          title: 'Day 4: Culinary Delights & Departure (August 8th)',
+          items: [
+            'Morning: Learn to make traditional Areeqah with a local family.',
+            "Experience: Book the 'Taste of Asir: Areeqah Making' with host Fatima Al-Asmari.",
+            'Afternoon: Last-minute souvenir shopping before heading to the airport.'
+          ]
+        }
+      }
+    },
     users: {
         'user-1': { name: 'Ali Mohammed' },
         'user-2': { name: 'Fatima Al-Asmari' },
@@ -543,6 +603,66 @@ const translations = {
             },
             successTitle: "إليك أفضل توصياتنا لك!",
         }
+    },
+    aiTripPlanner: {
+      title: 'مخطط الرحلات بالذكاء الاصطناعي',
+      subtitle: 'دع الذكاء الاصطناعي يصمم لك الرحلة الثقافية المثالية في عسير.',
+      form: {
+        title: 'أخبرنا عن رحلتك المثالية',
+        subtitle: 'كلما قدمت تفاصيل أكثر، كانت الخطة أفضل.',
+        interests: {
+          label: 'الاهتمامات',
+          placeholder: 'مثال: طعام، تاريخ، طبيعة'
+        },
+        dates: {
+          label: 'تواريخ السفر',
+          placeholder: 'مثال: 2025-08-05 إلى 2025-08-08'
+        },
+        budget: {
+          label: 'الميزانية (اختياري)',
+          placeholder: 'مثال: منخفضة، متوسطة، عالية'
+        },
+        button: 'خطط لرحلتي'
+      },
+      plan: {
+        title: 'برنامج رحلتك المخصص في عسير',
+        header: {
+          title: 'رحلة إلى عسير: 5 أغسطس - 8 أغسطس',
+          subtitle: 'رحلة لمدة 4 أيام في قلب الثقافة والطبيعة السعودية.'
+        },
+        day1: {
+          title: 'اليوم الأول: الوصول وسحر أبها (5 أغسطس)',
+          items: [
+            'بعد الظهر: الوصول إلى أبها وتسجيل الدخول في الفندق.',
+            'المساء: استكشاف منطقة سد أبها والاستمتاع بمناظر غروب الشمس.',
+            'العشاء: عشاء عسيري تقليدي في مطعم محلي.'
+          ]
+        },
+        day2: {
+          title: 'اليوم الثاني: مغامرة جبلية (6 أغسطس)',
+          items: [
+            'الصباح: ركوب التلفريك إلى الجبل الأخضر للاستمتاع بالمناظر البانورامية.',
+            'بعد الظهر: جولة إرشادية في منتزه عسير الوطني وتنزه في جبل أثرب.',
+            "تجربة: تواصل مع المضيف علي محمد لتجربة 'رحلة إلى جبل أثرب'."
+          ]
+        },
+        day3: {
+          title: 'اليوم الثالث: تاريخ وفن (7 أغسطس)',
+          items: [
+            'الصباح: رحلة ليوم واحد إلى قرية رجال ألمع التاريخية.',
+            'بعد الظهر: المشاركة في ورشة عمل فن القط العسيري.',
+            "تجربة: احجز 'ورشة عمل فن القط العسيري' مع المضيف إبراهيم حسن."
+          ]
+        },
+        day4: {
+          title: 'اليوم الرابع: أشهى المأكولات والمغادرة (8 أغسطس)',
+          items: [
+            'الصباح: تعلم طريقة عمل العريكة التقليدية مع عائلة محلية.',
+            "تجربة: احجز 'تذوق طعم عسير: صنع العريكة' مع المضيفة فاطمة الأسمري.",
+            'بعد الظهر: تسوق الهدايا التذكارية في اللحظة الأخيرة قبل التوجه إلى المطار.'
+          ]
+        }
+      }
     },
     users: {
         'user-1': { name: 'علي محمد' },
