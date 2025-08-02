@@ -33,28 +33,39 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const login = (name: string, role: 'host' | 'tourist'): User | null => {
+    // If role is host, always log in as Ali Mohammed
+    if (role === 'host') {
+      const aliUser = mockUsers.find(u => u.id === 'user-1');
+      if (aliUser) {
+        setUser(aliUser);
+        localStorage.setItem('mockUser', JSON.stringify(aliUser));
+        return aliUser;
+      }
+      return null; // Ali not found, should not happen.
+    }
+    
+    // Original logic for tourists
     // Find user by full name or first name, case-insensitive
     const foundUser = mockUsers.find(u => 
-        u.name.toLowerCase() === name.toLowerCase() || 
-        u.name.toLowerCase().split(' ')[0] === name.toLowerCase().split(' ')[0]
+        !u.isHost && // Only find tourists
+        (u.name.toLowerCase() === name.toLowerCase() || 
+         u.name.toLowerCase().split(' ')[0] === name.toLowerCase().split(' ')[0])
     );
 
     if (foundUser) {
-      const userToLogin = {...foundUser, isHost: role === 'host'};
+      const userToLogin = {...foundUser, isHost: false}; // Ensure isHost is false
       setUser(userToLogin);
       localStorage.setItem('mockUser', JSON.stringify(userToLogin));
       return userToLogin;
     }
     
-    // If no existing user is found, create a new one.
+    // If no existing user is found, create a new tourist.
     const newUser: User = {
         id: `user-${Date.now()}`,
         name: name,
-        avatar: role === 'host' 
-            ? 'https://i.postimg.cc/RVJ8T6GM/Chat-GPT-Image-Jul-26-2025-03-45-40-AM-removebg-preview.png' 
-            : 'https://i.postimg.cc/nztcHfzm/9a7da2a8-b47c-441b-91c1-65e0266a841f.png',
-        aiHint: role === 'host' ? 'host portrait' : 'tourist portrait',
-        isHost: role === 'host',
+        avatar: 'https://i.postimg.cc/nztcHfzm/9a7da2a8-b47c-441b-91c1-65e0266a841f.png',
+        aiHint: 'tourist portrait',
+        isHost: false, // Always false for new signups here
     }
     setUser(newUser);
     localStorage.setItem('mockUser', JSON.stringify(newUser));
