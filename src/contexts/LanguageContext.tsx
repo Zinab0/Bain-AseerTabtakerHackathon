@@ -21,17 +21,24 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     setIsMounted(true);
-    const savedLanguage = localStorage.getItem('language') as Language | null;
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ar')) {
-      setLanguageState(savedLanguage);
-    }
   }, []);
 
+  useEffect(() => {
+    if (isMounted) {
+      const savedLanguage = localStorage.getItem('language') as Language | null;
+      if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ar')) {
+        setLanguageState(savedLanguage);
+      }
+    }
+  }, [isMounted]);
+
   const setLanguage = (lang: Language) => {
-    localStorage.setItem('language', lang);
-    setLanguageState(lang);
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    if (isMounted) {
+      localStorage.setItem('language', lang);
+      setLanguageState(lang);
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    }
   };
   
   useEffect(() => {
