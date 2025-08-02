@@ -46,7 +46,7 @@ function RecommendedExperiences() {
                     ))}
                 </div>
                  <div className="text-center mt-12">
-                    <Link href="/recommendations">
+                    <Link href="/trip-planner">
                        <Button variant="outline" size="lg">
                            <Wand2 className="mr-2 h-5 w-5" />
                            {t.recommendations.aiButton}
@@ -87,7 +87,7 @@ export default function Home() {
                 {translations.home.browseButton}
               </Button>
             </Link>
-            <Link href="/recommendations">
+            <Link href="/trip-planner">
               <Button size="lg" variant="secondary" className="bg-accent text-accent-foreground hover:bg-accent/90 border-2 border-accent">
                 {translations.home.aiButton}
                 <ArrowRight className="ml-2 h-5 w-5" />

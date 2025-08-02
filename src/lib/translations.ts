@@ -3,7 +3,6 @@ const translations = {
   en: {
     header: {
       experiences: 'Experiences',
-      recommendations: 'AI Recommender',
       aiTripPlanner: 'AI Trip Planner',
       profile: 'Profile',
       login: 'Login',
@@ -388,7 +387,6 @@ const translations = {
   ar: {
     header: {
       experiences: 'التجارب',
-      recommendations: 'موصي الذكاء الاصطناعي',
       aiTripPlanner: 'مخطط الرحلات',
       profile: 'الملف الشخصي',
       login: 'تسجيل الدخول',
@@ -657,7 +655,7 @@ const translations = {
         day3: {
           title: 'اليوم الثالث: مغامرة جبلية',
           experienceName: 'جولة جبلية في جبل أثرب',
-          location: 'منتزه عسير الوطني',
+          location: 'متنزه عسير الوطني',
           time: '8:00 صباحًا',
           transportation: 'سيارة دفع رباعي تقلك من فندقك. هذا مشمول في سعر التجربة.',
           cost: '150 ريال سعودي'

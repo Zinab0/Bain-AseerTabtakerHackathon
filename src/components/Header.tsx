@@ -17,7 +17,6 @@ export default function Header() {
   
   const navLinks = [
     { href: "/experiences", label: translations.header.experiences },
-    { href: "/recommendations", label: translations.header.recommendations },
     { href: "/trip-planner", label: translations.header.aiTripPlanner },
   ];
 
