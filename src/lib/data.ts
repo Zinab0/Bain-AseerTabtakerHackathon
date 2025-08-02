@@ -4,6 +4,7 @@ import type { User, Experience, Conversation, ReviewData, Booking } from './type
 export const users: User[] = [
   { id: 'user-1', name: 'Ali Mohammed', avatar: 'https://i.postimg.cc/d14MgbTw/Chat-GPT-Image-Jul-26-2025-03-40-39-AM-removebg-preview.png', aiHint: "man portrait", isHost: true },
   { id: 'user-2', name: 'Fatima Al-Asmari', avatar: 'https://i.postimg.cc/RVJ8T6GM/Chat-GPT-Image-Jul-26-2025-03-45-40-AM-removebg-preview.png', aiHint: "woman portrait", isHost: true },
+  { id: 'user-3', name: 'John Doe', avatar: 'https://i.postimg.cc/nztcHfzm/9a7da2a8-b47c-441b-91c1-65e0266a841f.png', aiHint: 'tourist portrait', isHost: false },
   { id: 'user-4', name: 'Noura Khalid', avatar: 'https://i.postimg.cc/RVJ8T6GM/Chat-GPT-Image-Jul-26-2025-03-45-40-AM-removebg-preview.png', aiHint: "host portrait", isHost: true },
   { id: 'user-5', name: 'Ibrahim Hassan', avatar: 'https://i.postimg.cc/d14MgbTw/Chat-GPT-Image-Jul-26-2025-03-40-39-AM-removebg-preview.png', aiHint: "artisan portrait", isHost: true },
   { id: 'user-6', name: 'Layla Faisal', avatar: 'https://i.postimg.cc/RVJ8T6GM/Chat-GPT-Image-Jul-26-2025-03-45-40-AM-removebg-preview.png', aiHint: "chef portrait", isHost: true },
