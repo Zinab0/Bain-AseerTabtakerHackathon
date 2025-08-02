@@ -9,7 +9,7 @@ import { users as mockUsers } from '@/lib/data';
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (name: string) => User | null;
+  login: (name: string, role: 'host' | 'tourist') => User | null;
   logout: () => void;
 }
 
@@ -21,7 +21,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
 
   useEffect(() => {
-    // Check if a user is saved in localStorage to persist session
     try {
         const savedUser = localStorage.getItem('mockUser');
         if (savedUser) {
@@ -33,8 +32,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLoading(false);
   }, []);
 
-  const login = (name: string): User | null => {
-    // Simple mock logic: Find user by name (case-insensitive)
+  const login = (name: string, role: 'host' | 'tourist'): User | null => {
     const foundUser = mockUsers.find(u => u.name.toLowerCase() === name.toLowerCase());
 
     if (foundUser) {
@@ -42,13 +40,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       localStorage.setItem('mockUser', JSON.stringify(foundUser));
       return foundUser;
     }
-    // If user not found, create a new mock "tourist" user for demo purposes
+    
     const newUser: User = {
         id: `user-${Date.now()}`,
         name: name,
-        avatar: 'https://i.postimg.cc/nztcHfzm/9a7da2a8-b47c-441b-91c1-65e0266a841f.png',
-        aiHint: 'tourist portrait',
-        isHost: false,
+        avatar: role === 'host' 
+            ? 'https://i.postimg.cc/RVJ8T6GM/Chat-GPT-Image-Jul-26-2025-03-45-40-AM-removebg-preview.png' 
+            : 'https://i.postimg.cc/nztcHfzm/9a7da2a8-b47c-441b-91c1-65e0266a841f.png',
+        aiHint: role === 'host' ? 'host portrait' : 'tourist portrait',
+        isHost: role === 'host',
     }
     setUser(newUser);
     localStorage.setItem('mockUser', JSON.stringify(newUser));

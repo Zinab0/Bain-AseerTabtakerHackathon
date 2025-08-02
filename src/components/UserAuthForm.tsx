@@ -85,8 +85,8 @@ export default function UserAuthForm({
     // Simulate network delay
     await new Promise(resolve => setTimeout(resolve, 500));
 
-    // Mock login logic
-    const loggedInUser = login(data.name);
+    // Mock login logic, now passing the role
+    const loggedInUser = login(data.name, data.role);
     
     setIsLoading(false);
 
